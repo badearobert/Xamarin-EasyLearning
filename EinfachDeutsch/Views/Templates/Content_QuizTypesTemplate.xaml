@@ -15,9 +15,10 @@
                 <Setter Property="HorizontalOptions" Value="Center" />
                 <Setter Property="FontSize" Value="20" />
                 <Setter Property="FontAttributes" Value="Bold" />
-                <Setter Property="TextColor" Value="{DynamicResource DynamicTitleColor}"/>
+                <Setter Property="TextColor" Value="{DynamicResource PinkColor}"/>
             </Style>
             <Style x:Key="DescriptionStyle" TargetType="Label">
+                <Setter Property="Margin" Value="10" />
                 <Setter Property="VerticalOptions" Value="Center" />
                 <Setter Property="HorizontalOptions" Value="Center" />
                 <Setter Property="TextColor" Value="{DynamicResource DynamicBackgroundColor}"/>
@@ -29,8 +30,7 @@
     
     <ContentView.Content>
 
-        <pancakeview:PancakeView CornerRadius="25" BackgroundColor="{DynamicResource PinkColor}" 
-                                 Margin="0" Padding="0">
+        <pancakeview:PancakeView CornerRadius="25" Margin="0" Padding="0">
             <StackLayout Orientation="Vertical" BackgroundColor="{Binding BackgroundColor}">
                 <Label Text="{Binding Name}" Style="{StaticResource TitleStyle}"/>
                 <Label Text="{Binding Description}" Style="{StaticResource DescriptionStyle}"/>

@@ -15,12 +15,11 @@
                 <Setter Property="VerticalOptions" Value="Center" />
                 <Setter Property="HorizontalOptions" Value="Center" />
                 <Setter Property="FontSize" Value="20" />
+                <Setter Property="Margin" Value="20,50" />
                 <Setter Property="FontAttributes" Value="Bold" />
                 <Setter Property="TextColor" Value="{DynamicResource DynamicTitleColor}"/>
             </Style>
             <Style x:Key="AnswerBaseStyle" TargetType="Label">
-                <Setter Property="VerticalOptions" Value="Center" />
-                <Setter Property="HorizontalOptions" Value="Center" />
                 <Setter Property="TextColor" Value="White" />
                 <Setter Property="FontAttributes" Value="Bold" />
             </Style>
@@ -34,23 +33,28 @@
     </ContentView.Resources>
 
     <ContentView.Content>
-        <StackLayout Orientation="Vertical">
-            <Label Text="{Binding Score}" Style="{StaticResource QuestionStyle}"/>
-            <Label Text="{Binding CurrentQuestion.Question}" Style="{StaticResource QuestionStyle}"/>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="2*"/>
+            </Grid.RowDefinitions>
+            <Label Grid.Row="0" Text="{Binding Score}" Style="{StaticResource QuestionStyle}"/>
+            <StackLayout Grid.Row="1" Orientation="Vertical" Margin="20,0">
+                <Label Text="{Binding CurrentQuestion.Question}" Style="{StaticResource QuestionStyle}"/>
 
-            <CollectionView x:Name="EntireCollection" ItemsSource="{Binding CurrentQuestion.Results, Converter={StaticResource StringToListConverter}}"
-                            ItemTemplate="{StaticResource QuizResultsTemplate}"
-                            SelectionMode="Single"
-                            InputTransparent="True"
-                            SelectionChangedCommand="{Binding SelectionChanged}"
-                            SelectionChangedCommandParameter="{x:Reference EntireCollection}"
-                            SelectedItem="{Binding SelectedItem, Mode=TwoWay}">
-                <CollectionView.ItemsLayout>
-                <LinearItemsLayout Orientation="Vertical" ItemSpacing="10"/>
-                </CollectionView.ItemsLayout>
-            </CollectionView>
-
-        </StackLayout>
+                <CollectionView x:Name="EntireCollection" ItemsSource="{Binding CurrentQuestion.Results, Converter={StaticResource StringToListConverter}}"
+                                ItemTemplate="{StaticResource QuizResultsTemplate}"
+                                SelectionMode="Single"
+                                InputTransparent="True"
+                                SelectionChangedCommand="{Binding SelectionChanged}"
+                                SelectionChangedCommandParameter="{x:Reference EntireCollection}"
+                                SelectedItem="{Binding SelectedItem, Mode=TwoWay}">
+                    <CollectionView.ItemsLayout>
+                        <LinearItemsLayout Orientation="Vertical" ItemSpacing="10"/>
+                    </CollectionView.ItemsLayout>
+                </CollectionView>
+            </StackLayout>
+        </Grid>
     </ContentView.Content>
     
 </ContentView>

@@ -20,7 +20,7 @@
     </ContentView.Resources>
 
     <ContentView.Content>
-        <pancakeview:PancakeView CornerRadius="25" BackgroundColor="{DynamicResource PinkColor}" Margin="0" Padding="0">
+        <pancakeview:PancakeView CornerRadius="40" BackgroundColor="{DynamicResource PinkColor}">
             <Label Text="{Binding .}" Style="{StaticResource AnswerStyle}"/>
         </pancakeview:PancakeView>
     </ContentView.Content>
