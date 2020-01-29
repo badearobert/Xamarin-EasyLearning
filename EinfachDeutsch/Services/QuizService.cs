@@ -19,11 +19,7 @@ namespace EinfachDeutsch.Services
 
         public List<TrueFalseQuiz> GetTrueFalseQuestions()
         {
-            return new List<TrueFalseQuiz>
-            {
-                new TrueFalseQuiz() { Question = "The answer to this one is true", Answer = true },
-                new TrueFalseQuiz() { Question = "The answer to this one is false", Answer = false },
-            };
+            return App.database.Read<TrueFalseQuiz>();
         }
 
 
