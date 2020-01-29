@@ -26,10 +26,10 @@ namespace EinfachDeutsch
             database.Add(new TrueFalseQuiz() { Question = "The answer to this one is true", Answer = true });
             database.Add(new TrueFalseQuiz() { Question = "The answer to this one is false", Answer = false });
 
-            database.Add(new SelectionQuiz() { Question = "Selection quiz: result is 0", CorrectResult = "0", Results = "0,1,2,3" });
-            database.Add(new SelectionQuiz() { Question = "Selection quiz: result is 1", CorrectResult = "1", Results = "0,1,2,3" });
-            database.Add(new SelectionQuiz() { Question = "Selection quiz: result is 2", CorrectResult = "2", Results = "0,1,2,3" });
-            database.Add(new SelectionQuiz() { Question = "Selection quiz: result is 3", CorrectResult = "3", Results = "0,1,2,3" });
+            database.Add(new SelectionQuiz() { Question = "Selection quiz: result is 0", CorrectResult = "0", Choices = "0,1,2,3" });
+            database.Add(new SelectionQuiz() { Question = "Selection quiz: result is 1", CorrectResult = "1", Choices = "0,1,2,3" });
+            database.Add(new SelectionQuiz() { Question = "Selection quiz: result is 2", CorrectResult = "2", Choices = "0,1,2,3" });
+            database.Add(new SelectionQuiz() { Question = "Selection quiz: result is 3", CorrectResult = "3", Choices = "0,1,2,3" });
 
             database.Add(new TranslateWordsQuiz() { Question = "Translate words question. Answer is: happy", CorrectResult = "happy" });
             database.Add(new TranslateWordsQuiz() { Question = "Translate words question. Answer is: sad", CorrectResult = "sad" });

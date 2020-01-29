@@ -42,7 +42,7 @@
             <StackLayout Grid.Row="1" Orientation="Vertical" Margin="20,0">
                 <Label Text="{Binding CurrentQuestion.Question}" Style="{StaticResource QuestionStyle}"/>
 
-                <CollectionView x:Name="EntireCollection" ItemsSource="{Binding CurrentQuestion.Results, Converter={StaticResource StringToListConverter}}"
+                <CollectionView x:Name="EntireCollection" ItemsSource="{Binding CurrentQuestion.Choices, Converter={StaticResource StringToListConverter}}"
                                 ItemTemplate="{StaticResource QuizResultsTemplate}"
                                 SelectionMode="Single"
                                 InputTransparent="True"
