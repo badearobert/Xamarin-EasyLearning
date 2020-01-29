@@ -88,6 +88,9 @@ namespace EinfachDeutsch.Services
             using (SQLite.SQLiteConnection conn = new SQLite.SQLiteConnection(this.db_path))
             {
                 conn.DropTable<TrueFalseQuiz>();
+                conn.DropTable<FillEntryQuiz>();
+                conn.DropTable<SelectionQuiz>();
+                conn.DropTable<TranslateWordsQuiz>();
             }
         }
     }

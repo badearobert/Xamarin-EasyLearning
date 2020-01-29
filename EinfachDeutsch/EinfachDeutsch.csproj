@@ -19,15 +19,44 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Custom\" />
     <Folder Include="Fonts\" />
   </ItemGroup>
 
   <ItemGroup>
-    <EmbeddedResource Update="QuizType_TrueFalsePage.xaml">
+    <Compile Update="Views\QuizType_TrueFalseView.xaml.cs">
+      <DependentUpon>QuizType_TrueFalseView.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\Templates\Content_SelectionQuiz_ResultsTemplate.xaml.cs">
+      <DependentUpon>Content_SelectionQuiz_ResultsTemplate.xaml</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="QuizPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\QuizType_FillEntryView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\QuizType_SelectionView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\QuizType_TranslateWordsView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\QuizType_TrueFalseView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\Templates\Content_FillEntryQuiz_ResultsTemplate.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\Templates\Content_SelectionQuiz_ResultsTemplate.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\Templates\Content_QuizTypesTemplate.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\Templates\Content_TranslateWordsQuiz_ResultsTemplate.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>

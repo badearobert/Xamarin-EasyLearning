@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="EinfachDeutsch.Views.QuizType_TranslateWordsView">
+    
+    <ContentView.Resources>
+        <ResourceDictionary>
+            <Style x:Key="QuestionStyle" TargetType="Label">
+                <Setter Property="VerticalOptions" Value="Center" />
+                <Setter Property="HorizontalOptions" Value="Center" />
+                <Setter Property="FontSize" Value="20" />
+                <Setter Property="FontAttributes" Value="Bold" />
+                <Setter Property="TextColor" Value="{DynamicResource DynamicTitleColor}"/>
+            </Style>
+            <Style x:Key="AnswerBaseStyle" TargetType="Entry">
+                <Setter Property="VerticalOptions" Value="Center" />
+                <Setter Property="HorizontalOptions" Value="Center" />
+                <Setter Property="TextColor" Value="White" />
+            </Style>
+        </ResourceDictionary>
+    </ContentView.Resources>
+
+    <ContentView.Content>
+        <StackLayout Orientation="Vertical">
+            <Label Text="{Binding Score}" Style="{StaticResource QuestionStyle}"/>
+            <Label Text="{Binding CurrentQuestion.Question}" Style="{StaticResource QuestionStyle}"/>
+            <Entry x:Name="UserInputField" Placeholder="What is the answer?" Style="{StaticResource AnswerBaseStyle}"/>
+            <Button Command="{Binding SubmitPressed}"
+                    CommandParameter="{x:Reference UserInputField}"
+                    />
+        </StackLayout>
+    </ContentView.Content>
+</ContentView>

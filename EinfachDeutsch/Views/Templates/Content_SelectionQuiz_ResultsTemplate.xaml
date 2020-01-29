@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:pancakeview="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+             mc:Ignorable="d"
+             x:Class="EinfachDeutsch.Views.Templates.Content_SelectionQuiz_ResultsTemplate">
+    
+    <ContentView.Resources>
+        <ResourceDictionary>
+            <Style x:Key="AnswerStyle" TargetType="Label">
+                <Setter Property="VerticalOptions" Value="Center" />
+                <Setter Property="HorizontalOptions" Value="Center" />
+                <Setter Property="FontSize" Value="20" />
+                <Setter Property="FontAttributes" Value="Bold" />
+                <Setter Property="TextColor" Value="{DynamicResource DynamicTitleColor}"/>
+            </Style>
+        </ResourceDictionary>
+    </ContentView.Resources>
+
+    <ContentView.Content>
+        <pancakeview:PancakeView CornerRadius="25" BackgroundColor="{DynamicResource PinkColor}" Margin="0" Padding="0">
+            <Label Text="{Binding .}" Style="{StaticResource AnswerStyle}"/>
+        </pancakeview:PancakeView>
+    </ContentView.Content>
+</ContentView>

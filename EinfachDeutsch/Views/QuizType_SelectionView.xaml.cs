@@ -8,15 +8,15 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace EinfachDeutsch
+namespace EinfachDeutsch.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class QuizType_TrueFalsePage : ContentPage
+    public partial class QuizType_SelectionView : ContentView
     {
-        public QuizType_TrueFalsePage()
+        public QuizType_SelectionView()
         {
             InitializeComponent();
-            BindingContext = new TrueFalseQuiz_ViewModel();
+            BindingContext = new SelectionQuiz_ViewModel();
         }
     }
 }

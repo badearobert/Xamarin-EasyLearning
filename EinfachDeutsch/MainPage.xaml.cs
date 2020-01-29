@@ -1,4 +1,5 @@
-﻿using EinfachDeutsch.Themes;
+﻿using EinfachDeutsch.Models;
+using EinfachDeutsch.Themes;
 using EinfachDeutsch.ViewModels;
 using Plugin.SharedTransitions;
 using System;
@@ -32,7 +33,7 @@ namespace EinfachDeutsch
         private void QuizChanged(object sender, SelectionChangedEventArgs e)
         {
             SetPageAnimation(BackgroundAnimation.SlideFromRight, 300);
-            Navigation.PushAsync(new QuizType_TrueFalsePage());
+            Navigation.PushAsync(new QuizPage(e.CurrentSelection[0] as QuizType));
         }
     }
 }

@@ -17,13 +17,9 @@ namespace EinfachDeutsch.Services
             }
         }
 
-        public List<TrueFalseQuiz> GetTrueFalseQuestions()
+        public List<T> LoadData<T>() where T : new()
         {
-            return App.database.Read<TrueFalseQuiz>();
-        }
-
-
-
-        
+            return App.database.Read<T>();
+        }        
     }
 }
