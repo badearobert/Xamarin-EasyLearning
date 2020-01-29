@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:templates="clr-namespace:EinfachDeutsch.Views.Templates"
+             mc:Ignorable="d"
+             x:Class="EinfachDeutsch.MainPage"
+             BackgroundColor="{DynamicResource DynamicBackgroundColor}"
+             NavigationPage.HasNavigationBar="False"
+             NavigationPage.HasBackButton="False"
+             >
+    <ContentPage.Resources>
+        <DataTemplate x:Key="QuizTypesTemplate">
+            <templates:Content_QuizTypesTemplate/>
+    </DataTemplate>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <StackLayout Margin="20" Orientation="Vertical">
+            <CollectionView ItemsSource="{Binding QuizTypes}"
+                            ItemTemplate="{StaticResource QuizTypesTemplate}"
+                            SelectionMode="Single"
+                            InputTransparent="True"
+                            SelectedItem="{Binding CurrentItem}"
+                            SelectionChanged="QuizChanged"
+                            >
+                <CollectionView.ItemsLayout>
+                    <LinearItemsLayout Orientation="Vertical" ItemSpacing="10"/>
+                </CollectionView.ItemsLayout>
+            </CollectionView>
+        </StackLayout>
+    </ContentPage.Content>
+
+</ContentPage>

@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ResourceDictionary xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="EinfachDeutsch.Styles.Colors">
+
+    <Color x:Key="WhiteColor">#FFFFFF</Color>
+    <Color x:Key="BlackColor">#000000</Color>
+    <Color x:Key="GrayColor">#A4A9AD</Color>
+    
+    <Color x:Key="LightGreenColor">#7BED8D</Color>
+    <Color x:Key="LightBlueColor">#20A39E</Color>
+    <Color x:Key="PinkColor">#FE3C72</Color>
+    <Color x:Key="PurpleColor">#B780FF</Color>
+    <Color x:Key="OrangeColor">#FFBA49</Color>
+
+    <Color x:Key="DynamicBackgroundColor">Default</Color>
+    <Color x:Key="DynamicTitleColor">Default</Color>
+    <Color x:Key="DynamicSubtitleColor">Default</Color>
+
+</ResourceDictionary>

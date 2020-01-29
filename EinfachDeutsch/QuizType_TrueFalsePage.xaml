@@ -1,0 +1,94 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:pancake="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+             mc:Ignorable="d"
+             x:Class="EinfachDeutsch.QuizType_TrueFalsePage"
+             BackgroundColor="{DynamicResource DynamicBackgroundColor}"
+             NavigationPage.HasNavigationBar="False"
+             NavigationPage.HasBackButton="False"
+             >
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style x:Key="QuestionStyle" TargetType="Label">
+                <Setter Property="VerticalOptions" Value="Center" />
+                <Setter Property="HorizontalOptions" Value="Center" />
+                <Setter Property="FontSize" Value="20" />
+                <Setter Property="FontAttributes" Value="Bold" />
+                <Setter Property="TextColor" Value="{DynamicResource DynamicTitleColor}"/>
+            </Style>
+            <Style x:Key="AnswerBaseStyle" TargetType="Label">
+                <Setter Property="VerticalOptions" Value="Center" />
+                <Setter Property="HorizontalOptions" Value="Center" />
+                <Setter Property="TextColor" Value="White" />
+                <Setter Property="FontAttributes" Value="Bold" />
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <ContentPage.Content>
+        <AbsoluteLayout>
+            <Label Text="{Binding Score}" 
+                       Style="{StaticResource QuestionStyle}"
+                       YAlign="Center" XAlign="Center" 
+                       AbsoluteLayout.LayoutFlags="PositionProportional"
+                       AbsoluteLayout.LayoutBounds="0.5,0.2,-1,-1"/>
+
+            <Label Text="{Binding CurrentQuestion.Question}" 
+                       Style="{StaticResource QuestionStyle}"
+                       YAlign="Center" XAlign="Center" 
+                       AbsoluteLayout.LayoutFlags="PositionProportional"
+                       AbsoluteLayout.LayoutBounds="0.5,0.4,-1,-1" 
+                       LineBreakMode="WordWrap"/>
+
+            <pancake:PancakeView BackgroundGradientAngle="0" 
+                                 HorizontalOptions="StartAndExpand"
+                                 AbsoluteLayout.LayoutFlags="PositionProportional"
+                                 AbsoluteLayout.LayoutBounds="0.2,0.6,-1,-1" 
+                                 WidthRequest="100" HeightRequest="30"
+                                 >
+                <pancake:PancakeView.BackgroundGradientStops>
+                    <pancake:GradientStopCollection>
+                        <pancake:GradientStop Offset="0" Color="#089ADB" />
+                        <pancake:GradientStop Offset="1" Color="Transparent" />
+                    </pancake:GradientStopCollection>
+                </pancake:PancakeView.BackgroundGradientStops>
+                <Label Text="TRUE" x:Name="TrueButton" Style="{StaticResource AnswerBaseStyle}">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer 
+                            Command="{Binding TrueButtonPressed}"
+                            CommandParameter="{x:Reference TrueButton}"/>
+                    </Label.GestureRecognizers>
+                </Label>
+            </pancake:PancakeView>
+
+            <pancake:PancakeView BackgroundGradientAngle="0" 
+                                 HorizontalOptions="StartAndExpand"
+                                 AbsoluteLayout.LayoutFlags="PositionProportional"
+                                 AbsoluteLayout.LayoutBounds="0.8,0.6,-1,-1" 
+                                 WidthRequest="100" HeightRequest="30"
+                                 >
+                <pancake:PancakeView.BackgroundGradientStops>
+                    <pancake:GradientStopCollection>
+                        <pancake:GradientStop Offset="0" Color="#FF0000" />
+                        <pancake:GradientStop Offset="1" Color="Transparent" />
+                    </pancake:GradientStopCollection>
+                </pancake:PancakeView.BackgroundGradientStops>
+                <Label Text="FALSE" x:Name="FalseButton" Style="{StaticResource AnswerBaseStyle}">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer 
+                            Command="{Binding FalseButtonPressed}"
+                            CommandParameter="{x:Reference FalseButton}"
+                            />
+                    </Label.GestureRecognizers>
+                </Label>
+            </pancake:PancakeView>
+
+
+
+        </AbsoluteLayout>
+    </ContentPage.Content>
+</ContentPage>
