@@ -1,4 +1,5 @@
-﻿using EinfachDeutsch.Services;
+﻿using EinfachDeutsch.Custom.Extensions;
+using EinfachDeutsch.Services;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -16,7 +17,17 @@ namespace EinfachDeutsch.ViewModels
         }
 
         private int _score = 0;
-        private int question_index = 0;
+        private int _questionIndex = 0;
+
+        public int QuestionIndex
+        {
+            get { return _questionIndex; }
+            set
+            {
+                _questionIndex = value;
+                OnPropertyChanged();
+            }
+        }
 
         private T _currentQuestion;
         private ObservableCollection<T> _quizData;
@@ -52,12 +63,14 @@ namespace EinfachDeutsch.ViewModels
         private void LoadData() 
         {
             QuizData = new ObservableCollection<T>(QuizService.Instance.LoadData<T>());
+            //ShuffleExtension.Shuffle(QuizData);
             LoadNextQuiz();
         }
 
         protected void LoadNextQuiz()
         {
-            CurrentQuestion = QuizData[(question_index++ % QuizData.Count)];
+            QuestionIndex = new Random().Next(QuizData.Count);
+            CurrentQuestion = QuizData[QuestionIndex];
         }
 
         protected void OnCorrectAnswer(View view)

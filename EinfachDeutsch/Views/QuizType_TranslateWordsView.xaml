@@ -40,11 +40,14 @@
     <ContentView.Content>
         <Grid>
             <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="2*"/>
             </Grid.RowDefinitions>
-            <Label Grid.Row="0" Text="{Binding Score}" Style="{StaticResource QuestionStyle}"/>
-            <StackLayout Grid.Row="1" Orientation="Vertical" Margin="20,0">
+            <Label Grid.Row="0" Text="{Binding QuestionIndex}" Style="{StaticResource QuestionStyle}"/>
+
+            <Label Grid.Row="1" Text="{Binding Score}" Style="{StaticResource QuestionStyle}"/>
+            <StackLayout Grid.Row="2" Orientation="Vertical" Margin="20,0">
                 <Label Text="{Binding CurrentQuestion.Question}" Style="{StaticResource QuestionStyle}"/>
 
                 <Entry x:Name="UserInputField" Placeholder="What is the answer?" Style="{StaticResource AnswerBaseStyle}"/>
