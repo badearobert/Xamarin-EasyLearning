@@ -4,10 +4,8 @@ using Newtonsoft.Json;
 using Plugin.SharedTransitions;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Net;
 using Xamarin.Forms;
-using Xamarin.Forms.Xaml;
 
 namespace EinfachDeutsch
 {
@@ -19,7 +17,7 @@ namespace EinfachDeutsch
             InitializeComponent();
             database = new DatabaseService(fullPath_db);
 
-            AddDatabaseEntries();
+            //AddDatabaseEntries();
             MainPage = new SharedTransitionNavigationPage(new MainPage());
         }
 
@@ -37,13 +35,12 @@ namespace EinfachDeutsch
                     if (content.name == "Verbs_mit_preposition")
                     {
                         HandleVerbs(content.entries);
-                    } 
+                    }
                     else if (content.name == "Nouns")
                     {
                         HandleNouns(content.entries);
                     }
                 }
-                
             }
 
             /*
