@@ -9,7 +9,6 @@ namespace EinfachDeutsch
     public partial class QuizType_TrueFalseView : ContentView
     {
         TrueFalseQuiz_ViewModel vm = new TrueFalseQuiz_ViewModel();
-        private bool QuestionChanged { get; set; } = false;
         public QuizType_TrueFalseView()
         {
             InitializeComponent();
@@ -18,17 +17,21 @@ namespace EinfachDeutsch
 
         private void TapGestureRecognizer_Tapped(object sender, System.EventArgs e)
         {
-            AnimateOut();
+            OnTapPressed(sender);
+        }
 
-            if (sender == TrueButton)
+        private async void OnTapPressed(object sender)
+        {
+            await AnimateOut();
+
+            if (sender == TrueButtonContainer)
             {
                 vm?.TrueButtonPressed?.Execute(sender);
             }
-            else if (sender == FalseButton)
+            else if (sender == FalseButtonContainer)
             {
                 vm?.FalseButtonPressed?.Execute(sender);
             }
-
         }
 
         private void CurrentQuestion_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
@@ -36,7 +39,7 @@ namespace EinfachDeutsch
             if (e.PropertyName != "Text")
                 return;
 
-            QuestionChanged = true;
+            AnimateIn();
         }
 
         private async Task AnimateIn()
@@ -50,7 +53,7 @@ namespace EinfachDeutsch
             parentAnimation.Add(0, 0.3, TrueButttonSlideOut);
             parentAnimation.Add(0, 0.3, FalseButttonSlideOut);
 
-            parentAnimation.Commit(this, "TransitionAnimation", 16, 1000, null, (v, c) => { QuestionChanged = false; });
+            parentAnimation.Commit(this, "TransitionAnimation", 16, 1000, null, (v, c) => { });
             await Task.Delay(1000);
         }
         private async Task AnimateOut()
@@ -64,13 +67,7 @@ namespace EinfachDeutsch
             parentAnimation.Add(0.3, 1, TrueButttonSlideOut);
             parentAnimation.Add(0.3, 1, FalseButttonSlideOut);
 
-            parentAnimation.Commit(this, "TransitionAnimation", 16, 1000, null, (v, c) =>
-            {
-                if (QuestionChanged)
-                {
-                    AnimateIn();
-                }
-            });
+            parentAnimation.Commit(this, "TransitionAnimation", 16, 1000, null, (v, c) => { });
             await Task.Delay(1000);
         }
 
