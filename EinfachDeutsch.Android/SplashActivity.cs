@@ -28,7 +28,8 @@ namespace EinfachDeutsch.Droid
         }
         async void StartMainActivity()
         {
-            await Task.Run(() => {
+            await Task.Run(async () => {
+                await Task.Delay(3000);
                 StartActivity(new Intent(Application.Context, typeof(MainActivity)));
             });
         }

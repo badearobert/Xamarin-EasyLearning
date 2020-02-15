@@ -1,5 +1,4 @@
-﻿using EinfachDeutsch.ViewModels;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,15 +7,14 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace EinfachDeutsch.Views
+namespace EinfachDeutsch.Views.Templates
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class QuizType_FillEntryView : ContentView
+    public partial class FullContentDataTemplate : ContentView
     {
-        public QuizType_FillEntryView()
+        public FullContentDataTemplate()
         {
             InitializeComponent();
-            BindingContext = new FullContentViewModel();
         }
     }
 }

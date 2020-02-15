@@ -3,11 +3,21 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:templates="clr-namespace:EinfachDeutsch.Views.Templates"
              mc:Ignorable="d"
-             x:Class="EinfachDeutsch.Views.QuizType_FillEntryView">
-  <ContentView.Content>
-      <StackLayout>
-          <Label Text="Hello Xamarin.Forms!" />
-      </StackLayout>
-  </ContentView.Content>
+             x:Class="EinfachDeutsch.Views.QuizType_FillEntryView"
+             >
+    <ContentView.Resources>
+        <DataTemplate x:Key="DataTemplate">
+            <templates:FullContentDataTemplate/>
+        </DataTemplate>
+    </ContentView.Resources>
+
+    <ContentView.Content>
+        <CollectionView ItemsSource="{Binding ContentItems}"
+                        ItemTemplate="{StaticResource DataTemplate}"
+                        BackgroundColor="#303030"
+                        />
+
+    </ContentView.Content>
 </ContentView>

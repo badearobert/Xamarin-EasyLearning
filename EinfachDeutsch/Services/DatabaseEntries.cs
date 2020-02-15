@@ -4,8 +4,23 @@ using System.Text;
 
 namespace EinfachDeutsch.Services
 {
+    public class DatabaseEntries
+    {
+        private static DatabaseEntries _instance;
+        public static DatabaseEntries Instance
+        {
+            get
+            {
+                if (_instance == null) _instance = new DatabaseEntries();
+                return _instance;
+            }
+        }
+        public RootObject rootObject;
+    }
+
     public class Entry
     {
+        public string FullEntry { get { return Article + " " + Word + " " + Preposition + " " + Case; }  }
         public string Word { get; set; }
         public string Preposition { get; set; }
         public string Case { get; set; }

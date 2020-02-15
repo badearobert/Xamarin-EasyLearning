@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="EinfachDeutsch.Views.Templates.FullContentDataTemplate">
+
+    <ContentView.Resources>
+        <ResourceDictionary>
+
+            <Style x:Key="LeftSideStyle" TargetType="Label">
+                <Setter Property="TextColor" Value="White" />
+                <Setter Property="HorizontalOptions" Value="Start" />
+                <Setter Property="HorizontalTextAlignment" Value="Start" />
+                <Setter Property="VerticalOptions" Value="Center" />
+                <Setter Property="VerticalTextAlignment" Value="Center" />
+            </Style>
+
+            <Style x:Key="RightSideStyle" TargetType="Label">
+                <Setter Property="TextColor" Value="Gray" />
+                <Setter Property="HorizontalOptions" Value="End" />
+                <Setter Property="HorizontalTextAlignment" Value="End" />
+                <Setter Property="VerticalOptions" Value="Center" />
+                <Setter Property="VerticalTextAlignment" Value="Center" />
+            </Style>
+
+        </ResourceDictionary>
+    </ContentView.Resources>
+    <ContentView.Content>
+        <StackLayout Orientation="Vertical">
+
+            <Grid  Margin="12, 0, 12, 0" RowSpacing="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="0.4*" />
+                    <ColumnDefinition Width="0.6*" />
+                </Grid.ColumnDefinitions>
+                <Label Grid.Column="0" Text="{Binding FullEntry}" Style="{StaticResource LeftSideStyle}"/>
+                <Label Grid.Column="1" Text="{Binding Translation}" Style="{StaticResource RightSideStyle}"/>
+            </Grid>
+            <BoxView Grid.Column="0" Color="Gray" HeightRequest="1"/>
+        </StackLayout>
+    </ContentView.Content>
+
+
+
+
+
+
+</ContentView>

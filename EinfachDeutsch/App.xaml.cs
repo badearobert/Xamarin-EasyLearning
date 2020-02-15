@@ -5,6 +5,8 @@ using Plugin.SharedTransitions;
 using System;
 using System.Collections.Generic;
 using System.Net;
+using System.Threading;
+using System.Threading.Tasks;
 using Xamarin.Forms;
 
 namespace EinfachDeutsch
@@ -15,22 +17,27 @@ namespace EinfachDeutsch
         public App(string fullPath_db)
         {
             InitializeComponent();
-            database = new DatabaseService(fullPath_db);
+            MainPage = new SharedTransitionNavigationPage(new SplashScreenPage());
 
-            //AddDatabaseEntries();
-            MainPage = new SharedTransitionNavigationPage(new MainPage());
+            database = new DatabaseService(fullPath_db);
+            LoadDatabaseAsync();
         }
 
-        private void AddDatabaseEntries()
+        private async void LoadDatabaseAsync()
+        {
+            await Task.Run(() => AddDatabaseEntries());
+            MainPage = new SharedTransitionNavigationPage(new MainPage());
+        }
+        private async void AddDatabaseEntries()
         {
             database.DeleteAll();
 
             using (WebClient wc = new WebClient())
             {
                 var json = wc.DownloadString("https://badearobert.ro/Germana/German_stuff.json");
-                var rootObject = JsonConvert.DeserializeObject<RootObject>(json);
-                if (rootObject.content.Count == 0) return;
-                foreach (Content content in rootObject.content)
+                DatabaseEntries.Instance.rootObject = JsonConvert.DeserializeObject<RootObject>(json);
+                if (DatabaseEntries.Instance.rootObject.content.Count == 0) return;
+                foreach (Content content in DatabaseEntries.Instance.rootObject.content)
                 {
                     if (content.name == "Verbs_mit_preposition")
                     {
@@ -47,6 +54,7 @@ namespace EinfachDeutsch
             database.Add(new FillEntryQuiz() { Question = "Fill entry question. Answer is: abc", CorrectResult = "abc" });
             database.Add(new FillEntryQuiz() { Question = "Fill entry question. Answer is: nah", CorrectResult = "nah" });
             */
+            
         }
 
         private void HandleVerbs(List<Services.Entry> entries)
