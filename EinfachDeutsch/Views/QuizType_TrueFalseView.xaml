@@ -42,40 +42,50 @@
                        AbsoluteLayout.LayoutFlags="PositionProportional"
                        AbsoluteLayout.LayoutBounds="0.5,0.2,-1,-1"/>
 
-            <Label Text="{Binding CurrentQuestion.Question}" 
-                       Style="{StaticResource QuestionStyle}"
-                       YAlign="Center" XAlign="Center" 
-                       AbsoluteLayout.LayoutFlags="PositionProportional"
-                       AbsoluteLayout.LayoutBounds="0.5,0.4,-1,-1" 
-                       LineBreakMode="WordWrap"/>
+            <Label x:Name="CurrentQuestion"
+                   PropertyChanged="CurrentQuestion_PropertyChanged"
+                   Text="{Binding CurrentQuestion.Question}" 
+                   Style="{StaticResource QuestionStyle}"
+                   YAlign="Center" XAlign="Center" 
+                   AbsoluteLayout.LayoutFlags="PositionProportional"
+                   AbsoluteLayout.LayoutBounds="0.5,0.4,-1,-1" 
+                   LineBreakMode="WordWrap"/>
 
-            <pancake:PancakeView BackgroundGradientAngle="0" 
-                                 HorizontalOptions="StartAndExpand"
-                                 AbsoluteLayout.LayoutFlags="PositionProportional"
-                                 AbsoluteLayout.LayoutBounds="0.2,0.6,-1,-1" 
-                                 WidthRequest="100" HeightRequest="30"
-                                 >
+            <pancake:PancakeView 
+                x:Name="TrueButtonContainer"
+                BackgroundGradientAngle="0" 
+                HorizontalOptions="StartAndExpand"
+                AbsoluteLayout.LayoutFlags="PositionProportional"
+                AbsoluteLayout.LayoutBounds="0.2,0.6,-1,-1" 
+                WidthRequest="100" HeightRequest="30"
+                >
                 <pancake:PancakeView.BackgroundGradientStops>
                     <pancake:GradientStopCollection>
                         <pancake:GradientStop Offset="0" Color="#089ADB" />
                         <pancake:GradientStop Offset="1" Color="Transparent" />
                     </pancake:GradientStopCollection>
                 </pancake:PancakeView.BackgroundGradientStops>
+                
                 <Label Text="TRUE" x:Name="TrueButton" Style="{StaticResource AnswerBaseStyle}">
                     <Label.GestureRecognizers>
-                        <TapGestureRecognizer 
+                        <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
+                            <!--
+                            <TapGestureRecognizer 
                             Command="{Binding TrueButtonPressed}"
                             CommandParameter="{x:Reference TrueButton}"/>
+                            -->
                     </Label.GestureRecognizers>
                 </Label>
             </pancake:PancakeView>
 
-            <pancake:PancakeView BackgroundGradientAngle="0" 
-                                 HorizontalOptions="StartAndExpand"
-                                 AbsoluteLayout.LayoutFlags="PositionProportional"
-                                 AbsoluteLayout.LayoutBounds="0.8,0.6,-1,-1" 
-                                 WidthRequest="100" HeightRequest="30"
-                                 >
+            <pancake:PancakeView 
+                x:Name="FalseButtonContainer"
+                BackgroundGradientAngle="0" 
+                HorizontalOptions="StartAndExpand"
+                AbsoluteLayout.LayoutFlags="PositionProportional"
+                AbsoluteLayout.LayoutBounds="0.8,0.6,-1,-1" 
+                WidthRequest="100" HeightRequest="30"
+                >
                 <pancake:PancakeView.BackgroundGradientStops>
                     <pancake:GradientStopCollection>
                         <pancake:GradientStop Offset="0" Color="#FF0000" />
@@ -84,10 +94,13 @@
                 </pancake:PancakeView.BackgroundGradientStops>
                 <Label Text="FALSE" x:Name="FalseButton" Style="{StaticResource AnswerBaseStyle}">
                     <Label.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
+                        <!--
                         <TapGestureRecognizer 
                             Command="{Binding FalseButtonPressed}"
                             CommandParameter="{x:Reference FalseButton}"
                             />
+                        -->
                     </Label.GestureRecognizers>
                 </Label>
             </pancake:PancakeView>

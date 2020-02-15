@@ -43,10 +43,6 @@ namespace EinfachDeutsch
             await LoadingLabel.ScaleTo(0.9, 2500, Easing.SinOut);
         }
 
-        protected override async void OnAppearing()
-        {
-            base.OnAppearing();
-        }
         protected override void OnDisappearing()
         {
             base.OnDisappearing();
