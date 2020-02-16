@@ -16,9 +16,18 @@ namespace EinfachDeutsch.ViewModels
             LoadData();
         }
 
-        private int _score = 0;
-        private int _questionIndex = 0;
+        private int _totalQuestionsCount = 0;
+        public int TotalQuestionsCount
+        {
+            get { return _totalQuestionsCount; }
+            set
+            {
+                _totalQuestionsCount = value;
+                OnPropertyChanged();
+            }
+        }
 
+        private int _questionIndex = 0;
         public int QuestionIndex
         {
             get { return _questionIndex; }
@@ -30,7 +39,6 @@ namespace EinfachDeutsch.ViewModels
         }
 
         private T _currentQuestion;
-        private ObservableCollection<T> _quizData;
         public T CurrentQuestion
         {
             get { return _currentQuestion; }
@@ -41,6 +49,7 @@ namespace EinfachDeutsch.ViewModels
             }
         }
 
+        private int _score = 0;
         public int Score
         {
             get { return _score; }
@@ -50,6 +59,8 @@ namespace EinfachDeutsch.ViewModels
                 OnPropertyChanged();
             }
         }
+
+        private ObservableCollection<T> _quizData;
         public ObservableCollection<T> QuizData
         {
             get { return _quizData; }
@@ -63,6 +74,7 @@ namespace EinfachDeutsch.ViewModels
         private void LoadData() 
         {
             QuizData = new ObservableCollection<T>(QuizService.Instance.LoadData<T>());
+            TotalQuestionsCount = QuizData.Count;
             //ShuffleExtension.Shuffle(QuizData);
             LoadNextQuiz();
         }

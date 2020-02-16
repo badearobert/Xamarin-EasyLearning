@@ -33,12 +33,78 @@ namespace EinfachDeutsch
             else if (sender == FalseButtonContainer)
             {
                 vm?.FalseButtonPressed?.Execute(sender);
-            }
-            
+            }   
+        }
+        private void ScoreLabel_PropertyChanging(object sender, PropertyChangingEventArgs e)
+        {
+            if (e.PropertyName != "FormattedText")
+                return;
+
+            AnimateScoreInOut();
+        }
+
+        private void CurrentQuestion_PropertyChanging(object sender, PropertyChangingEventArgs e)
+        {
+            if (e.PropertyName != "FormattedText")
+                return;
+
+            AnimateIn();
+        }
+
+        private async Task AnimateIn()
+        {
+            var QuestionFadeOut = new Animation(v => CurrentQuestion.Opacity = v, 0, 1, Easing.SinIn);
+            var TrueButttonSlideOut = new Animation(v => TrueButtonContainer.TranslationX = v, -this.Width, 0, Easing.SinIn);
+            var FalseButttonSlideOut = new Animation(v => FalseButtonContainer.TranslationX = v, this.Width, 0, Easing.SinIn);
+
+            var parentAnimation = new Animation();
+            parentAnimation.Add(0.3, 1, QuestionFadeOut);
+            parentAnimation.Add(0, 0.3, TrueButttonSlideOut);
+            parentAnimation.Add(0, 0.3, FalseButttonSlideOut);
+
+            parentAnimation.Commit(this, "TransitionAnimationIn", 16, 1000, null, (v, c) => { });
+            await Task.Delay(1000);
+        }
+        private async Task AnimateOut()
+        {
+            if (this.AnimationIsRunning("TransitionAnimationOut")) return;
+
+            var QuestionFadeOut = new Animation(v => CurrentQuestion.Opacity = v, 1, 0, Easing.SinOut);
+            var TrueButttonSlideOut = new Animation(v => TrueButtonContainer.TranslationX = v, 0, -this.Width, Easing.SinOut);
+            var FalseButttonSlideOut = new Animation(v => FalseButtonContainer.TranslationX = v, 0, this.Width, Easing.SinOut);
+
+            var parentAnimation = new Animation();
+            parentAnimation.Add(0, 0.3, QuestionFadeOut);
+            parentAnimation.Add(0.3, 1, TrueButttonSlideOut);
+            parentAnimation.Add(0.3, 1, FalseButttonSlideOut);
+
+            parentAnimation.Commit(this, "TransitionAnimationOut", 16, 1000, null, (v, c) => { });
+            await Task.Delay(1000);
+        }
+
+
+        private async Task AnimateScoreInOut()
+        {
+            var ScoreScalingOut = new Animation(v => ScoreLabel.Scale = v, 1, 1.1, Easing.SpringOut);
+            var ScoreSlideOut = new Animation(v => ScoreLabel.TranslationX = v, 0, -this.Width, Easing.SpringOut);
+            var ScoreSlideIn = new Animation(v => ScoreLabel.TranslationX = v, this.Width, 0, Easing.SpringOut);
+            var ScoreScalingIn = new Animation(v => ScoreLabel.Scale = v, 1.1, 1, Easing.SpringIn);
+
+            var parentAnimation = new Animation();
+
+            parentAnimation.Add(0, 0.3, ScoreScalingOut);
+            parentAnimation.Add(0.3, 0.6, ScoreSlideOut);
+            parentAnimation.Add(0.6, 0.9, ScoreSlideIn);
+            parentAnimation.Add(0.9, 1, ScoreScalingIn);
+
+            parentAnimation.Commit(this, "TransitionAnimationScore", 16, 1000, null, (v, c) => { });
+            await Task.Delay(1000);
         }
 
         private async Task AnimateAnswerImage(object sender)
         {
+            if (this.AnimationIsRunning("TransitionAnimationAnswer")) return;
+
             string answer_correct = "https://cdn.pixabay.com/photo/2012/04/24/13/49/tick-40143_960_720.png";
             string answer_incorrect = "https://cdn.pixabay.com/photo/2012/04/13/00/22/red-31226_960_720.png";
 
@@ -61,67 +127,9 @@ namespace EinfachDeutsch
             parentAnimation.Add(0.6, 1, AnswerImageFading);
 
 
-            parentAnimation.Commit(this, "AnswerAnimation", 16, 1000, null, (v, c) => { });
+            parentAnimation.Commit(this, "TransitionAnimationAnswer", 16, 1000, null, (v, c) => { });
             await Task.Delay(1000);
         }
 
-        private void CurrentQuestion_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
-        {
-            if (e.PropertyName != "Text")
-                return;
-
-            AnimateIn();
-        }
-
-        private async Task AnimateIn()
-        {
-            var QuestionFadeOut = new Animation(v => CurrentQuestion.Opacity = v, 0, 1, Easing.SinIn);
-            var TrueButttonSlideOut = new Animation(v => TrueButtonContainer.TranslationX = v, -this.Width, 0, Easing.SinIn);
-            var FalseButttonSlideOut = new Animation(v => FalseButtonContainer.TranslationX = v, this.Width, 0, Easing.SinIn);
-
-            var parentAnimation = new Animation();
-            parentAnimation.Add(0.3, 1, QuestionFadeOut);
-            parentAnimation.Add(0, 0.3, TrueButttonSlideOut);
-            parentAnimation.Add(0, 0.3, FalseButttonSlideOut);
-
-            parentAnimation.Commit(this, "TransitionAnimation", 16, 1000, null, (v, c) => { });
-            await Task.Delay(1000);
-        }
-        private async Task AnimateOut()
-        {
-            var QuestionFadeOut = new Animation(v => CurrentQuestion.Opacity = v, 1, 0, Easing.SinOut);
-            var TrueButttonSlideOut = new Animation(v => TrueButtonContainer.TranslationX = v, 0, -this.Width, Easing.SinOut);
-            var FalseButttonSlideOut = new Animation(v => FalseButtonContainer.TranslationX = v, 0, this.Width, Easing.SinOut);
-
-            var parentAnimation = new Animation();
-            parentAnimation.Add(0, 0.3, QuestionFadeOut);
-            parentAnimation.Add(0.3, 1, TrueButttonSlideOut);
-            parentAnimation.Add(0.3, 1, FalseButttonSlideOut);
-
-            parentAnimation.Commit(this, "TransitionAnimation", 16, 1000, null, (v, c) => { });
-            await Task.Delay(1000);
-        }
-
-        private void ScoreLabel_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
-        {
-            if (e.PropertyName != "FormattedText")
-                return;
-
-            var ScoreScalingOut = new Animation(v => ScoreLabel.Scale = v, 1, 1.1, Easing.SpringOut);
-            var ScoreSlideOut = new Animation(v => ScoreLabel.TranslationX = v, 0, -this.Width, Easing.SpringOut);
-            var ScoreSlideIn = new Animation(v => ScoreLabel.TranslationX = v, this.Width, 0, Easing.SpringOut);
-            var ScoreScalingIn = new Animation(v => ScoreLabel.Scale = v, 1.1, 1, Easing.SpringIn);
-            
-            var parentAnimation = new Animation();
-
-            parentAnimation.Add(0, 0.3, ScoreScalingOut);
-
-            parentAnimation.Add(0.3, 0.6, ScoreSlideOut);
-            parentAnimation.Add(0.6, 0.9, ScoreSlideIn);
-
-            parentAnimation.Add(0.9, 1, ScoreScalingIn);
-
-            parentAnimation.Commit(this, "ScoreAnimation", 16, 1000, null, (v, c) => { });
-        }
     }
 }
