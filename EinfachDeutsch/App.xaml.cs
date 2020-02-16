@@ -39,11 +39,11 @@ namespace EinfachDeutsch
                 if (DatabaseEntries.Instance.rootObject.content.Count == 0) return;
                 foreach (Content content in DatabaseEntries.Instance.rootObject.content)
                 {
-                    if (content.name == "Verbs_mit_preposition")
+                    if (content.name == "Verbs_mit_preposition" || content.name == "Verbs")
                     {
                         HandleVerbs(content.entries);
                     }
-                    else if (content.name == "Nouns")
+                    else if (content.name == "Nouns" || content.name == "Adverbs")
                     {
                         HandleNouns(content.entries);
                     }
