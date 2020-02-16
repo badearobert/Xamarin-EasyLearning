@@ -21,7 +21,8 @@ namespace EinfachDeutsch
         public SplashScreenPage()
         {
             NavigationPage.SetHasNavigationBar(this, false);
-            this.BackgroundColor = Color.FromHex("#404E5A");
+            //this.BackgroundColor = Color.FromHex("#404E5A");
+            this.BackgroundColor = Color.FromHex("#cc0066");
 
             var grid = new Grid();
             grid.RowDefinitions.Add(new RowDefinition() { Height = GridLength.Star } );

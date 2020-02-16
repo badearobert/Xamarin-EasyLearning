@@ -11,90 +11,101 @@
 
     <ContentView.Resources>
         <ResourceDictionary>
-            <Style x:Key="QuestionStyle" TargetType="Label">
+            <Style x:Key="BaseStyle" TargetType="Label">
                 <Setter Property="VerticalOptions" Value="Center" />
                 <Setter Property="HorizontalOptions" Value="Center" />
                 <Setter Property="FontSize" Value="20" />
                 <Setter Property="FontAttributes" Value="Bold" />
                 <Setter Property="TextColor" Value="{DynamicResource DynamicTitleColor}"/>
+                <Setter Property="XAlign" Value="Center" />
+                <Setter Property="YAlign" Value="Center" />
             </Style>
-            <Style x:Key="AnswerBaseStyle" TargetType="Label">
-                <Setter Property="VerticalOptions" Value="Center" />
-                <Setter Property="HorizontalOptions" Value="Center" />
+            <Style x:Key="QuestionStyle" TargetType="Label" BasedOn="{StaticResource BaseStyle}">
                 <Setter Property="TextColor" Value="White" />
-                <Setter Property="FontAttributes" Value="Bold" />
-                <Setter Property="FontSize" Value="20" />
+                <Setter Property="Margin" Value="10,30" />
+                <Setter Property="LineBreakMode" Value="WordWrap" />
+            </Style>
+            <Style x:Key="AnswerStyle" TargetType="Label" BasedOn="{StaticResource BaseStyle}">
+                <Setter Property="TextColor" Value="White" />
             </Style>
         </ResourceDictionary>
     </ContentView.Resources>
 
     <ContentView.Content>
-        <AbsoluteLayout>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
 
-            <Label Text="{Binding QuestionIndex}" 
-                       Style="{StaticResource QuestionStyle}"
-                       YAlign="Center" XAlign="Center" 
-                       AbsoluteLayout.LayoutFlags="PositionProportional"
-                       AbsoluteLayout.LayoutBounds="0.5,0.1,-1,-1"/>
-            
-            <Label Text="{Binding Score}" 
-                       Style="{StaticResource QuestionStyle}"
-                       YAlign="Center" XAlign="Center" 
-                       AbsoluteLayout.LayoutFlags="PositionProportional"
-                       AbsoluteLayout.LayoutBounds="0.5,0.2,-1,-1"/>
+            <StackLayout Grid.Row="0" Orientation="Vertical" Margin="0,100,0,0">
 
-            <Label x:Name="CurrentQuestion"
+                <Label x:Name="ScoreLabel"
+                       Style="{StaticResource BaseStyle}" 
+                       PropertyChanged="ScoreLabel_PropertyChanged"
+                       >
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span Text="Score: " FontSize="30" FontAttributes="Bold" TextColor="White"/>
+                            <Span Text="{Binding Score}" FontSize="30" FontAttributes="Bold" TextColor="White" />
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+
+                <Label Style="{StaticResource BaseStyle}">
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span Text="Question index: " TextColor="Gray"/>
+                            <Span Text="{Binding QuestionIndex}" TextColor="Gray"/>
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+
+            </StackLayout>
+
+            <StackLayout Grid.Row="1" Orientation="Vertical">
+
+                <Label x:Name="CurrentQuestion" 
                    PropertyChanged="CurrentQuestion_PropertyChanged"
                    Text="{Binding CurrentQuestion.Question}" 
-                   Style="{StaticResource QuestionStyle}"
-                   YAlign="Center" XAlign="Center" 
-                   AbsoluteLayout.LayoutFlags="PositionProportional"
-                   AbsoluteLayout.LayoutBounds="0.5,0.4,-1,-1" 
-                   LineBreakMode="WordWrap"/>
+                   Style="{StaticResource QuestionStyle}"/>
 
-            <pancake:PancakeView 
-                x:Name="TrueButtonContainer"
-                BackgroundGradientAngle="0" 
-                HorizontalOptions="StartAndExpand"
-                AbsoluteLayout.LayoutFlags="PositionProportional"
-                AbsoluteLayout.LayoutBounds="0.2,0.6,-1,-1" 
-                WidthRequest="100" HeightRequest="40"
-                >
-                <pancake:PancakeView.BackgroundGradientStops>
-                    <pancake:GradientStopCollection>
-                        <pancake:GradientStop Offset="0" Color="#089ADB" />
-                        <pancake:GradientStop Offset="1" Color="#089ADB" />
-                    </pancake:GradientStopCollection>
-                </pancake:PancakeView.BackgroundGradientStops>
+                <StackLayout Orientation="Horizontal">
 
-                <Label Text="TRUE" Style="{StaticResource AnswerBaseStyle}"/>
-                <pancake:PancakeView.GestureRecognizers>
-                    <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
-                </pancake:PancakeView.GestureRecognizers>
-            </pancake:PancakeView>
+                    <pancake:PancakeView x:Name="TrueButtonContainer"
+                                     HorizontalOptions="CenterAndExpand"
+                                     WidthRequest="100" HeightRequest="40"
+                                     BackgroundColor="#089ADB">
+                        <Label Text="TRUE" Style="{StaticResource AnswerStyle}"/>
+                        <pancake:PancakeView.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
+                        </pancake:PancakeView.GestureRecognizers>
+                    </pancake:PancakeView>
 
-            <pancake:PancakeView 
-                x:Name="FalseButtonContainer"
-                BackgroundGradientAngle="0" 
-                HorizontalOptions="StartAndExpand"
-                AbsoluteLayout.LayoutFlags="PositionProportional"
-                AbsoluteLayout.LayoutBounds="0.8,0.6,-1,-1" 
-                WidthRequest="100" HeightRequest="40"
-                >
-                <pancake:PancakeView.BackgroundGradientStops>
-                    <pancake:GradientStopCollection>
-                        <pancake:GradientStop Offset="0" Color="#FF0000" />
-                        <pancake:GradientStop Offset="1" Color="#FF0000" />
-                    </pancake:GradientStopCollection>
-                </pancake:PancakeView.BackgroundGradientStops>
-                <Label Text="FALSE" x:Name="FalseButton" Style="{StaticResource AnswerBaseStyle}"/>
-                <pancake:PancakeView.GestureRecognizers>
-                    <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
-                </pancake:PancakeView.GestureRecognizers>
-            </pancake:PancakeView>
+                    <pancake:PancakeView x:Name="FalseButtonContainer"
+                                     HorizontalOptions="CenterAndExpand"
+                                     WidthRequest="100" HeightRequest="40"
+                                     BackgroundColor="#FF0000">
+                        <Label Text="FALSE" x:Name="FalseButton" Style="{StaticResource AnswerStyle}"/>
+                        <pancake:PancakeView.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
+                        </pancake:PancakeView.GestureRecognizers>
+                    </pancake:PancakeView>
+                </StackLayout>
+            </StackLayout>
+
+            <StackLayout Grid.Row="2" x:Name="AnswerContainer">
+                <Image x:Name="AnswerImage"
+                       VerticalOptions ="Center" HorizontalOptions="Center"
+                       WidthRequest="20" HeightRequest="20"
+                       Aspect="AspectFill"
+                       />
+            </StackLayout>
+        </Grid>
 
 
-
-        </AbsoluteLayout>
     </ContentView.Content>
+
 </ContentView>
+    
