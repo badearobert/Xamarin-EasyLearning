@@ -65,6 +65,7 @@ namespace EinfachDeutsch
 
         private async Task AnimateIn()
         {
+            if (this.AnimationIsRunning("TransitionAnimationIn")) return;
             var QuestionFadeOut = new Animation(v => CurrentQuestion.Opacity = v, 0, 1, Easing.SinIn);
             var TrueButttonSlideOut = new Animation(v => TrueButtonContainer.TranslationX = v, -this.Width, 0, Easing.SinIn);
             var FalseButttonSlideOut = new Animation(v => FalseButtonContainer.TranslationX = v, this.Width, 0, Easing.SinIn);
