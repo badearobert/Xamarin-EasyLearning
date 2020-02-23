@@ -18,8 +18,6 @@ namespace EinfachDeutsch.ViewModels
         public ICommand TrueButtonPressed { get; set; }
         public ICommand FalseButtonPressed { get; set; }
 
-
-
         private void OnTruePressed(View view)
         {
             ValidateAnswer(view, true);
@@ -42,6 +40,12 @@ namespace EinfachDeutsch.ViewModels
             {
                 OnWrongAnswer(view);
             }
+        }
+
+        public override void OnTimerExpired()
+        {
+            OnWrongAnswer(null);
+            LoadNextQuiz();
         }
     }
 }

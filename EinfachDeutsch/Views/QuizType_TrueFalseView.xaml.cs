@@ -10,10 +10,12 @@ namespace EinfachDeutsch
     public partial class QuizType_TrueFalseView : ContentView
     {
         TrueFalseQuiz_ViewModel vm = new TrueFalseQuiz_ViewModel();
+
         public QuizType_TrueFalseView()
         {
             InitializeComponent();
             BindingContext = vm;
+            QuestionCustomTimer.TimerExpired += TimerExpiredHandler;
         }
         
         private void TapGestureRecognizer_Tapped(object sender, System.EventArgs e)
@@ -21,8 +23,13 @@ namespace EinfachDeutsch
             OnTapPressed(sender);
         }
 
+        private void TimerExpiredHandler()
+        {
+            OnTapPressed(null);
+        }
         private async void OnTapPressed(object sender)
         {
+            await QuestionCustomTimer.StopTimer();
             await AnimateAnswerImage(sender);
             await AnimateOut();
 
@@ -33,7 +40,11 @@ namespace EinfachDeutsch
             else if (sender == FalseButtonContainer)
             {
                 vm?.FalseButtonPressed?.Execute(sender);
-            }   
+            }
+            else
+            {
+                vm?.OnTimerExpired();
+            }
         }
         private void ScoreLabel_PropertyChanging(object sender, PropertyChangingEventArgs e)
         {
@@ -47,8 +58,9 @@ namespace EinfachDeutsch
         {
             if (e.PropertyName != "FormattedText")
                 return;
-
+            
             AnimateIn();
+            QuestionCustomTimer.StartAnimations();
         }
 
         private async Task AnimateIn()
@@ -125,7 +137,6 @@ namespace EinfachDeutsch
             parentAnimation.Add(0, 0.7, AnswerImageScalingIn);
             parentAnimation.Add(0.7, 1, AnswerImageScalingOut);
             parentAnimation.Add(0.6, 1, AnswerImageFading);
-
 
             parentAnimation.Commit(this, "TransitionAnimationAnswer", 16, 1000, null, (v, c) => { });
             await Task.Delay(1000);

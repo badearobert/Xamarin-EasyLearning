@@ -32,6 +32,9 @@ namespace EinfachDeutsch
             grid.Children.Add(LoadingLabel);
             Grid.SetRow(LoadingLabel, 1);
 
+            SplashPageContentView obj = new SplashPageContentView();
+            grid.Children.Add(obj);
+            Grid.SetRow(obj, 2);
             this.Content = grid;
 
             timer.Elapsed += Timer_Elapsed;

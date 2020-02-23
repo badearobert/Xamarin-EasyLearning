@@ -5,6 +5,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:pancake="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
              xmlns:system="clr-namespace:System;assembly=netstandard"
+             xmlns:custom="clr-namespace:EinfachDeutsch.Views.Custom"
              mc:Ignorable="d"
              x:Class="EinfachDeutsch.QuizType_TrueFalseView"
              BackgroundColor="{DynamicResource DynamicBackgroundColor}"
@@ -104,6 +105,7 @@
                        WidthRequest="20" HeightRequest="20"
                        Aspect="AspectFill"
                        />
+                <custom:TimerView x:Name="QuestionCustomTimer"></custom:TimerView>
             </StackLayout>
         </Grid>
 

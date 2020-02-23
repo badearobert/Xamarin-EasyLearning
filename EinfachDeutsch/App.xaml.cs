@@ -14,6 +14,8 @@ namespace EinfachDeutsch
     public partial class App : Application
     {
         public static DatabaseService database { get; private set; }
+        public static int ScreenHeight { get; set; }
+        public static int ScreenWidth { get; set; }
         public App(string fullPath_db)
         {
             InitializeComponent();

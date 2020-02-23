@@ -30,6 +30,9 @@ namespace EinfachDeutsch.iOS
             string fileLocation = Path.Combine(System.Environment.GetFolderPath(System.Environment.SpecialFolder.Personal), "..", "Library");
             string fullPath_db = Path.Combine(fileLocation, fileName);
 
+            App.ScreenHeight = (int)UIScreen.MainScreen.Bounds.Height;
+            App.ScreenWidth = (int)UIScreen.MainScreen.Bounds.Width;
+
             LoadApplication(new App(fullPath_db));
 
             return base.FinishedLaunching(app, options);

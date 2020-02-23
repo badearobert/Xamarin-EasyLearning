@@ -53,6 +53,5 @@ namespace EinfachDeutsch.ViewModels
                 OnWrongAnswer(view);
             }
         }
-
     }
 }

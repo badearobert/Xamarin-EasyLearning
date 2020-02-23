@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:skia="clr-namespace:SkiaSharp.Views.Forms;assembly=SkiaSharp.Views.Forms"
+             xmlns:pancake="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+             mc:Ignorable="d"
+             x:Class="EinfachDeutsch.Views.Custom.TimerView">
+  <ContentView.Content>
+       <!-- <skia:SKCanvasView x:Name="PaintCanvasView" PaintSurface="PaintCanvasView_PaintSurface">
+        </skia:SKCanvasView>
+-->
+
+        <!--  swap banner  -->
+        <pancake:PancakeView
+                x:Name="TimerPanel"
+                BackgroundColor="LightGreen"
+                CornerRadius="25"
+                Elevation="2"
+                HeightRequest="50"
+                HorizontalOptions="Start"
+                VerticalOptions="Center"
+                WidthRequest="200"
+            >
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+            </Grid>
+        </pancake:PancakeView>
+      
+    </ContentView.Content>
+</ContentView>

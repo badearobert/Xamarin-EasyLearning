@@ -9,7 +9,7 @@ using Xamarin.Forms;
 
 namespace EinfachDeutsch.ViewModels
 {
-    public class BaseQuizViewModel<T> : BindableObject where T: new()
+    public abstract class BaseQuizViewModel<T> : BindableObject where T: new()
     {
         public BaseQuizViewModel() 
         {
@@ -106,7 +106,10 @@ namespace EinfachDeutsch.ViewModels
             await Task.Delay(100);
             await view.ScaleTo(1, 50, Easing.Linear);
         }
-
+        public virtual void OnTimerExpired()
+        {
+            OnWrongAnswer(null);
+        }
     }
 
 }

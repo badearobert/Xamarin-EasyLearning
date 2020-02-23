@@ -32,6 +32,9 @@ namespace EinfachDeutsch.Droid
 
             Window.DecorView.SystemUiVisibility = (StatusBarVisibility)uiOptions;
 
+            App.ScreenHeight = (int)(Resources.DisplayMetrics.HeightPixels / Resources.DisplayMetrics.Density);
+            App.ScreenWidth = (int)(Resources.DisplayMetrics.WidthPixels / Resources.DisplayMetrics.Density);
+
             // load database
             var dbpath = Path.Combine(System.Environment.GetFolderPath(System.Environment.SpecialFolder.LocalApplicationData), "database.db3");
             LoadApplication(new App(dbpath));
