@@ -40,11 +40,13 @@ namespace EinfachDeutsch.Views.Custom
             }
             TimerPanel.WidthRequest = 50;
             TimerPanel.Scale = 0;
+
+            int delay = 300;
             var anim = new Animation();
             anim.Add(0, 0.8, new Animation(t => { TimerPanel.Scale = t; }, 0, 1, Easing.SinInOut));
             anim.Add(0.7, 1.0, new Animation(t => { TimerPanel.WidthRequest = t; }, 50, MaxTimerWidth, Easing.SinInOut));
-            anim.Commit(this, "TimerAnimation", 16, 300, null, (v, c) => StartTimerAsync() );
-            await Task.Delay(300);
+            anim.Commit(this, "TimerAnimation", 16, (uint)delay, null, (v, c) => StartTimerAsync() );
+            await Task.Delay(delay);
         }
 
         public async Task StartTimerAsync()
@@ -66,10 +68,15 @@ namespace EinfachDeutsch.Views.Custom
         }
         private async Task SetTimerToZeroAsync()
         {
+            int delay = 500;
             var anim = new Animation();
-            anim.Add(0, 1.0, new Animation(t => { TimerPanel.WidthRequest = t; }, TimerPanel.WidthRequest, 0, Easing.SinInOut));
-            anim.Commit(this, "TimerAnimation", 16, 1000);
-            await Task.Delay(1000);
+            anim.Add(0, 1.0, new Animation(t => { TimerPanel.WidthRequest = t; }, TimerPanel.WidthRequest, 0, Easing.SinIn));
+
+            anim.Commit(this, "TimerAnimation", 16, (uint)delay);
+            await TimerPanel.ColorTo(Color.LightGreen, Color.Yellow, c => TimerPanel.BackgroundColor = c, 150);
+            await TimerPanel.ColorTo(Color.Yellow, Color.Red, c => TimerPanel.BackgroundColor = c, 150);
+            await TimerPanel.ColorTo(Color.Red, Color.DarkRed, c => TimerPanel.BackgroundColor = c, 200);
+            await Task.Delay(delay);
         }
         public async Task StopTimer()
         {

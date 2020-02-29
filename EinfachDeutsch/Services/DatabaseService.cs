@@ -91,6 +91,7 @@ namespace EinfachDeutsch.Services
                 conn.DropTable<FillEntryQuiz>();
                 conn.DropTable<SelectionQuiz>();
                 conn.DropTable<TranslateWordsQuiz>();
+                conn.DropTable<DatabaseEntry>();
             }
         }
     }

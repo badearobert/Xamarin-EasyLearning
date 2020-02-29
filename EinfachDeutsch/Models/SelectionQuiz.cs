@@ -13,6 +13,7 @@ namespace EinfachDeutsch.Models
         public string Question { get; set; }
         public string Choices { get; set; }
         public string CorrectResult { get; set; }
+        public int EntryReferenceId { get; set; }
     }
 
 }

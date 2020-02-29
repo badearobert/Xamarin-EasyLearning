@@ -1,5 +1,6 @@
 ﻿using EinfachDeutsch.ViewModels;
 using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -31,6 +32,7 @@ namespace EinfachDeutsch
         {
             await QuestionCustomTimer.StopTimer();
             await AnimateAnswerImage(sender);
+            await ShowResult();
             await AnimateOut();
 
             if (sender == TrueButtonContainer)
@@ -61,6 +63,19 @@ namespace EinfachDeutsch
             
             AnimateIn();
             QuestionCustomTimer.StartAnimations();
+        }
+
+        private async Task ShowResult()
+        {
+            if (this.AnimationIsRunning("ShowResultAnimation")) return;
+            var ResultFadeIn = new Animation(v => AnswerResult.Opacity = v, 0, 1, Easing.SinIn);
+            var ResultFadeOut = new Animation(v => AnswerResult.Opacity = v, 1, 0, Easing.SinOut);
+
+            var parentAnimation = new Animation();
+            parentAnimation.Add(0, 0.3, ResultFadeIn);
+            parentAnimation.Add(0.8, 1.0, ResultFadeOut);
+            parentAnimation.Commit(this, "ShowResultAnimation", 16, 1500, null, (v, c) => { });
+            await Task.Delay(1500);
         }
 
         private async Task AnimateIn()

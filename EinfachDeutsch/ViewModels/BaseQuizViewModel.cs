@@ -3,13 +3,14 @@ using EinfachDeutsch.Services;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 
 namespace EinfachDeutsch.ViewModels
 {
-    public abstract class BaseQuizViewModel<T> : BindableObject where T: new()
+    public abstract class BaseQuizViewModel<T> : BindableObject, INotifyPropertyChanged where T: new()
     {
         public BaseQuizViewModel() 
         {
