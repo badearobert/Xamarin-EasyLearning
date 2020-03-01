@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="EinfachDeutsch.Views.Custom.ScoreView">
+
+    <ContentView.Resources>
+        <ResourceDictionary>
+            <Style x:Key="BaseStyle" TargetType="Label">
+                <Setter Property="VerticalOptions" Value="Center" />
+                <Setter Property="HorizontalOptions" Value="Center" />
+                <Setter Property="FontSize" Value="20" />
+                <Setter Property="FontAttributes" Value="Bold" />
+                <Setter Property="TextColor" Value="{DynamicResource DynamicTitleColor}"/>
+                <Setter Property="XAlign" Value="Center" />
+                <Setter Property="YAlign" Value="Center" />
+            </Style>
+        </ResourceDictionary>
+    </ContentView.Resources>
+
+
+    <ContentView.Content>
+        <StackLayout Grid.Row="0" Orientation="Vertical" Margin="0,50,0,0">
+
+            <Label x:Name="ScoreLabel"
+                       Style="{StaticResource BaseStyle}" 
+                       PropertyChanging="ScoreLabel_PropertyChanging"
+                       >
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span Text="Score: " FontSize="20" FontAttributes="Bold" TextColor="White"/>
+                        <Span Text="{Binding Score}" FontSize="20" FontAttributes="Bold" TextColor="White" />
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+
+
+        </StackLayout>
+    </ContentView.Content>
+</ContentView>
