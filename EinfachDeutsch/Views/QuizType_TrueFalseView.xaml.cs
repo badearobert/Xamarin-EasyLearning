@@ -34,9 +34,12 @@ namespace EinfachDeutsch
             bool is_correct =
                 (sender == TrueButtonContainer && vm.CurrentQuestion.Answer) ||
                 (sender == FalseButtonContainer && !vm.CurrentQuestion.Answer);
+            
             await AnswerResultContainer.AnimateAnswerImage(is_correct);
             await AnimateOut();
             SelectOption(sender);
+            vm?.QuizQuestionFinished?.Execute(null);
+
         }
 
         private void SelectOption(object sender)

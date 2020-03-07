@@ -63,13 +63,11 @@ namespace EinfachDeutsch.ViewModels
         private void OnTruePressed(View view)
         {
             ValidateAnswer(view, true);
-            QuizQuestionFinished?.Execute(null);
         }
 
         private void OnFalsePressed(View view)
         {
             ValidateAnswer(view, false);
-            QuizQuestionFinished?.Execute(null);
         }
 
         private void ValidateAnswer(View view, bool result)
@@ -86,7 +84,6 @@ namespace EinfachDeutsch.ViewModels
         public override void OnTimerExpired()
         {
             OnWrongAnswer(null);
-            QuizQuestionFinished?.Execute(null);
         }
     }
 }
