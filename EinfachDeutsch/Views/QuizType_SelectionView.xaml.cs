@@ -13,10 +13,37 @@ namespace EinfachDeutsch.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class QuizType_SelectionView : ContentView
     {
+        private SelectionQuiz_ViewModel viewModel = new SelectionQuiz_ViewModel();
+        private bool isViewUpToDate = false;
         public QuizType_SelectionView()
         {
             InitializeComponent();
-            BindingContext = new SelectionQuiz_ViewModel();
+            BindingContext = viewModel;
+            AnswerResultContainer.SetOnTimerExpiredCallback(OnTimerExpired);
+        }
+
+        private async void EntireCollection_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (isViewUpToDate) return;
+            isViewUpToDate = true;
+
+            bool is_correct = false;
+            await AnswerResultContainer.AnimateAnswerImage(is_correct);
+            viewModel.OnSelectionChanged();
+            viewModel.QuizQuestionFinished?.Execute(null);
+        }
+
+        private void Label_PropertyChanging(object sender, PropertyChangingEventArgs e)
+        {
+            if (e.PropertyName != "Text")
+                return;
+
+            AnswerResultContainer.StartAnimations();
+            isViewUpToDate = false;
+        }
+        private void OnTimerExpired()
+        {
+            EntireCollection_SelectionChanged(null, null);
         }
     }
 }

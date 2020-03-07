@@ -29,11 +29,11 @@ namespace EinfachDeutsch.ViewModels
                 }
             }
         }
-        private void OnSelectionChanged()
+        public void OnSelectionChanged()
         {
             ValidateAnswer(null, _selectedItem);
-            QuizQuestionFinished?.Execute(null);
         }
+
         private void ValidateAnswer(View view, string result)
         {
             if (result == CurrentQuestion.CorrectResult)

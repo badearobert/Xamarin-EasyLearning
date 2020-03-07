@@ -16,12 +16,11 @@ namespace EinfachDeutsch.ViewModels
 
         public ICommand SubmitPressed { get; set; }
 
-        private void OnSubmitPressed(View view)
+        public void OnSubmitPressed(View view)
         {
             Entry entry = view as Entry;
             ValidateAnswer(view, entry.Text);
             entry.Text = "";
-            QuizQuestionFinished?.Execute(null);
         }
 
         private void ValidateAnswer(View view, string result)

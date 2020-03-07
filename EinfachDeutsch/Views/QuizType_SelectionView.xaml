@@ -38,19 +38,19 @@
             <Grid.RowDefinitions>
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="2*"/>
-                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
             
             <custom:ScoreView Grid.Row="0"/>
             
             <StackLayout Grid.Row="1" Orientation="Vertical" Margin="20,0">
-                <Label Text="{Binding CurrentQuestion.Question}" Style="{StaticResource QuestionStyle}"/>
+                <Label Text="{Binding CurrentQuestion.Question}" Style="{StaticResource QuestionStyle}" PropertyChanging="Label_PropertyChanging"/>
 
                 <CollectionView x:Name="EntireCollection" ItemsSource="{Binding CurrentQuestion.Choices, Converter={StaticResource StringToListConverter}}"
                                 ItemTemplate="{StaticResource QuizResultsTemplate}"
                                 SelectionMode="Single"
                                 InputTransparent="True"
-                                SelectionChangedCommand="{Binding SelectionChanged}"
+                                SelectionChanged="EntireCollection_SelectionChanged"
                                 SelectionChangedCommandParameter="{x:Reference EntireCollection}"
                                 SelectedItem="{Binding SelectedItem, Mode=TwoWay}">
                     <CollectionView.ItemsLayout>
@@ -59,7 +59,7 @@
                 </CollectionView>
             </StackLayout>
             
-            <custom:AnswerResultView Grid.Row="2" x:Name="AnswerResultContainer"/>
+            <custom:AnswerResultView Grid.Row="2" x:Name="AnswerResultContainer" />
         </Grid>
     </ContentView.Content>
     
