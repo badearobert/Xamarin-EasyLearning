@@ -17,6 +17,46 @@ namespace EinfachDeutsch.ViewModels
         {
             LoadData();
             QuizQuestionFinished = new Command(LoadNextQuiz);
+            PropertyChanged += OnPropertyChanged;
+        }
+        private string _germanWord { get; set; }
+        public string GermanWord
+        {
+            get
+            {
+                return _germanWord;
+            }
+            set
+            {
+                _germanWord = value;
+                OnPropertyChanged();
+            }
+        }
+        private string _translation { get; set; }
+        public string Translation
+        {
+            get
+            {
+                return _translation;
+            }
+            set
+            {
+                _translation = value;
+                OnPropertyChanged();
+            }
+        }
+
+        protected virtual void UpdateGermanTranslation()
+        {
+
+        }
+
+        private void OnPropertyChanged(object sender, PropertyChangedEventArgs e)
+        {
+            if (e.PropertyName == "CurrentQuestion")
+            {
+                UpdateGermanTranslation();
+            }
         }
 
         private int _totalQuestionsCount = 0;

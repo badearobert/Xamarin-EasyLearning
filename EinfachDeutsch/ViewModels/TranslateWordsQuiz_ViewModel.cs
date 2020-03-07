@@ -13,6 +13,11 @@ namespace EinfachDeutsch.ViewModels
         {
             SubmitPressed = new Command<View>(OnSubmitPressed);
         }
+        protected override void UpdateGermanTranslation()
+        {
+            GermanWord = App.database.Read<DatabaseEntry>(CurrentQuestion.EntryReferenceId)?.FullEntry;
+            Translation = App.database.Read<DatabaseEntry>(CurrentQuestion.EntryReferenceId)?.Translation;
+        }
 
         public ICommand SubmitPressed { get; set; }
 

@@ -13,6 +13,11 @@ namespace EinfachDeutsch.ViewModels
         public SelectionQuiz_ViewModel()
         {
         }
+        protected override void UpdateGermanTranslation()
+        {
+            GermanWord = App.database.Read<DatabaseEntry>(CurrentQuestion.EntryReferenceId)?.FullEntry;
+            Translation = App.database.Read<DatabaseEntry>(CurrentQuestion.EntryReferenceId)?.Translation;
+        }
 
         private string _selectedItem;
         public string SelectedItem

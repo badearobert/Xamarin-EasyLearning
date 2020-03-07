@@ -10,51 +10,16 @@ namespace EinfachDeutsch.ViewModels
 {
     public class TrueFalseQuiz_ViewModel : BaseQuizViewModel<TrueFalseQuiz>
     {
-        private string _germanWord { get; set; }
-        public string GermanWord
-        {
-            get
-            {
-                return _germanWord;
-            }
-            set
-            {
-                _germanWord = value;
-                OnPropertyChanged();
-            }
-        }
-        private string _translation { get; set; }
-        public string Translation
-        {
-            get
-            {
-                return _translation;
-            }
-            set
-            {
-                _translation = value;
-                OnPropertyChanged();
-            }
-        }
-        
         public TrueFalseQuiz_ViewModel()
         {
             TrueButtonPressed = new Command<View>(OnTruePressed);
             FalseButtonPressed = new Command<View>(OnFalsePressed);
-
-            GermanWord = App.database.Read<DatabaseEntry>(CurrentQuestion.EntryReferenceId)?.FullEntry;
-            Translation = App.database.Read<DatabaseEntry>(CurrentQuestion.EntryReferenceId)?.Translation;
-
-            PropertyChanged += OnPropertyChanged;
         }
 
-        private void OnPropertyChanged(object sender, PropertyChangedEventArgs e)
+        protected override void UpdateGermanTranslation()
         {
-            if (e.PropertyName == "CurrentQuestion")
-            {
-                GermanWord = App.database.Read<DatabaseEntry>(CurrentQuestion.EntryReferenceId)?.FullEntry;
-                Translation = App.database.Read<DatabaseEntry>(CurrentQuestion.EntryReferenceId)?.Translation; 
-            }
+            GermanWord = App.database.Read<DatabaseEntry>(CurrentQuestion.EntryReferenceId)?.FullEntry;
+            Translation = App.database.Read<DatabaseEntry>(CurrentQuestion.EntryReferenceId)?.Translation;
         }
 
         public ICommand TrueButtonPressed { get; set; }
