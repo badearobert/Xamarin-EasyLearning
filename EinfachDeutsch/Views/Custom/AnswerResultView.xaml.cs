@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using static EinfachDeutsch.Views.Custom.TimerView;
 
 namespace EinfachDeutsch.Views.Custom
 {
@@ -18,6 +19,10 @@ namespace EinfachDeutsch.Views.Custom
             QuestionCustomTimer.TimerExpired += TimerExpiredHandler;
         }
 
+        public void SetOnTimerExpiredCallback(TimerExpiredHandler callback)
+        {
+            QuestionCustomTimer.TimerExpired += callback;
+        }
         private void TimerExpiredHandler()
         {
             _ = AnimateAnswerImage(false);

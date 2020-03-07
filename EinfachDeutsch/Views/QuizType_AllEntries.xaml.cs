@@ -41,8 +41,8 @@ namespace EinfachDeutsch.Views
                 QuizContent.Children.Clear();
                 QuizContent.Children.Add(views[newIndex]);
                 currentViewIndex = newIndex;
-                (views[newIndex].BindingContext as BaseQuiz).LoadNextQuiz();
             }
+            (views[newIndex].BindingContext as BaseQuiz).LoadNextQuiz();
         }
     }
 }

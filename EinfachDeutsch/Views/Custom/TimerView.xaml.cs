@@ -56,15 +56,15 @@ namespace EinfachDeutsch.Views.Custom
                 return;
             }
             TimerPanel.BackgroundColor = Color.LightGreen;
-            uint total_time = 15000;
+            uint total_time = 10000;
             var anim = new Animation();
             anim.Add(0, 1.0, new Animation(t => { TimerPanel.WidthRequest = t; }, MaxTimerWidth, 0, Easing.SinInOut));
 
             anim.Commit(this, "TimerAnimation", 16, total_time, null, (v, c) => RaiseEventTimerExpired() );
 
-            await TimerPanel.ColorTo(Color.LightGreen, Color.Yellow, c => TimerPanel.BackgroundColor = c, 5000);
-            await TimerPanel.ColorTo(Color.Yellow, Color.Red, c => TimerPanel.BackgroundColor = c, 3000);
-            await TimerPanel.ColorTo(Color.Red, Color.DarkRed, c => TimerPanel.BackgroundColor = c, 7000);
+            await TimerPanel.ColorTo(Color.LightGreen, Color.Yellow, c => TimerPanel.BackgroundColor = c, 3000);
+            await TimerPanel.ColorTo(Color.Yellow, Color.Red, c => TimerPanel.BackgroundColor = c, 2000);
+            await TimerPanel.ColorTo(Color.Red, Color.DarkRed, c => TimerPanel.BackgroundColor = c, 5000);
         }
         private async Task SetTimerToZeroAsync()
         {

@@ -17,11 +17,16 @@ namespace EinfachDeutsch
         {
             InitializeComponent();
             BindingContext = vm;
+            AnswerResultContainer.SetOnTimerExpiredCallback(OnTimerExpired);
         }
         
         private void TapGestureRecognizer_Tapped(object sender, System.EventArgs e)
         {
             OnTapPressed(sender);
+        }
+        private void OnTimerExpired()
+        {
+            OnTapPressed(null);
         }
 
         private async void OnTapPressed(object sender)
