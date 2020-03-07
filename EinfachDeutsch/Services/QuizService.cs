@@ -20,6 +20,15 @@ namespace EinfachDeutsch.Services
         public List<T> LoadData<T>() where T : new()
         {
             return App.database.Read<T>();
-        }        
+        }
+        public List<BaseQuizEntry> LoadAllData() 
+        {
+            List<BaseQuizEntry> items = new List<BaseQuizEntry>();
+            items.AddRange(App.database.Read<TrueFalseQuiz>());
+            items.AddRange(App.database.Read<FillEntryQuiz>());
+            items.AddRange(App.database.Read<TranslateWordsQuiz>());
+            items.AddRange(App.database.Read<SelectionQuiz>());
+            return items;
+        }
     }
 }

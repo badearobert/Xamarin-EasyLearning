@@ -57,19 +57,19 @@ namespace EinfachDeutsch.ViewModels
             }
         }
 
-    public ICommand TrueButtonPressed { get; set; }
+        public ICommand TrueButtonPressed { get; set; }
         public ICommand FalseButtonPressed { get; set; }
 
         private void OnTruePressed(View view)
         {
             ValidateAnswer(view, true);
-            LoadNextQuiz(); 
+            QuizQuestionFinished?.Execute(null);
         }
 
         private void OnFalsePressed(View view)
         {
             ValidateAnswer(view, false);
-            LoadNextQuiz();
+            QuizQuestionFinished?.Execute(null);
         }
 
         private void ValidateAnswer(View view, bool result)
@@ -86,7 +86,7 @@ namespace EinfachDeutsch.ViewModels
         public override void OnTimerExpired()
         {
             OnWrongAnswer(null);
-            LoadNextQuiz();
+            QuizQuestionFinished?.Execute(null);
         }
     }
 }

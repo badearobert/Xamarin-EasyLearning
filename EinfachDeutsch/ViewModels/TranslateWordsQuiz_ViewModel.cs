@@ -21,7 +21,7 @@ namespace EinfachDeutsch.ViewModels
             Entry entry = view as Entry;
             ValidateAnswer(view, entry.Text);
             entry.Text = "";
-            LoadNextQuiz();
+            QuizQuestionFinished?.Execute(null);
         }
 
         private void ValidateAnswer(View view, string result)

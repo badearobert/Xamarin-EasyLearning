@@ -6,7 +6,7 @@ using System.Text;
 namespace EinfachDeutsch.Models
 {
     [Table("FillEntryQuiz")]
-    public class FillEntryQuiz
+    public class FillEntryQuiz : BaseQuizEntry
     {
         [PrimaryKey, AutoIncrement]
         public int Id { get; set; }

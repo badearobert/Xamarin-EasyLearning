@@ -8,19 +8,11 @@ using Xamarin.Forms;
 
 namespace EinfachDeutsch.ViewModels
 {
-    public class SelectionQuiz_ViewModel : BaseQuizViewModel<SelectionQuiz>, INotifyPropertyChanged
+    public class SelectionQuiz_ViewModel : BaseQuizViewModel<SelectionQuiz>
     {
         public SelectionQuiz_ViewModel()
         {
-            //SelectionChanged = new Command<object>(OnSelectionChanged);
         }
-        /*public ICommand SelectionChanged { get; set; }
-
-        private void OnSelectionChanged(object view)
-        {
-            ValidateAnswer((View)view, (string)view);
-            LoadNextQuiz();
-        }*/
 
         private string _selectedItem;
         public string SelectedItem
@@ -39,8 +31,8 @@ namespace EinfachDeutsch.ViewModels
         }
         private void OnSelectionChanged()
         {
-                ValidateAnswer(null, _selectedItem);
-                LoadNextQuiz();
+            ValidateAnswer(null, _selectedItem);
+            QuizQuestionFinished?.Execute(null);
         }
         private void ValidateAnswer(View view, string result)
         {

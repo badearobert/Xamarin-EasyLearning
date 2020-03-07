@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:custom="clr-namespace:EinfachDeutsch.Views.Custom"
              mc:Ignorable="d"
              x:Class="EinfachDeutsch.Views.QuizType_TranslateWordsView">
     
@@ -40,20 +41,23 @@
     <ContentView.Content>
         <Grid>
             <Grid.RowDefinitions>
-                <RowDefinition Height="Auto"/>
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="2*"/>
+                <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
-            <Label Grid.Row="0" Text="{Binding QuestionIndex}" Style="{StaticResource QuestionStyle}"/>
 
-            <Label Grid.Row="1" Text="{Binding Score}" Style="{StaticResource QuestionStyle}"/>
-            <StackLayout Grid.Row="2" Orientation="Vertical" Margin="20,0">
+            <custom:ScoreView Grid.Row="0"/>
+
+            <StackLayout Grid.Row="1" Orientation="Vertical" Margin="20,0">
                 <Label Text="{Binding CurrentQuestion.Question}" Style="{StaticResource QuestionStyle}"/>
 
                 <Entry x:Name="UserInputField" Placeholder="What is the answer?" Style="{StaticResource AnswerBaseStyle}"/>
                 <Button Style="{StaticResource ButtonStyle}" Text="SUBMIT"
                         Command="{Binding SubmitPressed}"
                         CommandParameter="{x:Reference UserInputField}"/>
+
+
+                <custom:AnswerResultView Grid.Row="2" x:Name="AnswerResultContainer"/>
             </StackLayout>
         </Grid>
     </ContentView.Content>

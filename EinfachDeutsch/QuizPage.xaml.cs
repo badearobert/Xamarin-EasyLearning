@@ -18,27 +18,18 @@ namespace EinfachDeutsch
         {
             InitializeComponent();
             QuizContent.Children.Clear();
+            View view;
+            switch (quiz.Id)
+            {
+                case 1: view = new QuizType_TrueFalseView(); break;
+                case 2: view = new QuizType_SelectionView(); break;
+                case 3: view = new QuizType_FillEntryView(); break;
+                case 4: view = new QuizType_TranslateWordsView(); break;
+                case 5: view = new QuizType_AllEntries(); break;
+                default: view = new Label { Text = "Error not found" }; break;
+            }
 
-            if (quiz.Name == "True or False")
-            {
-                QuizContent.Children.Add(new QuizType_TrueFalseView());
-            }
-            else if (quiz.Name == "Guess the declination")
-            {
-                QuizContent.Children.Add(new QuizType_SelectionView());
-            }
-            else if (quiz.Name == "Fill the missing data")
-            {
-                QuizContent.Children.Add(new QuizType_FillEntryView());
-            }
-            else if (quiz.Name == "Translate words")
-            {
-                QuizContent.Children.Add(new QuizType_TranslateWordsView());
-            }
-            else
-            {
-                QuizContent.Children.Add(new Label { Text = "Error not found" });
-            }
+            QuizContent.Children.Add(view);
         }
     }
 }

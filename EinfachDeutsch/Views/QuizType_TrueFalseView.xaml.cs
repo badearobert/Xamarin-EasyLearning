@@ -1,4 +1,5 @@
 ﻿using EinfachDeutsch.ViewModels;
+using EinfachDeutsch.Views.Custom;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -16,7 +17,6 @@ namespace EinfachDeutsch
         {
             InitializeComponent();
             BindingContext = vm;
-            QuestionCustomTimer.TimerExpired += TimerExpiredHandler;
         }
         
         private void TapGestureRecognizer_Tapped(object sender, System.EventArgs e)
@@ -24,17 +24,18 @@ namespace EinfachDeutsch
             OnTapPressed(sender);
         }
 
-        private void TimerExpiredHandler()
-        {
-            OnTapPressed(null);
-        }
         private async void OnTapPressed(object sender)
         {
-            await QuestionCustomTimer.StopTimer();
-            await AnimateAnswerImage(sender);
-            await ShowResult();
+            bool is_correct =
+                (sender == TrueButtonContainer && vm.CurrentQuestion.Answer) ||
+                (sender == FalseButtonContainer && !vm.CurrentQuestion.Answer);
+            await AnswerResultContainer.AnimateAnswerImage(is_correct);
             await AnimateOut();
+            SelectOption(sender);
+        }
 
+        private void SelectOption(object sender)
+        {
             if (sender == TrueButtonContainer)
             {
                 vm?.TrueButtonPressed?.Execute(sender);
@@ -53,22 +54,9 @@ namespace EinfachDeutsch
         {
             if (e.PropertyName != "FormattedText")
                 return;
-            
-            AnimateIn();
-            QuestionCustomTimer.StartAnimations();
-        }
 
-        private async Task ShowResult()
-        {
-            if (this.AnimationIsRunning("ShowResultAnimation")) return;
-            var ResultFadeIn = new Animation(v => AnswerResult.Opacity = v, 0, 1, Easing.SinIn);
-            var ResultFadeOut = new Animation(v => AnswerResult.Opacity = v, 1, 0, Easing.SinOut);
-
-            var parentAnimation = new Animation();
-            parentAnimation.Add(0, 0.3, ResultFadeIn);
-            parentAnimation.Add(0.8, 1.0, ResultFadeOut);
-            parentAnimation.Commit(this, "ShowResultAnimation", 16, 1500, null, (v, c) => { });
-            await Task.Delay(1500);
+            _ = AnimateIn();
+            AnswerResultContainer.StartAnimations();
         }
 
         private async Task AnimateIn()
@@ -102,38 +90,5 @@ namespace EinfachDeutsch
             parentAnimation.Commit(this, "TransitionAnimationOut", 16, 1000, null, (v, c) => { });
             await Task.Delay(1000);
         }
-
-
-
-
-        private async Task AnimateAnswerImage(object sender)
-        {
-            if (this.AnimationIsRunning("TransitionAnimationAnswer")) return;
-
-            string answer_correct = "https://cdn.pixabay.com/photo/2012/04/24/13/49/tick-40143_960_720.png";
-            string answer_incorrect = "https://cdn.pixabay.com/photo/2012/04/13/00/22/red-31226_960_720.png";
-
-            bool is_correct =
-                (sender == TrueButtonContainer && vm.CurrentQuestion.Answer) ||
-                (sender == FalseButtonContainer && !vm.CurrentQuestion.Answer);
-
-            string answer = is_correct ? answer_correct : answer_incorrect;
-            AnswerImage.Source = ImageSource.FromUri(new Uri(answer));
-            AnswerImage.Opacity = 1;
-
-            var AnswerImageScalingIn = new Animation(v => AnswerImage.Scale = v, 1, 5, Easing.SpringOut);
-            var AnswerImageScalingOut = new Animation(v => AnswerImage.Scale = v, 5, 4, Easing.SpringOut);
-            var AnswerImageFading = new Animation(v => AnswerImage.Opacity = v, 1, 0, Easing.SpringOut);
-
-            var parentAnimation = new Animation();
-
-            parentAnimation.Add(0, 0.7, AnswerImageScalingIn);
-            parentAnimation.Add(0.7, 1, AnswerImageScalingOut);
-            parentAnimation.Add(0.6, 1, AnswerImageFading);
-
-            parentAnimation.Commit(this, "TransitionAnimationAnswer", 16, 1000, null, (v, c) => { });
-            await Task.Delay(1000);
-        }
-
     }
 }

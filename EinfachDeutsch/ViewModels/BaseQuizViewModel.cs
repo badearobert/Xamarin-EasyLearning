@@ -6,15 +6,17 @@ using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
 using Xamarin.Forms;
 
 namespace EinfachDeutsch.ViewModels
 {
-    public abstract class BaseQuizViewModel<T> : BindableObject, INotifyPropertyChanged where T: new()
+    public abstract class BaseQuizViewModel<T> : BaseQuiz where T: new()
     {
         public BaseQuizViewModel() 
         {
             LoadData();
+            QuizQuestionFinished = new Command(LoadNextQuiz);
         }
 
         private int _totalQuestionsCount = 0;
@@ -62,6 +64,7 @@ namespace EinfachDeutsch.ViewModels
         }
 
         private ObservableCollection<T> _quizData;
+
         public ObservableCollection<T> QuizData
         {
             get { return _quizData; }
@@ -72,15 +75,14 @@ namespace EinfachDeutsch.ViewModels
             }
         }
 
-        private void LoadData() 
+        public virtual void LoadData() 
         {
             QuizData = new ObservableCollection<T>(QuizService.Instance.LoadData<T>());
             TotalQuestionsCount = QuizData.Count;
-            //ShuffleExtension.Shuffle(QuizData);
             LoadNextQuiz();
         }
 
-        protected void LoadNextQuiz()
+        public override void LoadNextQuiz()
         {
             QuestionIndex = new Random().Next(QuizData.Count);
             CurrentQuestion = QuizData[QuestionIndex];
