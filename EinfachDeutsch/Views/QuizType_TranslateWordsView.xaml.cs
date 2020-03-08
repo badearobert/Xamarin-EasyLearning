@@ -23,6 +23,7 @@ namespace EinfachDeutsch.Views
 
         private async void Button_Clicked(object sender, EventArgs e)
         {
+            if (viewModel.IsPaused) return;
             bool is_correct = true;
             await AnswerResultContainer.AnimateAnswerImage(is_correct);
             viewModel.OnSubmitPressed(UserInputField);
@@ -31,6 +32,7 @@ namespace EinfachDeutsch.Views
 
         private void Label_PropertyChanging(object sender, PropertyChangingEventArgs e)
         {
+            if (viewModel.IsPaused) return;
             if (e.PropertyName != "Text")
                 return;
 

@@ -24,6 +24,7 @@ namespace EinfachDeutsch.Views
 
         private async void EntireCollection_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            if (viewModel.IsPaused) return;
             if (isViewUpToDate) return;
             isViewUpToDate = true;
 
@@ -35,9 +36,10 @@ namespace EinfachDeutsch.Views
 
         private void Label_PropertyChanging(object sender, PropertyChangingEventArgs e)
         {
+            if (viewModel.IsPaused) return;
             if (e.PropertyName != "Text")
                 return;
-
+            
             AnswerResultContainer.StartAnimations();
             isViewUpToDate = false;
         }

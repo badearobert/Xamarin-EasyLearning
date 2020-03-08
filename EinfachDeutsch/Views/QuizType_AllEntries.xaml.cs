@@ -21,7 +21,7 @@ namespace EinfachDeutsch.Views
             new QuizType_SelectionView()
         };
 
-        public int currentViewIndex { get; private set; } = -1;
+        public int oldIndex { get; private set; } = -1;
         public QuizType_AllEntries()
         {
             InitializeComponent();
@@ -34,15 +34,20 @@ namespace EinfachDeutsch.Views
 
         private void Update()
         {
-            int newIndex = new Random().Next(3);
+            int newIndex = new Random().Next(views.Count);
 
-            if (newIndex != currentViewIndex)
+            if (newIndex != oldIndex)
             {
                 QuizContent.Children.Clear();
                 QuizContent.Children.Add(views[newIndex]);
-                currentViewIndex = newIndex;
             }
+            if (oldIndex != -1) 
+                (views[oldIndex].BindingContext as BaseQuiz).OnPause();
+
+            (views[newIndex].BindingContext as BaseQuiz).OnResume();
             (views[newIndex].BindingContext as BaseQuiz).LoadNextQuiz();
+            oldIndex = newIndex;
         }
+
     }
 }

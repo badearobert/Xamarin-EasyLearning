@@ -16,7 +16,6 @@ namespace EinfachDeutsch.Views.Custom
         public AnswerResultView()
         {
             InitializeComponent();
-            //QuestionCustomTimer.TimerExpired += TimerExpiredHandler;
         }
 
         public void SetOnTimerExpiredCallback(TimerExpiredHandler callback)

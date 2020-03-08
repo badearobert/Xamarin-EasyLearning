@@ -11,12 +11,12 @@ namespace EinfachDeutsch
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class QuizType_TrueFalseView : ContentView
     {
-        TrueFalseQuiz_ViewModel vm = new TrueFalseQuiz_ViewModel();
+        TrueFalseQuiz_ViewModel viewModel = new TrueFalseQuiz_ViewModel();
 
         public QuizType_TrueFalseView()
         {
             InitializeComponent();
-            BindingContext = vm;
+            BindingContext = viewModel;
             AnswerResultContainer.SetOnTimerExpiredCallback(OnTimerExpired);
         }
         
@@ -31,14 +31,16 @@ namespace EinfachDeutsch
 
         private async void OnTapPressed(object sender)
         {
+            if (viewModel.IsPaused) return;
+
             bool is_correct =
-                (sender == TrueButtonContainer && vm.CurrentQuestion.Answer) ||
-                (sender == FalseButtonContainer && !vm.CurrentQuestion.Answer);
+                (sender == TrueButtonContainer && viewModel.CurrentQuestion.Answer) ||
+                (sender == FalseButtonContainer && !viewModel.CurrentQuestion.Answer);
             
             await AnswerResultContainer.AnimateAnswerImage(is_correct);
             await AnimateOut();
             SelectOption(sender);
-            vm?.QuizQuestionFinished?.Execute(null);
+            viewModel?.QuizQuestionFinished?.Execute(null);
 
         }
 
@@ -46,20 +48,21 @@ namespace EinfachDeutsch
         {
             if (sender == TrueButtonContainer)
             {
-                vm?.TrueButtonPressed?.Execute(sender);
+                viewModel?.TrueButtonPressed?.Execute(sender);
             }
             else if (sender == FalseButtonContainer)
             {
-                vm?.FalseButtonPressed?.Execute(sender);
+                viewModel?.FalseButtonPressed?.Execute(sender);
             }
             else
             {
-                vm?.OnTimerExpired();
+                viewModel?.OnTimerExpired();
             }
         }
 
         private void CurrentQuestion_PropertyChanging(object sender, PropertyChangingEventArgs e)
         {
+            if (viewModel.IsPaused) return;
             if (e.PropertyName != "FormattedText")
                 return;
 

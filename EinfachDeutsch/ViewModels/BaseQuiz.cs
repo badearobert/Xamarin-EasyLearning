@@ -9,6 +9,7 @@ namespace EinfachDeutsch.ViewModels
 {
     public class BaseQuiz : INotifyPropertyChanged
     {
+        public bool IsPaused { get; set; } = true;
         public event PropertyChangedEventHandler PropertyChanged;
 
         protected void OnPropertyChanged([CallerMemberName] string propertyName = null)
@@ -23,11 +24,11 @@ namespace EinfachDeutsch.ViewModels
         }
         public virtual void OnResume()
         {
-
+            IsPaused = false;
         }
         public virtual void OnPause()
         {
-
+            IsPaused = true;
         }
     }
 }

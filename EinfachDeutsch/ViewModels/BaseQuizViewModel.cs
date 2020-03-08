@@ -119,6 +119,7 @@ namespace EinfachDeutsch.ViewModels
         {
             QuizData = new ObservableCollection<T>(QuizService.Instance.LoadData<T>());
             TotalQuestionsCount = QuizData.Count;
+            IsPaused = false;
             LoadNextQuiz();
         }
 
