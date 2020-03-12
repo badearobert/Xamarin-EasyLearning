@@ -11,11 +11,12 @@ using Xamarin.Forms.Xaml;
 namespace EinfachDeutsch.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class QuizType_FillEntryView : ContentView
+    public partial class FullContentView : ContentView
     {
-        public QuizType_FillEntryView()
+        public FullContentView()
         {
             InitializeComponent();
+            BindingContext = new FullContentViewModel();
         }
     }
 }

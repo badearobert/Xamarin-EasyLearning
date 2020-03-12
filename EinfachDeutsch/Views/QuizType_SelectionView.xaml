@@ -19,6 +19,8 @@
                 <Setter Property="Margin" Value="20,50" />
                 <Setter Property="FontAttributes" Value="Bold" />
                 <Setter Property="TextColor" Value="{DynamicResource DynamicTitleColor}"/>
+                <Setter Property="XAlign" Value="Center" />
+                <Setter Property="YAlign" Value="Center" />
             </Style>
             <Style x:Key="AnswerBaseStyle" TargetType="Label">
                 <Setter Property="TextColor" Value="White" />
@@ -36,14 +38,15 @@
     <ContentView.Content>
         <Grid>
             <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
                 <RowDefinition Height="*"/>
-                <RowDefinition Height="2*"/>
+                <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
             
             <custom:ScoreView Grid.Row="0"/>
             
-            <StackLayout Grid.Row="1" Orientation="Vertical">
+            <StackLayout Grid.Row="1" Orientation="Vertical" Margin="10,0">
                 <Label Text="{Binding CurrentQuestion.Question}" Style="{StaticResource QuestionStyle}" PropertyChanging="Label_PropertyChanging"/>
 
                 <CollectionView x:Name="EntireCollection" ItemsSource="{Binding CurrentQuestion.Choices, Converter={StaticResource StringToListConverter}}"
@@ -59,7 +62,7 @@
                 </CollectionView>
             </StackLayout>
             
-            <custom:AnswerResultView Grid.Row="2" x:Name="AnswerResultContainer" />
+            <custom:AnswerResultView Grid.Row="3" x:Name="AnswerResultContainer" />
         </Grid>
     </ContentView.Content>
     

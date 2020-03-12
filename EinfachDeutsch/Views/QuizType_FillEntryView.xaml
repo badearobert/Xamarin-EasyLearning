@@ -7,17 +7,6 @@
              mc:Ignorable="d"
              x:Class="EinfachDeutsch.Views.QuizType_FillEntryView"
              >
-    <ContentView.Resources>
-        <DataTemplate x:Key="DataTemplate">
-            <templates:FullContentDataTemplate/>
-        </DataTemplate>
-    </ContentView.Resources>
-
-    <ContentView.Content>
-        <CollectionView ItemsSource="{Binding ContentItems}"
-                        ItemTemplate="{StaticResource DataTemplate}"
-                        BackgroundColor="#303030"
-                        />
-
-    </ContentView.Content>
+    <Label HorizontalOptions="Center" VerticalOptions="Center" 
+       Text="TBD"/>
 </ContentView>

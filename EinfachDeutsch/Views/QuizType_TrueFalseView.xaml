@@ -24,7 +24,7 @@
             </Style>
             <Style x:Key="QuestionStyle" TargetType="Label" BasedOn="{StaticResource BaseStyle}">
                 <Setter Property="TextColor" Value="White" />
-                <Setter Property="Margin" Value="10,50,10,100" />
+                <Setter Property="Margin" Value="10,0" />
                 <Setter Property="LineBreakMode" Value="WordWrap" />
             </Style>
             <Style x:Key="AnswerStyle" TargetType="Label" BasedOn="{StaticResource BaseStyle}">
@@ -36,15 +36,15 @@
     <ContentView.Content>
         <Grid>
             <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
 
-            <custom:ScoreView Grid.Row="0"/>
 
-            <StackLayout Grid.Row="1" Orientation="Vertical">
-
+            <custom:ScoreView Grid.Row="0" Margin="10,0" VerticalOptions="Start"/>
+            <StackLayout Grid.Row="1" Orientation="Vertical" Margin="10,0" VerticalOptions="End">
                 <Label x:Name="CurrentQuestion" 
                    PropertyChanging="CurrentQuestion_PropertyChanging"
                    Style="{StaticResource QuestionStyle}">
@@ -60,9 +60,9 @@
                         </FormattedString>
                     </Label.FormattedText>
                 </Label>
-
+            </StackLayout>
+            <StackLayout Grid.Row="2" Orientation="Vertical" Margin="10,0" VerticalOptions="End">
                 <StackLayout Orientation="Horizontal">
-
                     <pancake:PancakeView x:Name="TrueButtonContainer"
                                      HorizontalOptions="CenterAndExpand"
                                      WidthRequest="100" HeightRequest="40"
@@ -85,7 +85,7 @@
                 </StackLayout>
             </StackLayout>
 
-            <custom:AnswerResultView x:Name="AnswerResultContainer" Grid.Row="2"/>
+            <custom:AnswerResultView x:Name="AnswerResultContainer" Grid.Row="3" VerticalOptions="End"/>
         </Grid>
 
 

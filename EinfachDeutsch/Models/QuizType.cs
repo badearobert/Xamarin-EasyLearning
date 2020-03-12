@@ -1,4 +1,6 @@
-﻿namespace EinfachDeutsch.Models
+﻿using Xamarin.Forms;
+
+namespace EinfachDeutsch.Models
 {
     public class QuizType
     {

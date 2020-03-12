@@ -113,14 +113,14 @@ namespace EinfachDeutsch.Services
 
                 App.database.Add(new SelectionQuiz()
                 {
-                    Question = "What is the article for the noun " + entry.Word,
+                    Question = "What is the article for the noun " + entry.Word + " ?",
                     CorrectResult = entry.Article,
                     Choices = "der,die,das",
                     EntryReferenceId = entry.Id
                 });
                 App.database.Add(new SelectionQuiz()
                 {
-                    Question = "What is the article for the noun " + entry.Word,
+                    Question = "What is the article for the noun " + entry.Word + " ?",
                     CorrectResult = entry.Article,
                     Choices = "der,die,das",
                     EntryReferenceId = entry.Id
@@ -128,7 +128,7 @@ namespace EinfachDeutsch.Services
 
                 App.database.Add(new TranslateWordsQuiz()
                 {
-                    Question = "How do you translate this noun? \r\n" + entry.Word,
+                    Question = "How do you translate this noun?\r\n" + entry.Word,
                     CorrectResult = entry.Translation,
                     EntryReferenceId = entry.Id
                 });
