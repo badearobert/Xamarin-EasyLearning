@@ -18,6 +18,10 @@ namespace EinfachDeutsch
         public QuizPage(QuizType quiz)
         {
             InitializeComponent();
+            foreach (View content in QuizContent.Children)
+            {
+                ((content as ContentView)?.BindingContext as BaseQuiz)?.OnPause();
+            }
             QuizContent.Children.Clear();
 
             View view;

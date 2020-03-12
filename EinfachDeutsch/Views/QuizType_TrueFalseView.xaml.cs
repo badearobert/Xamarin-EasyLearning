@@ -11,8 +11,8 @@ namespace EinfachDeutsch
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class QuizType_TrueFalseView : ContentView
     {
+        private bool isViewUpToDate = false;
         TrueFalseQuiz_ViewModel viewModel = new TrueFalseQuiz_ViewModel();
-
         public QuizType_TrueFalseView()
         {
             InitializeComponent();
@@ -32,7 +32,8 @@ namespace EinfachDeutsch
         private async void OnTapPressed(object sender)
         {
             if (viewModel.IsPaused) return;
-
+            if (isViewUpToDate) return;
+            isViewUpToDate = true;
             bool is_correct =
                 (sender == TrueButtonContainer && viewModel.CurrentQuestion.Answer) ||
                 (sender == FalseButtonContainer && !viewModel.CurrentQuestion.Answer);
@@ -65,7 +66,7 @@ namespace EinfachDeutsch
             if (viewModel.IsPaused) return;
             if (e.PropertyName != "FormattedText")
                 return;
-
+            isViewUpToDate = false;
             _ = AnimateIn();
             AnswerResultContainer.StartAnimations();
         }

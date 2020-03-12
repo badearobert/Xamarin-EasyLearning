@@ -13,6 +13,7 @@ namespace EinfachDeutsch.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class QuizType_TranslateWordsView : ContentView
     {
+        private bool isViewUpToDate = false;
         private TranslateWordsQuiz_ViewModel viewModel = new TranslateWordsQuiz_ViewModel();
         public QuizType_TranslateWordsView()
         {
@@ -24,6 +25,8 @@ namespace EinfachDeutsch.Views
         private async void Button_Clicked(object sender, EventArgs e)
         {
             if (viewModel.IsPaused) return;
+            if (isViewUpToDate) return;
+            isViewUpToDate = true;
             bool is_correct = true;
             await AnswerResultContainer.AnimateAnswerImage(is_correct);
             viewModel.OnSubmitPressed(UserInputField);
@@ -35,7 +38,7 @@ namespace EinfachDeutsch.Views
             if (viewModel.IsPaused) return;
             if (e.PropertyName != "Text")
                 return;
-
+            isViewUpToDate = false;
             AnswerResultContainer.StartAnimations();
         }
         private void OnTimerExpired()
