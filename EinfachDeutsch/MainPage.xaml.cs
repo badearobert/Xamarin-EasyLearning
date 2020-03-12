@@ -32,8 +32,11 @@ namespace EinfachDeutsch
 
         private void QuizChanged(object sender, SelectionChangedEventArgs e)
         {
+            if (e.CurrentSelection.Count == 0) return;
+
             SetPageAnimation(BackgroundAnimation.SlideFromRight, 300);
             Navigation.PushAsync(new QuizPage(e.CurrentSelection[0] as QuizType));
+            ((CollectionView)sender).SelectedItem = null;
         }
     }
 }

@@ -48,7 +48,7 @@
 
             <custom:ScoreView Grid.Row="0"/>
 
-            <StackLayout Grid.Row="1" Orientation="Vertical" Margin="20,0">
+            <StackLayout Grid.Row="1" Orientation="Vertical">
                 <Label Text="{Binding CurrentQuestion.Question}" Style="{StaticResource QuestionStyle}" PropertyChanging="Label_PropertyChanging"/>
 
                 <Entry x:Name="UserInputField" Placeholder="What is the answer?" Style="{StaticResource AnswerBaseStyle}"/>

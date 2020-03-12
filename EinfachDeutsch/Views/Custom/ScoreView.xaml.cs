@@ -21,7 +21,7 @@ namespace EinfachDeutsch.Views.Custom
             if (e.PropertyName != "FormattedText")
                 return;
 
-            AnimateScoreInOut();
+             AnimateScoreInOut();
         }
         private async Task AnimateScoreInOut()
         {

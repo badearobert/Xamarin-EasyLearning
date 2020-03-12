@@ -92,17 +92,6 @@ namespace EinfachDeutsch.ViewModels
             }
         }
 
-        private int _score = 0;
-        public int Score
-        {
-            get { return _score; }
-            set
-            {
-                _score = value;
-                OnPropertyChanged();
-            }
-        }
-
         private ObservableCollection<T> _quizData;
 
         public ObservableCollection<T> QuizData
@@ -119,8 +108,6 @@ namespace EinfachDeutsch.ViewModels
         {
             QuizData = new ObservableCollection<T>(QuizService.Instance.LoadData<T>());
             TotalQuestionsCount = QuizData.Count;
-            IsPaused = false;
-            LoadNextQuiz();
         }
 
         public override void LoadNextQuiz()
@@ -139,10 +126,6 @@ namespace EinfachDeutsch.ViewModels
             _ = AnimateButton(view);
         }
 
-        private void IncreaseScore()
-        {
-            Score++;
-        }
         private async Task AnimateButton(View view)
         {
             if (view == null) return;

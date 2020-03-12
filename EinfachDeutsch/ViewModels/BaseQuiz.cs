@@ -22,13 +22,33 @@ namespace EinfachDeutsch.ViewModels
         {
 
         }
-        public virtual void OnResume()
+        public void OnResume()
         {
             IsPaused = false;
+            LoadNextQuiz();
         }
-        public virtual void OnPause()
+        public void OnPause()
         {
             IsPaused = true;
+        }
+
+        protected static int _score = 0;
+        public int Score
+        {
+            get { return _score; }
+            set
+            {
+                _score = value;
+                OnPropertyChanged();
+            }
+        }
+        public void IncreaseScore()
+        {
+            Score++;
+        }
+        public void ResetScore()
+        {
+            Score = 0;
         }
     }
 }

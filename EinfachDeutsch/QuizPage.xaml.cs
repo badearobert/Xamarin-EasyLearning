@@ -1,4 +1,5 @@
 ﻿using EinfachDeutsch.Models;
+using EinfachDeutsch.ViewModels;
 using EinfachDeutsch.Views;
 using System;
 using System.Collections.Generic;
@@ -18,6 +19,7 @@ namespace EinfachDeutsch
         {
             InitializeComponent();
             QuizContent.Children.Clear();
+
             View view;
             switch (quiz.Id)
             {
@@ -28,7 +30,11 @@ namespace EinfachDeutsch
                 case 5: view = new QuizType_AllEntries(); break;
                 default: view = new Label { Text = "Error not found" }; break;
             }
-
+            if (quiz.Id >=1 && quiz.Id < 5)
+            {
+                ((view as ContentView).BindingContext as BaseQuiz)?.ResetScore();
+                ((view as ContentView).BindingContext as BaseQuiz)?.OnResume();
+            }
             QuizContent.Children.Add(view);
         }
     }
