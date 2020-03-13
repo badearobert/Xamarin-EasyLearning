@@ -20,6 +20,7 @@ namespace EinfachDeutsch
         public MainPage()
         {
             InitializeComponent();
+
             BindingContext = new Content_QuizTypesViewModel();
             ThemeHelper.ChangeTheme("dark");
         }

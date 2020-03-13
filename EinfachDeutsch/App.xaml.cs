@@ -14,6 +14,7 @@ namespace EinfachDeutsch
     public partial class App : Application
     {
         public static DatabaseService database { get; private set; }
+        public static Configuration Configuration { get; private set; }
         public static int ScreenHeight { get; set; }
         public static int ScreenWidth { get; set; }
         public App(string fullPath_db)
@@ -21,6 +22,7 @@ namespace EinfachDeutsch
             InitializeComponent();
             MainPage = new SharedTransitionNavigationPage(new SplashScreenPage());
 
+            Configuration = new Configuration();
             database = new DatabaseService(fullPath_db);
             LoadDatabaseAsync();
         }

@@ -26,9 +26,11 @@ namespace EinfachDeutsch.Services
         {
             using (WebClient wc = new WebClient())
             {
-                var json = wc.DownloadString("https://badearobert.ro/Germana/German_stuff.json");
+                var json = wc.DownloadString(App.Configuration.Webpage);
                 Instance.rootObject = JsonConvert.DeserializeObject<RootObject>(json);
-                if (Instance.rootObject.version == "1.01") return;
+                if (Instance.rootObject.version == App.Configuration.DataVersion) return;
+                App.Configuration.SetVersion(Instance.rootObject.version);
+
                 if (Instance.rootObject.content.Count == 0) return;
 
                 App.database.DeleteAll();
