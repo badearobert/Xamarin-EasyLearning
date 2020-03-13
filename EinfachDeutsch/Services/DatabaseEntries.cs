@@ -28,7 +28,7 @@ namespace EinfachDeutsch.Services
             {
                 var json = wc.DownloadString("https://badearobert.ro/Germana/German_stuff.json");
                 Instance.rootObject = JsonConvert.DeserializeObject<RootObject>(json);
-                if (Instance.rootObject.version == "1.00") return;
+                if (Instance.rootObject.version == "1.01") return;
                 if (Instance.rootObject.content.Count == 0) return;
 
                 App.database.DeleteAll();
@@ -67,14 +67,14 @@ namespace EinfachDeutsch.Services
 
                 App.database.Add(new SelectionQuiz()
                 {
-                    Question = "What is the case for the verb " + entry.Word,
+                    Question = "What is the case for this verb ?\r\n" + entry.Word,
                     CorrectResult = entry.Case,
                     Choices = "N,G,D,A",
                     EntryReferenceId = entry.Id
                 });
                 App.database.Add(new SelectionQuiz()
                 {
-                    Question = "What is the preposition for the verb " + entry.Word,
+                    Question = "What is the preposition for this verb ?\r\n" + entry.Word,
                     CorrectResult = entry.Preposition,
                     Choices = prepositions_choices,
                     EntryReferenceId = entry.Id
@@ -89,7 +89,7 @@ namespace EinfachDeutsch.Services
 
                 App.database.Add(new TranslateWordsQuiz()
                 {
-                    Question = "What is the preposition for the verb " + entry.Word,
+                    Question = "What is the preposition for this verb ?\r\n" + entry.Word,
                     CorrectResult = entry.Preposition,
                     EntryReferenceId = entry.Id
                 });
@@ -106,21 +106,21 @@ namespace EinfachDeutsch.Services
                 string random_article = Convert.ToString(articles[(new Random()).Next(3)]);
                 App.database.Add(new TrueFalseQuiz()
                 {
-                    Question = "The article for " + entry.Word + " is " + random_article,
+                    Question = "The article for " + entry.Word + " is...? \r\n" + random_article,
                     Answer = (random_article == entry.Article),
                     EntryReferenceId = entry.Id
                 });
 
                 App.database.Add(new SelectionQuiz()
                 {
-                    Question = "What is the article for the noun " + entry.Word + " ?",
+                    Question = "What is the article for this noun?\r\n" + entry.Word,
                     CorrectResult = entry.Article,
                     Choices = "der,die,das",
                     EntryReferenceId = entry.Id
                 });
                 App.database.Add(new SelectionQuiz()
                 {
-                    Question = "What is the article for the noun " + entry.Word + " ?",
+                    Question = "What is the article for this noun?\r\n" + entry.Word,
                     CorrectResult = entry.Article,
                     Choices = "der,die,das",
                     EntryReferenceId = entry.Id

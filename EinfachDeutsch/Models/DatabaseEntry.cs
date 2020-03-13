@@ -22,6 +22,7 @@ namespace EinfachDeutsch.Models
         public string Case { get; set; } = "";
         public string Translation { get; set; } = "";
         public string Article { get; set; } = "";
+        public string Type { get; set; } = "";
     }
 
     public class Content
