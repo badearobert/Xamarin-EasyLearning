@@ -24,11 +24,11 @@ namespace EinfachDeutsch.Views
 
         private async void EntireCollection_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (viewModel.IsPaused) return;
-            if (isViewUpToDate) return;
+            if (viewModel.IsPaused || isViewUpToDate) return;
             isViewUpToDate = true;
-
-            bool is_correct = false;
+            var result = "";
+            if (sender != null) result = (sender as CollectionView)?.SelectedItem.ToString();
+            bool is_correct = result.Equals(viewModel.CurrentQuestion.CorrectResult);
             await AnswerResultContainer.AnimateAnswerImage(is_correct);
             viewModel.OnSelectionChanged();
             viewModel.QuizQuestionFinished?.Execute(null);

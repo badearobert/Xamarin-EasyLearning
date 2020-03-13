@@ -27,7 +27,9 @@ namespace EinfachDeutsch.Views
             if (viewModel.IsPaused) return;
             if (isViewUpToDate) return;
             isViewUpToDate = true;
-            bool is_correct = true;
+
+            bool is_correct = (UserInputField.Text == viewModel.CurrentQuestion.CorrectResult);
+
             await AnswerResultContainer.AnimateAnswerImage(is_correct);
             viewModel.OnSubmitPressed(UserInputField);
             viewModel.QuizQuestionFinished?.Execute(null);

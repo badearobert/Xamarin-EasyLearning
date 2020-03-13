@@ -21,8 +21,7 @@
                 HeightRequest="20"
                 HorizontalOptions="Start"
                 VerticalOptions="Center"
-                Margin="20,0,20,0"
-                WidthRequest="200"
+                WidthRequest="0"
             >
             <Grid>
                 <Grid.ColumnDefinitions>
