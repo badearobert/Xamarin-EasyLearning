@@ -7,10 +7,8 @@
              xmlns:einfachdeutsch1="clr-namespace:EinfachDeutsch.Views"
              mc:Ignorable="d"
              x:Class="EinfachDeutsch.Views.QuizType_AllEntries">
-  <ContentView.Content>
-        <StackLayout>
-            <Grid x:Name="QuizContent"/>
-        </StackLayout>
-      
+    <ContentView.Content>
+        <Grid x:Name="QuizContent"/>
+
   </ContentView.Content>
 </ContentView>
