@@ -1,4 +1,5 @@
-﻿using EinfachDeutsch.ViewModels;
+﻿using EinfachDeutsch.Common;
+using EinfachDeutsch.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -28,7 +29,8 @@ namespace EinfachDeutsch.Views
             isViewUpToDate = true;
             var result = "";
             if (sender != null) result = (sender as CollectionView)?.SelectedItem.ToString();
-            bool is_correct = result.Equals(viewModel.CurrentQuestion.CorrectResult);
+            bool is_correct = Helper.ValidateAnswer(viewModel.CurrentQuestion.CorrectResult, result);
+
             await AnswerResultContainer.AnimateAnswerImage(is_correct);
             viewModel.OnSelectionChanged();
             viewModel.QuizQuestionFinished?.Execute(null);

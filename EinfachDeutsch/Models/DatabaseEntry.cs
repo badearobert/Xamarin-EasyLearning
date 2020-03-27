@@ -5,6 +5,20 @@ using System.Text;
 
 namespace EinfachDeutsch.Models
 {
+    public class RootObject
+    {
+        public string name { get; set; }
+        public string author { get; set; }
+        public string version { get; set; }
+        public string upload_date { get; set; }
+        public List<Content> content { get; set; }
+    }
+    public class Content
+    {
+        public string name { get; set; }
+        public List<DatabaseEntry> entries { get; set; }
+    }
+
     [Table("DatabaseEntry")]
     public class DatabaseEntry
     {
@@ -23,20 +37,10 @@ namespace EinfachDeutsch.Models
         public string Translation { get; set; } = "";
         public string Article { get; set; } = "";
         public string Type { get; set; } = "";
+        public string Difficulty { get; set; } = "";
+        public string Index { get; set; } = "";
+        public string References { get; set; } = "";
     }
 
-    public class Content
-    {
-        public string name { get; set; }
-        public List<DatabaseEntry> entries { get; set; }
-    }
 
-    public class RootObject
-    {
-        public string name { get; set; }
-        public string author { get; set; }
-        public string version { get; set; }
-        public string upload_date { get; set; }
-        public List<Content> content { get; set; }
-    }
 }

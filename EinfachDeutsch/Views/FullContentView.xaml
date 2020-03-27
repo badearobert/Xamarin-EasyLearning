@@ -38,9 +38,7 @@
                     </Picker.Items>
                 </Picker>
             </StackLayout>
-                
 
-            
             <CollectionView x:Name="ColViewItems" 
                             ItemsSource="{Binding ContentItems}"
                             ItemTemplate="{StaticResource AllWordsDataTemplate}"

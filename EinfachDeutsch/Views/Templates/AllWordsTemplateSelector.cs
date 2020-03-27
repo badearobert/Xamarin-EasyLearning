@@ -8,6 +8,7 @@ namespace EinfachDeutsch.Views.Templates
 {
     public class AllWordsTemplateSelector : DataTemplateSelector
     {
+        // not used for now, may be removed or used as reference later on
         public DataTemplate VerbsTemplate { get; set; }
         public DataTemplate NounsTemplate { get; set; }
         public DataTemplate AdverbsTemplate { get; set; }

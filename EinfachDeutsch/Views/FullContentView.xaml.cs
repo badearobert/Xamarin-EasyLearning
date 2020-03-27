@@ -27,18 +27,24 @@ namespace EinfachDeutsch.Views
 
         ObservableCollection<DatabaseEntry> getCollection(string selection, string sortBy)
         {
-            var allItems = (BindingContext as FullContentViewModel).RawData;
             ObservableCollection<DatabaseEntry> newSelection = null;
 
-            if (selection == "All") { newSelection = new ObservableCollection<DatabaseEntry>(allItems); }
-            if (selection == "Verbs") { newSelection = new ObservableCollection<DatabaseEntry>(allItems.Where(item => item.Type == "Verb")); }
-            if (selection == "Nouns") { newSelection = new ObservableCollection<DatabaseEntry>(allItems.Where(item => item.Type == "Noun")); }
-            if (selection == "Adverbs") { newSelection = new ObservableCollection<DatabaseEntry>(allItems.Where(item => item.Type == "Adverb")); }
+            var allItems = (BindingContext as FullContentViewModel).RawData;
 
-            if (sortBy == "Alphabetically")
-                newSelection = new ObservableCollection<DatabaseEntry>(newSelection.OrderBy(item => item.Word));
-            else
-                newSelection = new ObservableCollection<DatabaseEntry>(newSelection.OrderBy(item => item.Translation));
+            switch (selection)
+            {
+                case "All": { newSelection = new ObservableCollection<DatabaseEntry>(allItems); break; }
+                case "Verbs": { newSelection = new ObservableCollection<DatabaseEntry>(allItems.Where(item => item.Type == "Verb")); break; }
+                case "Nouns": { newSelection = new ObservableCollection<DatabaseEntry>(allItems.Where(item => item.Type == "Noun")); break; }
+                case "Adverbs": { newSelection = new ObservableCollection<DatabaseEntry>(allItems.Where(item => item.Type == "Adverb")); break; }
+                default: { throw new Exception("Missing selection"); }
+            }
+
+            Func<DatabaseEntry, string> byAlphabet = item => item.Word;
+            Func<DatabaseEntry, string> byDifficulty = item => item.Difficulty;
+
+            newSelection = new ObservableCollection<DatabaseEntry>(newSelection.OrderBy((sortBy == "Alphabetically") ? byAlphabet : byDifficulty));
+
 
             return newSelection;
         }
