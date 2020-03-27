@@ -10,19 +10,23 @@
         <ResourceDictionary>
 
             <Style x:Key="LeftSideStyle" TargetType="Label">
-                <Setter Property="TextColor" Value="White" />
+                <Setter Property="TextColor" Value="#FFA500" />
+                <Setter Property="FontSize" Value="12" />
                 <Setter Property="HorizontalOptions" Value="Start" />
                 <Setter Property="HorizontalTextAlignment" Value="Start" />
                 <Setter Property="VerticalOptions" Value="Center" />
                 <Setter Property="VerticalTextAlignment" Value="Center" />
+                <Setter Property="LineBreakMode" Value="WordWrap" />
             </Style>
 
             <Style x:Key="RightSideStyle" TargetType="Label">
                 <Setter Property="TextColor" Value="Gray" />
+                <Setter Property="FontSize" Value="12" />
                 <Setter Property="HorizontalOptions" Value="End" />
                 <Setter Property="HorizontalTextAlignment" Value="End" />
                 <Setter Property="VerticalOptions" Value="Center" />
                 <Setter Property="VerticalTextAlignment" Value="Center" />
+                <Setter Property="LineBreakMode" Value="WordWrap" />
             </Style>
 
         </ResourceDictionary>
@@ -30,7 +34,7 @@
     <ContentView.Content>
         <StackLayout Orientation="Vertical">
 
-            <Grid  Margin="12, 0, 12, 0" RowSpacing="0">
+            <Grid  Margin="6, 0, 6, 0" RowSpacing="0" >
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="0.4*" />
                     <ColumnDefinition Width="0.6*" />

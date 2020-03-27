@@ -7,16 +7,45 @@
              mc:Ignorable="d"
              x:Class="EinfachDeutsch.Views.FullContentView">
     <ContentView.Resources>
-        <DataTemplate x:Key="DataTemplate">
+
+        <DataTemplate x:Key="AllWordsDataTemplate">
             <templates:FullContentDataTemplate/>
         </DataTemplate>
     </ContentView.Resources>
 
     <ContentView.Content>
-        <CollectionView ItemsSource="{Binding ContentItems}"
-                        ItemTemplate="{StaticResource DataTemplate}"
-                        BackgroundColor="#303030"
-                        />
+
+        <StackLayout Margin="10">
+            <StackLayout Orientation="Horizontal">
+                <Picker x:Name="PickerItem"
+                        Title="Select an item" 
+                        TitleColor="Red" 
+                        TextColor="Red"
+                        VerticalOptions="Center" HorizontalOptions="StartAndExpand"
+                        ItemsSource="{Binding PickerItemsSource}"
+                        SelectedIndexChanged="Picker_SelectedIndexChanged">
+                </Picker>
+
+                <Picker x:Name="PickerSorted"
+                        Title="Sort by..." 
+                        TitleColor="Red" 
+                        TextColor="Red"
+                        VerticalOptions="Center" HorizontalOptions="EndAndExpand"
+                        SelectedIndexChanged="PickerSorted_SelectedIndexChanged">
+                    <Picker.Items>
+                        <x:String>Alphabetically</x:String>
+                        <x:String>Difficulty</x:String>
+                    </Picker.Items>
+                </Picker>
+            </StackLayout>
+                
+
+            
+            <CollectionView x:Name="ColViewItems" 
+                            ItemsSource="{Binding ContentItems}"
+                            ItemTemplate="{StaticResource AllWordsDataTemplate}"
+                            BackgroundColor="#303030"/>
+        </StackLayout>
 
     </ContentView.Content>
 </ContentView>
