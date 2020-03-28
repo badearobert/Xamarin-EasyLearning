@@ -5,7 +5,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:templates="clr-namespace:EinfachDeutsch.Views.Templates"
              mc:Ignorable="d"
-             x:Class="EinfachDeutsch.Views.FullContentView">
+             x:Class="EinfachDeutsch.Views.LearningType_FullContentView">
     <ContentView.Resources>
 
         <DataTemplate x:Key="AllWordsDataTemplate">

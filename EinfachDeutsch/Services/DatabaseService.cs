@@ -14,66 +14,66 @@ namespace EinfachDeutsch.Services
             this.db_path = path;
         }
 
-        public QuizType Read<QuizType>(int index) where QuizType : new()
+        public T Read<T>(int index) where T : new()
         {
-            QuizType data = default(QuizType);
+            T data = default(T);
             using (SQLite.SQLiteConnection conn = new SQLite.SQLiteConnection(db_path))
             {
-                conn.CreateTable<QuizType>();
-                data = conn.Find<QuizType>(index);
+                conn.CreateTable<T>();
+                data = conn.Find<T>(index);
             }
             return data;
         }
 
-        public List<QuizType> Read<QuizType>() where QuizType : new()
+        public List<T> Read<T>() where T : new()
         {
-            List<QuizType> data = new List<QuizType>();
+            List<T> data = new List<T>();
             using (SQLite.SQLiteConnection conn = new SQLite.SQLiteConnection(db_path))
             {
-                conn.CreateTable<QuizType>();
-                data = conn.Table<QuizType>().ToList();
+                conn.CreateTable<T>();
+                data = conn.Table<T>().ToList();
             }
             return data;
         }
         
-        public bool Update<QuizType>(QuizType entry)
+        public bool Update<T>(T entry)
         {
             bool result = false;
             using (SQLite.SQLiteConnection conn = new SQLite.SQLiteConnection(db_path))
             {
-                conn.CreateTable<QuizType>();
+                conn.CreateTable<T>();
                 result = (1 == conn.Update(entry));
             }
             return result;
         }
         
-        public bool Add<QuizType>(QuizType entry)
+        public bool Add<T>(T entry)
         {
             using (SQLite.SQLiteConnection conn = new SQLite.SQLiteConnection(db_path))
             {
-                conn.CreateTable<QuizType>();
+                conn.CreateTable<T>();
                 var numberOfRows = conn.Insert(entry);
                 return (numberOfRows > 0);
             }
         }
-        public bool Delete<QuizType>(QuizType entry)
+        public bool Delete<T>(T entry)
         {
             using (SQLite.SQLiteConnection conn = new SQLite.SQLiteConnection(db_path))
             {
-                conn.CreateTable<QuizType>();
-                var numberOfRows = conn.Delete<QuizType>(entry);
+                conn.CreateTable<T>();
+                var numberOfRows = conn.Delete<T>(entry);
                 return (numberOfRows > 0);
             }
         }
-        public bool Delete<QuizType>(int index) where QuizType : new()
+        public bool Delete<T>(int index) where T : new()
         {
             try
             {
-                var items = Read<QuizType>();
+                var items = Read<T>();
                 using (SQLite.SQLiteConnection conn = new SQLite.SQLiteConnection(db_path))
                 {
-                    conn.CreateTable<QuizType>();
-                    var numberOfRows = conn.Delete<QuizType>(index);
+                    conn.CreateTable<T>();
+                    var numberOfRows = conn.Delete<T>(index);
                     return (numberOfRows > 0);
                 }
             }
@@ -85,7 +85,7 @@ namespace EinfachDeutsch.Services
         
         public void DeleteAll()
         {
-            using (SQLite.SQLiteConnection conn = new SQLite.SQLiteConnection(this.db_path))
+            using (SQLite.SQLiteConnection conn = new SQLite.SQLiteConnection(db_path))
             {
                 conn.DropTable<TrueFalseQuiz>();
                 conn.DropTable<FillEntryQuiz>();

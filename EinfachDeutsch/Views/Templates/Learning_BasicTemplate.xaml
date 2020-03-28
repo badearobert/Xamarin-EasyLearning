@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:pancakeview="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+             mc:Ignorable="d"
+             x:Class="EinfachDeutsch.Views.Templates.Learning_BasicTemplate">
+
+    <ContentView.Resources>
+        <ResourceDictionary>
+
+            <Style x:Key="TitleStyle" TargetType="Label">
+                <Setter Property="VerticalOptions" Value="Center" />
+                <Setter Property="HorizontalOptions" Value="Center" />
+                <Setter Property="FontSize" Value="20" />
+                <Setter Property="FontAttributes" Value="Bold" />
+                <Setter Property="TextColor" Value="Red"/>
+            </Style>
+            <Style x:Key="TranslationStyle" TargetType="Label">
+                <Setter Property="VerticalOptions" Value="Center" />
+                <Setter Property="HorizontalOptions" Value="Center" />
+                <Setter Property="TextColor" Value="Yellow"/>
+            </Style>
+            <Style x:Key="DescriptionStyle" TargetType="Label">
+                <Setter Property="Margin" Value="15,10" />
+                <Setter Property="VerticalOptions" Value="Center" />
+                <Setter Property="HorizontalOptions" Value="Center" />
+                <Setter Property="TextColor" Value="ForestGreen"/>
+            </Style>
+
+
+        </ResourceDictionary>
+    </ContentView.Resources>
+
+    <ContentView.Content>
+
+        <pancakeview:PancakeView CornerRadius="20" Margin="0" Padding="0" BackgroundColor="#28334AFF">
+            <StackLayout Orientation="Vertical">
+                <Label Text="{Binding Sentence}" Style="{StaticResource TitleStyle}"/>
+                <Label Text="{Binding Translation}" Style="{StaticResource TranslationStyle}"/>
+                <Label Text="{Binding Description}" Style="{StaticResource DescriptionStyle}"/>
+            </StackLayout>
+
+        </pancakeview:PancakeView>
+    </ContentView.Content>
+</ContentView>

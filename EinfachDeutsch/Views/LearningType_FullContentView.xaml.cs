@@ -13,11 +13,11 @@ using Xamarin.Forms.Xaml;
 namespace EinfachDeutsch.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class FullContentView : ContentView
+    public partial class LearningType_FullContentView : ContentView
     {
         private int pickerItemIndex = -1;
         private int sortedIndex = -1;
-        public FullContentView()
+        public LearningType_FullContentView()
         {
             InitializeComponent();
             BindingContext = new FullContentViewModel();

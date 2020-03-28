@@ -36,6 +36,9 @@
     <Compile Update="QuizSelectionPage.xaml.cs">
       <DependentUpon>QuizSelectionPage.xaml</DependentUpon>
     </Compile>
+    <Compile Update="Views\LearningType_FullContentView.xaml.cs">
+      <DependentUpon>LearningType_FullContentView.xaml</DependentUpon>
+    </Compile>
     <Compile Update="Views\QuizType_TrueFalseView.xaml.cs">
       <DependentUpon>QuizType_TrueFalseView.xaml</DependentUpon>
     </Compile>
@@ -66,7 +69,19 @@
     <EmbeddedResource Update="Views\Custom\TimerView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\FullContentView.xaml">
+    <EmbeddedResource Update="Views\LearningType_BasicsView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\LearningType_ExpressionsView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\LearningType_FullContentView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\LearningType_IdiomsView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\LearningType_SentencesView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\QuizType_AllEntries.xaml">
@@ -103,6 +118,9 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\Templates\FullContentDataTemplate.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\Templates\Learning_BasicTemplate.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>

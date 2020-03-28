@@ -23,8 +23,11 @@ namespace EinfachDeutsch.Services
         {
             return new List<LearningType>
             {
-                new LearningType() { Id = 1, BackgroundColor = "#7BED8D", Name = "All content", Description = "TBD" },
-                new LearningType() { Id = 2, BackgroundColor = "#20A39E", Name = "TBD", Description = "TBD" },
+                new LearningType() { Id = 1, BackgroundColor = "#7BED8D", Name = "Basics", Description = "TBD" },
+                new LearningType() { Id = 2, BackgroundColor = "#20A39E", Name = "Expressions", Description = "TBD" },
+                new LearningType() { Id = 3, BackgroundColor = "#FFBA49", Name = "Sentences", Description = "TBD" },
+                new LearningType() { Id = 4, BackgroundColor = "#B780FF", Name = "Idioms", Description = "TBD" },
+                new LearningType() { Id = 5, BackgroundColor = "#00FF00", Name = "Full Content", Description = "TBD" },
             };
         }
 
@@ -32,7 +35,11 @@ namespace EinfachDeutsch.Services
         {
             switch (idx)
             {
-                case 1:return new FullContentView();
+                case 1:return new LearningType_BasicsView();
+                case 2:return new LearningType_ExpressionsView();
+                case 3:return new LearningType_SentencesView();
+                case 4:return new LearningType_IdiomsView();
+                case 5:return new LearningType_FullContentView();
                 default: return new Label() { Text = "TBD" };
             }
         }
