@@ -5,11 +5,10 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:templates="clr-namespace:EinfachDeutsch.Views.Templates"
              mc:Ignorable="d"
-             x:Class="EinfachDeutsch.MainPage"
+             x:Class="EinfachDeutsch.QuizSelectionPage"
              BackgroundColor="{DynamicResource DynamicBackgroundColor}"
              NavigationPage.HasNavigationBar="False"
-             NavigationPage.HasBackButton="False"
-             >
+             NavigationPage.HasBackButton="False">
     <ContentPage.Resources>
         <DataTemplate x:Key="QuizTypesTemplate">
             <templates:Content_QuizTypesTemplate/>

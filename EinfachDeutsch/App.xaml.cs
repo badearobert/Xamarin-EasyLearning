@@ -30,7 +30,7 @@ namespace EinfachDeutsch
         private async void LoadDatabaseAsync()
         {
             await Task.Run(() => DatabaseEntries.Instance.ResetDatabaseEntries());
-            MainPage = new SharedTransitionNavigationPage(new MainPage());
+            MainPage = new SharedTransitionNavigationPage(new MainSelectionPage());
         }
     }
 }

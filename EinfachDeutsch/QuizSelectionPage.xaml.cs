@@ -1,13 +1,7 @@
 ﻿using EinfachDeutsch.Models;
-using EinfachDeutsch.Themes;
 using EinfachDeutsch.ViewModels;
 using Plugin.SharedTransitions;
-using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Xamarin.Forms;
 
 namespace EinfachDeutsch
@@ -15,14 +9,15 @@ namespace EinfachDeutsch
     // Learn more about making custom code visible in the Xamarin.Forms previewer
     // by visiting https://aka.ms/xamarinforms-previewer
     [DesignTimeVisible(false)]
-    public partial class MainPage : ContentPage
+    public partial class QuizSelectionPage : ContentPage
     {
-        public MainPage()
+        public QuizSelectionPage()
         {
+            NavigationPage.SetHasNavigationBar(this, false);
+            NavigationPage.SetHasBackButton(this, false);
             InitializeComponent();
 
             BindingContext = new Content_QuizTypesViewModel();
-            ThemeHelper.ChangeTheme("dark");
         }
 
         private void SetPageAnimation(BackgroundAnimation animation, long time)

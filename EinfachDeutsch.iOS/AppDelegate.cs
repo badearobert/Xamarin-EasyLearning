@@ -26,7 +26,7 @@ namespace EinfachDeutsch.iOS
             global::Xamarin.Forms.Forms.Init();
 
             // load database
-            string fileName = "database.db3";
+            string fileName = "EinfachDeutsch.db3";
             string fileLocation = Path.Combine(System.Environment.GetFolderPath(System.Environment.SpecialFolder.Personal), "..", "Library");
             string fullPath_db = Path.Combine(fileLocation, fileName);
 

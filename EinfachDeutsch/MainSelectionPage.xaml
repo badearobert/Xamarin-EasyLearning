@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:pancakeview="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+             mc:Ignorable="d"
+             x:Class="EinfachDeutsch.MainSelectionPage"             
+             BackgroundColor="{DynamicResource DynamicBackgroundColor}"
+             NavigationPage.HasNavigationBar="False"
+             NavigationPage.HasBackButton="False">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+
+            <Style x:Key="TitleStyle" TargetType="Label">
+                <Setter Property="VerticalOptions" Value="Center" />
+                <Setter Property="HorizontalOptions" Value="Center" />
+                <Setter Property="FontSize" Value="20" />
+                <Setter Property="FontAttributes" Value="Bold" />
+                <Setter Property="TextColor" Value="Black"/>
+            </Style>
+            <Style x:Key="DescriptionStyle" TargetType="Label">
+                <Setter Property="Margin" Value="10" />
+                <Setter Property="VerticalOptions" Value="Center" />
+                <Setter Property="HorizontalOptions" Value="Center" />
+            </Style>
+
+
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <ContentPage.Content>
+        <StackLayout Orientation="Vertical" Margin="30">
+            <pancakeview:PancakeView CornerRadius="10" Margin="10" Padding="0">
+                <StackLayout Orientation="Vertical" BackgroundColor="Cyan">
+                    <Label Text="Quiz" Style="{StaticResource TitleStyle}"/>
+                    <Label Text="Go to quiz and test your knowledge" Style="{StaticResource DescriptionStyle}"/>
+                </StackLayout>
+                <pancakeview:PancakeView.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="OnQuizButtonPressed"/>
+                </pancakeview:PancakeView.GestureRecognizers>
+            </pancakeview:PancakeView>
+            <pancakeview:PancakeView CornerRadius="10" Margin="10" Padding="0">
+                <StackLayout Orientation="Vertical" BackgroundColor="Green">
+                    <Label Text="Learning" Style="{StaticResource TitleStyle}"/>
+                    <Label Text="Go learn some more" Style="{StaticResource DescriptionStyle}"/>
+                </StackLayout>
+                <pancakeview:PancakeView.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="OnLearningButtonPressed"/>
+                </pancakeview:PancakeView.GestureRecognizers>
+            </pancakeview:PancakeView>
+        </StackLayout>
+    </ContentPage.Content>
+
+</ContentPage>

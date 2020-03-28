@@ -16,11 +16,11 @@
 
   <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
-    <PackageReference Include="SkiaSharp" Version="1.68.2-preview.29" />
-    <PackageReference Include="SkiaSharp.Views.Forms" Version="1.68.2-preview.29" />
+    <PackageReference Include="SkiaSharp" Version="1.68.2-preview.45" />
+    <PackageReference Include="SkiaSharp.Views.Forms" Version="1.68.2-preview.45" />
     <PackageReference Include="sqlite-net-pcl" Version="1.6.292" />
-    <PackageReference Include="Xamarin.Forms" Version="4.5.0.187-pre2" />
-    <PackageReference Include="Xamarin.Essentials" Version="1.3.1" />
+    <PackageReference Include="Xamarin.Forms" Version="4.6.0.494-pre2" />
+    <PackageReference Include="Xamarin.Essentials" Version="1.5.1" />
     <PackageReference Include="Xamarin.Forms.PancakeView" Version="1.3.7" />
     <PackageReference Include="Xamarin.Plugin.SharedTransitions" Version="2.0.2" />
   </ItemGroup>
@@ -30,6 +30,12 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Update="LearningSelectionPage.xaml.cs">
+      <DependentUpon>LearningSelectionPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="QuizSelectionPage.xaml.cs">
+      <DependentUpon>QuizSelectionPage.xaml</DependentUpon>
+    </Compile>
     <Compile Update="Views\QuizType_TrueFalseView.xaml.cs">
       <DependentUpon>QuizType_TrueFalseView.xaml</DependentUpon>
     </Compile>
@@ -39,6 +45,12 @@
   </ItemGroup>
 
   <ItemGroup>
+    <EmbeddedResource Update="LearningSelectionPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="MainSelectionPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
     <EmbeddedResource Update="QuizPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>

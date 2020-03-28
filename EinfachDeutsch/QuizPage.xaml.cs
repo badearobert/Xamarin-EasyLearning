@@ -18,6 +18,8 @@ namespace EinfachDeutsch
     {
         public QuizPage(QuizType quiz)
         {
+            NavigationPage.SetHasNavigationBar(this, false);
+            NavigationPage.SetHasBackButton(this, false);
             InitializeComponent();
             foreach (View content in QuizContent.Children)
             {
