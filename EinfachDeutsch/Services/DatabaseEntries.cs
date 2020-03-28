@@ -96,13 +96,13 @@ namespace EinfachDeutsch.Services
             }
         }
     
-        private void HandleVerbs(List<DatabaseEntry> entries)
+        private void HandleVerbs(List<QuizDatabaseEntry> entries)
         {
             string[] cases = { "N", "G", "D", "A" };
             string[] verb_cases = { "D", "A" };
 
             string prepositions_choices = "von,auf,mit,uber,um,fur,bei,nach,gegen,zu";
-            foreach (DatabaseEntry entry in entries)
+            foreach (QuizDatabaseEntry entry in entries)
             {
                 App.database.Add(entry);
 
@@ -144,11 +144,11 @@ namespace EinfachDeutsch.Services
                 });
             }
         }
-        private void HandleNouns(List<DatabaseEntry> entries)
+        private void HandleNouns(List<QuizDatabaseEntry> entries)
         {
             string[] articles = { "der", "die", "das" };
 
-            foreach (DatabaseEntry entry in entries)
+            foreach (QuizDatabaseEntry entry in entries)
             {
                 App.database.Add(entry);
 

@@ -8,15 +8,15 @@ using Xamarin.Forms;
 
 namespace EinfachDeutsch.ViewModels
 {
-    public class SelectionQuiz_ViewModel : BaseQuizViewModel<SelectionQuiz>
+    public class QuizType_SelectionViewModel : BaseQuizViewModel<SelectionQuiz>
     {
-        public SelectionQuiz_ViewModel()
+        public QuizType_SelectionViewModel()
         {
         }
         protected override void UpdateGermanTranslation()
         {
-            GermanWord = App.database.Read<DatabaseEntry>(CurrentQuestion.EntryReferenceId)?.FullEntry;
-            Translation = App.database.Read<DatabaseEntry>(CurrentQuestion.EntryReferenceId)?.Translation;
+            GermanWord = App.database.Read<QuizDatabaseEntry>(CurrentQuestion.EntryReferenceId)?.FullEntry;
+            Translation = App.database.Read<QuizDatabaseEntry>(CurrentQuestion.EntryReferenceId)?.Translation;
         }
 
         private string _selectedItem;

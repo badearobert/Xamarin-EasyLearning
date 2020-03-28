@@ -7,16 +7,16 @@ using Xamarin.Forms;
 
 namespace EinfachDeutsch.ViewModels
 {
-    public class TranslateWordsQuiz_ViewModel : BaseQuizViewModel<TranslateWordsQuiz>
+    public class QuizType_TranslateWordsViewModel : BaseQuizViewModel<TranslateWordsQuiz>
     {
-        public TranslateWordsQuiz_ViewModel()
+        public QuizType_TranslateWordsViewModel()
         {
             SubmitPressed = new Command<View>(OnSubmitPressed);
         }
         protected override void UpdateGermanTranslation()
         {
-            GermanWord = App.database.Read<DatabaseEntry>(CurrentQuestion.EntryReferenceId)?.FullEntry;
-            Translation = App.database.Read<DatabaseEntry>(CurrentQuestion.EntryReferenceId)?.Translation;
+            GermanWord = App.database.Read<QuizDatabaseEntry>(CurrentQuestion.EntryReferenceId)?.FullEntry;
+            Translation = App.database.Read<QuizDatabaseEntry>(CurrentQuestion.EntryReferenceId)?.Translation;
         }
 
         public ICommand SubmitPressed { get; set; }

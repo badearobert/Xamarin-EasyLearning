@@ -15,7 +15,7 @@ namespace EinfachDeutsch.Views
     public partial class QuizType_TranslateWordsView : ContentView
     {
         private bool isViewUpToDate = false;
-        private TranslateWordsQuiz_ViewModel viewModel = new TranslateWordsQuiz_ViewModel();
+        private QuizType_TranslateWordsViewModel viewModel = new QuizType_TranslateWordsViewModel();
         public QuizType_TranslateWordsView()
         {
             InitializeComponent();

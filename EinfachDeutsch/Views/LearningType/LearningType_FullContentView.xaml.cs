@@ -20,30 +20,30 @@ namespace EinfachDeutsch.Views
         public LearningType_FullContentView()
         {
             InitializeComponent();
-            BindingContext = new FullContentViewModel();
+            BindingContext = new LearningType_FullContentViewModel();
             PickerItem.SelectedIndex = 0;
             PickerSorted.SelectedIndex = 0;
         }
 
-        ObservableCollection<DatabaseEntry> getCollection(string selection, string sortBy)
+        ObservableCollection<QuizDatabaseEntry> getCollection(string selection, string sortBy)
         {
-            ObservableCollection<DatabaseEntry> newSelection = null;
+            ObservableCollection<QuizDatabaseEntry> newSelection = null;
 
-            var allItems = (BindingContext as FullContentViewModel).RawData;
+            var allItems = (BindingContext as LearningType_FullContentViewModel).RawData;
 
             switch (selection)
             {
-                case "All": { newSelection = new ObservableCollection<DatabaseEntry>(allItems); break; }
-                case "Verbs": { newSelection = new ObservableCollection<DatabaseEntry>(allItems.Where(item => item.Type == "Verb")); break; }
-                case "Nouns": { newSelection = new ObservableCollection<DatabaseEntry>(allItems.Where(item => item.Type == "Noun")); break; }
-                case "Adverbs": { newSelection = new ObservableCollection<DatabaseEntry>(allItems.Where(item => item.Type == "Adverb")); break; }
+                case "All": { newSelection = new ObservableCollection<QuizDatabaseEntry>(allItems); break; }
+                case "Verbs": { newSelection = new ObservableCollection<QuizDatabaseEntry>(allItems.Where(item => item.Type == "Verb")); break; }
+                case "Nouns": { newSelection = new ObservableCollection<QuizDatabaseEntry>(allItems.Where(item => item.Type == "Noun")); break; }
+                case "Adverbs": { newSelection = new ObservableCollection<QuizDatabaseEntry>(allItems.Where(item => item.Type == "Adverb")); break; }
                 default: { throw new Exception("Missing selection"); }
             }
 
-            Func<DatabaseEntry, string> byAlphabet = item => item.Word;
-            Func<DatabaseEntry, string> byDifficulty = item => item.Difficulty;
+            Func<QuizDatabaseEntry, string> byAlphabet = item => item.Word;
+            Func<QuizDatabaseEntry, string> byDifficulty = item => item.Difficulty;
 
-            newSelection = new ObservableCollection<DatabaseEntry>(newSelection.OrderBy((sortBy == "Alphabetically") ? byAlphabet : byDifficulty));
+            newSelection = new ObservableCollection<QuizDatabaseEntry>(newSelection.OrderBy((sortBy == "Alphabetically") ? byAlphabet : byDifficulty));
 
 
             return newSelection;

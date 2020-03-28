@@ -8,9 +8,9 @@ using Xamarin.Forms;
 
 namespace EinfachDeutsch.ViewModels
 {
-    public class TrueFalseQuiz_ViewModel : BaseQuizViewModel<TrueFalseQuiz>
+    public class QuizType_TrueFalseViewModel : BaseQuizViewModel<TrueFalseQuiz>
     {
-        public TrueFalseQuiz_ViewModel()
+        public QuizType_TrueFalseViewModel()
         {
             TrueButtonPressed = new Command<View>(OnTruePressed);
             FalseButtonPressed = new Command<View>(OnFalsePressed);
@@ -18,8 +18,8 @@ namespace EinfachDeutsch.ViewModels
 
         protected override void UpdateGermanTranslation()
         {
-            GermanWord = App.database.Read<DatabaseEntry>(CurrentQuestion.EntryReferenceId)?.FullEntry;
-            Translation = App.database.Read<DatabaseEntry>(CurrentQuestion.EntryReferenceId)?.Translation;
+            GermanWord = App.database.Read<QuizDatabaseEntry>(CurrentQuestion.EntryReferenceId)?.FullEntry;
+            Translation = App.database.Read<QuizDatabaseEntry>(CurrentQuestion.EntryReferenceId)?.Translation;
         }
 
         public ICommand TrueButtonPressed { get; set; }

@@ -25,9 +25,9 @@ namespace EinfachDeutsch.Views
         public QuizType_AllEntries()
         {
             InitializeComponent();
-            (views[0].BindingContext as TrueFalseQuiz_ViewModel).QuizQuestionFinished = new Command(Update);
-            (views[1].BindingContext as TranslateWordsQuiz_ViewModel).QuizQuestionFinished = new Command(Update);
-            (views[2].BindingContext as SelectionQuiz_ViewModel).QuizQuestionFinished = new Command(Update);
+            (views[0].BindingContext as QuizType_TrueFalseViewModel).QuizQuestionFinished = new Command(Update);
+            (views[1].BindingContext as QuizType_TranslateWordsViewModel).QuizQuestionFinished = new Command(Update);
+            (views[2].BindingContext as QuizType_SelectionViewModel).QuizQuestionFinished = new Command(Update);
 
             Update();
         }

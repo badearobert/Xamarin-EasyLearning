@@ -6,21 +6,21 @@ using Xamarin.Forms;
 
 namespace EinfachDeutsch.ViewModels
 {
-    public class FullContentViewModel : BindableObject
+    public class LearningType_FullContentViewModel : BindableObject
     {
-        public FullContentViewModel()
+        public LearningType_FullContentViewModel()
         {
             LoadData();
         }
         private void LoadData()
         {
-            RawData = App.database.Read<DatabaseEntry>();
+            RawData = App.database.Read<QuizDatabaseEntry>();
 
             //ContentItems = new ObservableCollection<DatabaseEntry>(RawData);
             PickerItemsSource = new ObservableCollection<string>() { "All", "Verbs", "Nouns", "Adverbs" };
         }
-        public List<DatabaseEntry> RawData { get; private set; }
-        private ObservableCollection<DatabaseEntry> _contentItems = null;
+        public List<QuizDatabaseEntry> RawData { get; private set; }
+        private ObservableCollection<QuizDatabaseEntry> _contentItems = null;
         private ObservableCollection<string> _pickerItemsSource = null;
 
         public ObservableCollection<string> PickerItemsSource
@@ -33,7 +33,7 @@ namespace EinfachDeutsch.ViewModels
             }
         }
 
-        public ObservableCollection<DatabaseEntry> ContentItems
+        public ObservableCollection<QuizDatabaseEntry> ContentItems
         {
             get { return _contentItems; }
             set

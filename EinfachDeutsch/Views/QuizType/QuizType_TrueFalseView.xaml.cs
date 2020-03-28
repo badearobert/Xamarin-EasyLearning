@@ -12,7 +12,7 @@ namespace EinfachDeutsch
     public partial class QuizType_TrueFalseView : ContentView
     {
         private bool isViewUpToDate = false;
-        TrueFalseQuiz_ViewModel viewModel = new TrueFalseQuiz_ViewModel();
+        QuizType_TrueFalseViewModel viewModel = new QuizType_TrueFalseViewModel();
         public QuizType_TrueFalseView()
         {
             InitializeComponent();

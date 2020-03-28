@@ -14,7 +14,7 @@ namespace EinfachDeutsch.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class QuizType_SelectionView : ContentView
     {
-        private SelectionQuiz_ViewModel viewModel = new SelectionQuiz_ViewModel();
+        private QuizType_SelectionViewModel viewModel = new QuizType_SelectionViewModel();
         private bool isViewUpToDate = false;
         public QuizType_SelectionView()
         {

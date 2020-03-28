@@ -36,10 +36,10 @@
     <Compile Update="QuizSelectionPage.xaml.cs">
       <DependentUpon>QuizSelectionPage.xaml</DependentUpon>
     </Compile>
-    <Compile Update="Views\LearningType_FullContentView.xaml.cs">
+    <Compile Update="Views\LearningType\LearningType_FullContentView.xaml.cs">
       <DependentUpon>LearningType_FullContentView.xaml</DependentUpon>
     </Compile>
-    <Compile Update="Views\QuizType_TrueFalseView.xaml.cs">
+    <Compile Update="Views\QuizType\QuizType_TrueFalseView.xaml.cs">
       <DependentUpon>QuizType_TrueFalseView.xaml</DependentUpon>
     </Compile>
     <Compile Update="Views\Templates\Content_SelectionQuiz_ResultsTemplate.xaml.cs">
@@ -69,37 +69,37 @@
     <EmbeddedResource Update="Views\Custom\TimerView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\LearningType_BasicsView.xaml">
+    <EmbeddedResource Update="Views\LearningType\LearningType_BasicsView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\LearningType_ExpressionsView.xaml">
+    <EmbeddedResource Update="Views\LearningType\LearningType_ExpressionsView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\LearningType_FullContentView.xaml">
+    <EmbeddedResource Update="Views\LearningType\LearningType_FullContentView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\LearningType_IdiomsView.xaml">
+    <EmbeddedResource Update="Views\LearningType\LearningType_IdiomsView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\LearningType_SentencesView.xaml">
+    <EmbeddedResource Update="Views\LearningType\LearningType_SentencesView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\QuizType_AllEntries.xaml">
+    <EmbeddedResource Update="Views\QuizType\QuizType_AllEntries.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\SplashPageContentView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\QuizType_FillEntryView.xaml">
+    <EmbeddedResource Update="Views\QuizType\QuizType_FillEntryView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\QuizType_SelectionView.xaml">
+    <EmbeddedResource Update="Views\QuizType\QuizType_SelectionView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\QuizType_TranslateWordsView.xaml">
+    <EmbeddedResource Update="Views\QuizType\QuizType_TranslateWordsView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\QuizType_TrueFalseView.xaml">
+    <EmbeddedResource Update="Views\QuizType\QuizType_TrueFalseView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\Templates\Content_FillEntryQuiz_ResultsTemplate.xaml">

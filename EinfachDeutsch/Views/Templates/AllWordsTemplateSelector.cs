@@ -17,7 +17,7 @@ namespace EinfachDeutsch.Views.Templates
         {
             if (item is null) return null;
 
-            if (item is DatabaseEntry entry)
+            if (item is QuizDatabaseEntry entry)
             {
                 if (entry.Type == "Verb") return VerbsTemplate;
                 if (entry.Type == "Nouns") return NounsTemplate;
