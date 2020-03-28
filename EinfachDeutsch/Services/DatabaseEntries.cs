@@ -29,7 +29,7 @@ namespace EinfachDeutsch.Services
             {
                 var json = wc.DownloadString(App.Configuration.Webpage);
                 Instance.rootObject = JsonConvert.DeserializeObject<RootObject>(json);
-                //if (Instance.rootObject.version == App.Configuration.DataVersion) return;
+                if (Instance.rootObject.version == App.Configuration.DataVersion) return;
                 App.Configuration.SetVersion(Instance.rootObject.version);
 
                 if (Instance.rootObject.content.Count == 0) return;

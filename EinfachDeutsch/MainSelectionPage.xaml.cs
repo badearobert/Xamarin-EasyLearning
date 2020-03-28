@@ -27,12 +27,12 @@ namespace EinfachDeutsch
 
         private void OnLearningButtonPressed(object sender, EventArgs e)
         {
-            App.Current.MainPage.Navigation.PushAsync(new SharedTransitionNavigationPage(new LearningSelectionPage()));
+            App.Current.MainPage.Navigation.PushModalAsync(new SharedTransitionNavigationPage(new LearningSelectionPage()));
         }
 
         private void OnQuizButtonPressed(object sender, EventArgs e)
         {
-            App.Current.MainPage.Navigation.PushAsync(new SharedTransitionNavigationPage(new QuizSelectionPage()));
+            App.Current.MainPage.Navigation.PushModalAsync(new SharedTransitionNavigationPage(new QuizSelectionPage()));
         }
     }
 }
