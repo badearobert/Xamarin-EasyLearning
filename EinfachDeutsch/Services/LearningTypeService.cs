@@ -1,4 +1,6 @@
-﻿using System;
+﻿using EinfachDeutsch.Models;
+using EinfachDeutsch.Views;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using Xamarin.Forms;
@@ -17,11 +19,12 @@ namespace EinfachDeutsch.Services
             }
         }
 
-        public List<string> GetLearningTypes()
+        public List<LearningType> GetLearningTypes()
         {
-            return new List<string>
+            return new List<LearningType>
             {
-                "tbd"
+                new LearningType() { Id = 1, BackgroundColor = "#7BED8D", Name = "All content", Description = "TBD" },
+                new LearningType() { Id = 2, BackgroundColor = "#20A39E", Name = "TBD", Description = "TBD" },
             };
         }
 
@@ -29,10 +32,8 @@ namespace EinfachDeutsch.Services
         {
             switch (idx)
             {
-                case 0:return new Label() { Text = "TBD" };
-                case 1: return new QuizType_TrueFalseView();
-
-                default: throw new Exception("CreateFrom() case not handled: " + idx);
+                case 1:return new FullContentView();
+                default: return new Label() { Text = "TBD" };
             }
         }
     }

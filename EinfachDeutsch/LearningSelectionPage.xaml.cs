@@ -1,4 +1,7 @@
-﻿using EinfachDeutsch.Services;
+﻿using EinfachDeutsch.Models;
+using EinfachDeutsch.Services;
+using EinfachDeutsch.ViewModels;
+using Plugin.SharedTransitions;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,13 +21,18 @@ namespace EinfachDeutsch
             NavigationPage.SetHasNavigationBar(this, false);
             NavigationPage.SetHasBackButton(this, false);
             InitializeComponent();
-            LearningContent.Children.Clear();
 
-            View view = LearningTypeService.Instance.CreateFrom(0);
-            if (view != null)
-            {
-                LearningContent.Children.Add(view);
-            }
+            BindingContext = new Content_LearningTypesViewModel();
+        }
+        private void ItemChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (e.CurrentSelection.Count == 0) return;
+
+            SharedTransitionNavigationPage.SetBackgroundAnimation(this, BackgroundAnimation.SlideFromRight);
+            SharedTransitionNavigationPage.SetTransitionDuration(this, 500);
+
+            Navigation.PushAsync(new LearningPage(e.CurrentSelection[0] as LearningType));
+            ((CollectionView)sender).SelectedItem = null;
         }
     }
 }

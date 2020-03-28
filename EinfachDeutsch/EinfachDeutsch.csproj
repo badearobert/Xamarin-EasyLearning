@@ -45,6 +45,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <EmbeddedResource Update="LearningPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
     <EmbeddedResource Update="LearningSelectionPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
@@ -85,6 +88,9 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\Templates\Content_FillEntryQuiz_ResultsTemplate.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\Templates\Content_LearningTypesTemplate.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\Templates\Content_SelectionQuiz_ResultsTemplate.xaml">
