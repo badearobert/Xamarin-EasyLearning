@@ -3,6 +3,7 @@ using Newtonsoft.Json;
 using SQLite;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Net;
 using System.Text;
 
@@ -34,21 +35,67 @@ namespace EinfachDeutsch.Services
                 if (Instance.rootObject.content.Count == 0) return;
 
                 App.database.DeleteAll();
-
-                foreach (Content content in Instance.rootObject.content)
+                HandleQuizEntries(Instance.rootObject.content);
+                HandleBasics(Instance.rootObject.basic_learning_content);
+            }
+        }
+    
+        private void HandleQuizEntries(List<Content> entries)
+        {
+            foreach (Content entry in entries)
+            {
+                switch (entry.name)
                 {
-                    if (content.name == "Verbs_mit_preposition" || content.name == "Verbs")
-                    {
-                        HandleVerbs(content.entries);
-                    }
-                    else if (content.name == "Nouns" || content.name == "Adverbs")
-                    {
-                        HandleNouns(content.entries);
-                    }
+                    case "Verbs_mit_preposition":
+                    case "Verbs":
+                        {
+                            HandleVerbs(entry.entries);
+                            break;
+                        }
+                    case "Nouns":
+                    case "Adverbs":
+                        {
+                            HandleNouns(entry.entries);
+                            break;
+                        }
+                    default:
+                        break;
                 }
             }
         }
 
+        private void HandleBasics(List<BasicContent> entries)
+        {
+
+            foreach (BasicContent entry in entries)
+            {
+                
+                switch (entry.name)
+                {
+                    case "Basics":
+                        entry.entries.ForEach(
+                            item => App.database.Add(new BasicLearningEntry() { Sentence = item.Sentence, Translation = item.Translation }));
+                        break;
+                    case "Expressions":
+                        entry.entries.ForEach(
+                            item => App.database.Add(new ExpressionsLearningEntry() { Sentence = item.Sentence, Translation = item.Translation }));
+                        break;
+                    case "Sentences":
+                        entry.entries.ForEach(
+                            item => App.database.Add(new SentenceLearningEntry() { Sentence = item.Sentence, Translation = item.Translation }));
+                        break;
+                    case "Idioms":
+                        entry.entries.ForEach(
+                            item => App.database.Add(new IdiomLearningEntry() { Sentence = item.Sentence, Translation = item.Translation, Description = item.Description }));
+                        break;
+
+                    default:
+                        break;
+                }
+
+            }
+        }
+    
         private void HandleVerbs(List<DatabaseEntry> entries)
         {
             string[] cases = { "N", "G", "D", "A" };
