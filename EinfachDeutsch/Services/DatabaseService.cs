@@ -65,6 +65,13 @@ namespace EinfachDeutsch.Services
                 return (numberOfRows > 0);
             }
         }
+        public void Delete<T>()
+        {
+            using (SQLite.SQLiteConnection conn = new SQLite.SQLiteConnection(db_path))
+            {
+                conn.DropTable<T>();
+            }
+        }
         public bool Delete<T>(int index) where T : new()
         {
             try

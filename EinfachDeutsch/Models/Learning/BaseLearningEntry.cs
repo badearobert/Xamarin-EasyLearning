@@ -22,4 +22,14 @@ namespace EinfachDeutsch.Models
 
     [Table("ExpressionsLearningEntry")]
     public class ExpressionsLearningEntry : BaseLearningEntry { }
+
+
+    [Table("MediaLearningEntry")]
+    public class MediaLearningEntry
+    {
+        public string Url { get; set; } = "";
+        public string Description { get; set; } = "";
+    }
+
+
 }

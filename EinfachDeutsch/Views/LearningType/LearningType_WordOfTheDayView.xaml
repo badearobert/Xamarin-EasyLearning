@@ -13,18 +13,24 @@
             <Style x:Key="BaseStyle" TargetType="Label">
                 <Setter Property="VerticalOptions" Value="Center" />
                 <Setter Property="HorizontalOptions" Value="Center" />
+                <Setter Property="VerticalTextAlignment" Value="Center" />
+                <Setter Property="HorizontalTextAlignment" Value="Center" />
                 <Setter Property="FontSize" Value="20" />
-                <Setter Property="TextColor" Value="Red"/>
+                <Setter Property="TextColor" Value="Yellow"/>
+            </Style>
+            <Style x:Key="TitleStyle" TargetType="Label" BasedOn="{StaticResource BaseStyle}">
+                <Setter Property="TextColor" Value="Gray"/>
             </Style>
             <Style x:Key="TranslationStyle" TargetType="Label" BasedOn="{StaticResource BaseStyle}">
-                <Setter Property="TextColor" Value="Blue"/>
+                <Setter Property="TextColor" Value="Red"/>
             </Style>
             <Style x:Key="ReferenceStyle" TargetType="Label" BasedOn="{StaticResource BaseStyle}">
-                <Setter Property="TextColor" Value="Yellow"/>
+                <Setter Property="TextColor" Value="Green"/>
             </Style>
             <Style x:Key="FooterStyle" TargetType="Label" BasedOn="{StaticResource BaseStyle}">
                 <Setter Property="FontSize" Value="12"/>
                 <Setter Property="TextColor" Value="Gray"/>
+                <Setter Property="Margin" Value="0, 10"/>
             </Style>
         </ResourceDictionary>
     </ContentView.Resources>
@@ -34,29 +40,39 @@
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
 
-            <StackLayout Orientation="Vertical" Grid.Row="0">
-                <Label Text="Word of the day is: " Style="{StaticResource BaseStyle}"/>
-                <Label Text="{Binding CurrentEntry.FullEntry}" Style="{StaticResource BaseStyle}"/>
-                <Label Text="{Binding CurrentEntry.Translation}" Style="{StaticResource TranslationStyle}"/>
-            </StackLayout>
-
-            <StackLayout Orientation="Vertical" Grid.Row="1">
-                <Label Text="{Binding CurrentEntry.References}" Style="{StaticResource ReferenceStyle}"/>
-            </StackLayout>
-            
-            <StackLayout Orientation="Vertical" Grid.Row="2" VerticalOptions="End">
-                <Label Text="Already know this one? Learn a new one by clicking here" Style="{StaticResource FooterStyle}">
-                    <Label.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="ChangeWordOfTheDay"/>
-                    </Label.GestureRecognizers>
-                </Label>
+            <StackLayout Orientation="Vertical" Grid.Row="0" VerticalOptions="Center">
+                <Label Text="Word of the day" Style="{StaticResource TitleStyle}" TextColor="White"/>
                 <Label Text="Add word to favorites" Style="{StaticResource FooterStyle}">
                     <Label.GestureRecognizers>
                         <TapGestureRecognizer Tapped="AddToFavorites"/>
                     </Label.GestureRecognizers>
                 </Label>
+            </StackLayout>
+            <StackLayout Orientation="Vertical" Grid.Row="1" VerticalOptions="Start">
+                <Label Text="{Binding CurrentEntry.FullEntry}" Style="{StaticResource BaseStyle}"/>
+                <Label Text="{Binding CurrentEntry.Translation}" Style="{StaticResource TranslationStyle}"/>
+            </StackLayout>
+            <StackLayout Orientation="Vertical" Grid.Row="2">
+                <Label Text="{Binding CurrentEntry.References}" Style="{StaticResource ReferenceStyle}"/>
+            </StackLayout>
+            
+            <StackLayout Orientation="Vertical" Grid.Row="3" VerticalOptions="End">
+                <Label Style="{StaticResource FooterStyle}">
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span Text="Already know this one?"/>
+                            <Span Text=" &#13; &#10;"/>
+                            <Span Text="Learn a new one by clicking here"/>
+                        </FormattedString>
+                    </Label.FormattedText>
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="ChangeWordOfTheDay"/>
+                    </Label.GestureRecognizers>
+                </Label>
+                
             </StackLayout>
         </Grid>
   </ContentView.Content>

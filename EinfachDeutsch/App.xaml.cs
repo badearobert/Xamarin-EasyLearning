@@ -20,6 +20,7 @@ namespace EinfachDeutsch
         public App(string fullPath_db)
         {
             InitializeComponent();
+            Device.SetFlags(new string[]{ "MediaElement_Experimental" });
             MainPage = new SharedTransitionNavigationPage(new SplashScreenPage());
 
             Configuration = new Configuration();

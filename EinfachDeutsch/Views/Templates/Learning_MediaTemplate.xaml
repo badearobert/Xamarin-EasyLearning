@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:pancakeview="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+             mc:Ignorable="d"
+             x:Class="EinfachDeutsch.Views.Templates.Learning_MediaTemplate">
+
+    <ContentView.Resources>
+        <ResourceDictionary>
+            <Style x:Key="MediaElementStyle" TargetType="MediaElement">
+                <Setter Property="ShowsPlaybackControls" Value="True"/>
+                <Setter Property="IsLooping" Value="False"/>
+                <Setter Property="AutoPlay" Value="False"/>
+                <Setter Property="VerticalOptions" Value="FillAndExpand"/>
+                <Setter Property="HorizontalOptions" Value="FillAndExpand"/>
+                <Setter Property="HeightRequest" Value="200"/>
+                <Setter Property="Margin" Value="0"/>
+                <Setter Property="Aspect" Value="AspectFill"/>
+            </Style>
+            <Style x:Key="DescriptionStyle" TargetType="Label">
+                <Setter Property="TextColor" Value="ForestGreen"/>
+                <Setter Property="Margin" Value="15,0" />
+                <Setter Property="VerticalOptions" Value="End" />
+                <Setter Property="HorizontalOptions" Value="Center" />
+            </Style>
+        </ResourceDictionary>
+    </ContentView.Resources>
+
+    <ContentView.Content>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <MediaElement Grid.Row="0" Source="{Binding Url}" Style="{StaticResource MediaElementStyle}"/>
+            <Label Grid.Row="1" Text="{Binding Description}" Style="{StaticResource DescriptionStyle}"/>
+        </Grid>
+    </ContentView.Content>
+</ContentView>

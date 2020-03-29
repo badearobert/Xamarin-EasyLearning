@@ -66,7 +66,6 @@ namespace EinfachDeutsch.Services
 
         private void HandleBasics(List<BasicContent> entries)
         {
-
             foreach (BasicContent entry in entries)
             {
                 

@@ -23,7 +23,7 @@ namespace EinfachDeutsch.ViewModels
         {
             LoadData();
         }
-        private void LoadData()
+        protected virtual void LoadData()
         {
             Entries = new ObservableCollection<T>(App.database.Read<T>());
         }
