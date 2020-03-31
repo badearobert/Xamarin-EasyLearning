@@ -4,9 +4,49 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:templates="clr-namespace:EinfachDeutsch.Views.Templates"
+             xmlns:custom="clr-namespace:EinfachDeutsch.Views.Custom"
              mc:Ignorable="d"
              x:Class="EinfachDeutsch.Views.QuizType_FillEntryView"
              >
-    <Label HorizontalOptions="Center" VerticalOptions="Center" 
-       Text="TBD"/>
+
+    <ContentView.Resources>
+        <ResourceDictionary>
+            <Style x:Key="QuestionStyle" TargetType="Label">
+                <Setter Property="VerticalOptions" Value="Center" />
+                <Setter Property="HorizontalOptions" Value="Center" />
+                <Setter Property="FontSize" Value="20" />
+                <Setter Property="Margin" Value="20,50" />
+                <Setter Property="FontAttributes" Value="Bold" />
+                <Setter Property="TextColor" Value="{DynamicResource DynamicTitleColor}"/>
+                <Setter Property="XAlign" Value="Center" />
+                <Setter Property="YAlign" Value="Center" />
+            </Style>
+            <Style x:Key="AnswerBaseStyle" TargetType="Label">
+                <Setter Property="TextColor" Value="White" />
+                <Setter Property="FontAttributes" Value="Bold" />
+            </Style>
+        </ResourceDictionary>
+
+
+    </ContentView.Resources>
+
+    <ContentView.Content>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <custom:ScoreView Grid.Row="0"/>
+
+            <StackLayout Grid.Row="1" Orientation="Vertical" Margin="10,0">
+                <Label x:Name="CurrentQuestionLabel"/>
+                <StackLayout x:Name="AllChoices" Orientation="Vertical" />
+            </StackLayout>
+            <Button Grid.Row="2" Text="Validate" Pressed="OnValidatePressed"/>
+            <custom:AnswerResultView Grid.Row="3" x:Name="AnswerResultContainer" />
+        </Grid>
+    </ContentView.Content>
 </ContentView>

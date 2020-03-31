@@ -112,8 +112,11 @@ namespace EinfachDeutsch.ViewModels
 
         public override void LoadNextQuiz()
         {
-            QuestionIndex = new Random().Next(QuizData.Count);
-            CurrentQuestion = QuizData[QuestionIndex];
+            if (QuizData.Count > 0)
+            {
+                QuestionIndex = new Random().Next(QuizData.Count);
+                CurrentQuestion = QuizData[QuestionIndex];
+            }
         }
 
         protected void OnCorrectAnswer(View view)
