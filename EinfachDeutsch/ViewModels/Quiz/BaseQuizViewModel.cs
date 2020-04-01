@@ -70,7 +70,7 @@ namespace EinfachDeutsch.ViewModels
             }
         }
 
-        private int _questionIndex = 0;
+        private int _questionIndex;
         public int QuestionIndex
         {
             get { return _questionIndex; }

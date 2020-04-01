@@ -41,12 +41,10 @@
 
             <custom:ScoreView Grid.Row="0"/>
             <Label Grid.Row="0" Text="{Binding CurrentQuestion.Id}" IsVisible="False" PropertyChanged="CurrentQuestionLabel_PropertyChanged"/>
-
             <StackLayout Grid.Row="1" Orientation="Vertical" Margin="10,0">
-                
-                <Label x:Name="CurrentQuestionLabel" TextColor="White" BackgroundColor="Blue">
 
-                </Label>
+                <Label x:Name="CurrentQuestionLabel" TextColor="White" BackgroundColor="Blue" />
+
                 <StackLayout x:Name="AllChoices" Orientation="Vertical" />
             </StackLayout>
             <Button Grid.Row="2" Text="Validate" Pressed="OnValidatePressed"/>
