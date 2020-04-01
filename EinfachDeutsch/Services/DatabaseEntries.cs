@@ -141,6 +141,13 @@ namespace EinfachDeutsch.Services
                     CorrectResult = entry.Preposition,
                     EntryReferenceId = entry.Id
                 });
+
+                App.database.Add(new FillEntryQuiz()
+                {
+                    Question = "Test for fill entry, verb is {} and article is {}",
+                    CorrectResult = entry.Word + "," + entry.Article,
+                    EntryReferenceId = entry.Id
+                });
             }
         }
         private void HandleNouns(List<QuizDatabaseEntry> entries)
@@ -178,6 +185,13 @@ namespace EinfachDeutsch.Services
                 {
                     Question = "How do you translate this noun ?\r\n" + entry.Word,
                     CorrectResult = entry.Translation,
+                    EntryReferenceId = entry.Id
+                });
+
+                App.database.Add(new FillEntryQuiz()
+                {
+                    Question = "Test for fill entry, noun is {} and article is {}",
+                    CorrectResult = entry.Word + "," + entry.Article,
                     EntryReferenceId = entry.Id
                 });
             }

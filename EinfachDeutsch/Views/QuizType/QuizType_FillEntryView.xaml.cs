@@ -16,40 +16,15 @@ namespace EinfachDeutsch.Views
     {
         private QuizType_FillEntryViewModel viewModel = new QuizType_FillEntryViewModel();
         private bool isViewUpToDate = false;
+        private bool isChanging = false;
         public QuizType_FillEntryView()
         {
             InitializeComponent();
             BindingContext = viewModel;
             AnswerResultContainer.SetOnTimerExpiredCallback(OnTimerExpired);
-            SetQuestion();
-            SetChoices();
             AnswerResultContainer.StartAnimations();
         }
-        private void SetQuestion()
-        {
-            var formattedQuestion = new FormattedString();
-            formattedQuestion.Spans.Add(new Span { Text = "to be ", ForegroundColor = Color.Red });
 
-            formattedQuestion.Spans.Add(new Span { Text = "linked with ", ForegroundColor = Color.AliceBlue });
-            formattedQuestion.Spans.Add(new Span { Text = "current question", ForegroundColor = Color.Green });
-            CurrentQuestionLabel.FormattedText = formattedQuestion;
-        }
-        private void SetChoices()
-        {
-            var grid = new Grid();
-
-            for (int i = 0; i < 9; ++i)
-            {
-                var button = new Button()
-                {
-                    Text = "Choice " + i.ToString(),
-                    BackgroundColor = Color.Yellow,
-                    TextColor = Color.Black,
-                };
-                grid.Children.Add(button, i / 3, i % 3);
-            }
-            AllChoices.Children.Add(grid);
-        }
         private void OnTimerExpired()
         {
             OnValidatePressed(null, null);
@@ -60,7 +35,68 @@ namespace EinfachDeutsch.Views
             bool is_correct = Helper.ValidateAnswer("", "");
 
             await AnswerResultContainer.AnimateAnswerImage(is_correct);
+            isChanging = false;
             viewModel.QuizQuestionFinished?.Execute(null);
+        }
+
+        private void CurrentQuestionLabel_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+        {
+            if (e.PropertyName != "Text" || isChanging) 
+                return;
+            isChanging = true;
+            SetQuestion();
+            SetChoices();
+            AnswerResultContainer.StartAnimations();
+        }
+        private void SetQuestion()
+        {
+            //Question = "Test for fill entry, noun is {} and article is {}",
+            //CorrectResult = entry.Word + "," + entry.Article,
+
+            string[] parts = viewModel.CurrentQuestion.Question.Split(new string[] { "{}" }, StringSplitOptions.None);
+
+            var formattedQuestion = new FormattedString();
+            foreach (var part in parts)
+            {
+                formattedQuestion.Spans.Add(new Span { Text = part, ForegroundColor = Color.White });
+                formattedQuestion.Spans.Add(new Span { Text = "___", ForegroundColor = Color.Red });
+            }
+
+            CurrentQuestionLabel.Text = "";
+            CurrentQuestionLabel.FormattedText = formattedQuestion;
+        }
+        private void SetChoices()
+        {
+            string[] choices = viewModel.CurrentQuestion.CorrectResult.Split(',');
+            List<Button> entries = new List<Button>();
+            
+
+            foreach (var choice in choices)
+            {
+                entries.Add(new Button()
+                {
+                    Text = choice,
+                    BackgroundColor = Color.Yellow,
+                    TextColor = Color.Black,
+                });
+            }
+
+            for (int i = 0; i < 4; ++i)
+            {
+                entries.Add(new Button()
+                {
+                    Text = "Placeholder " + i,
+                    BackgroundColor = Color.Yellow,
+                    TextColor = Color.Black,
+                });
+            }
+            var grid = new Grid();
+            for (int i = 0; i < entries.Count; ++i) 
+            {
+                grid.Children.Add(entries[i], i / 3, i % 3);
+            }
+            AllChoices.Children.Clear();
+            AllChoices.Children.Add(grid);
         }
     }
 }

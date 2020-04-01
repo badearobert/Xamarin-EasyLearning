@@ -7,5 +7,6 @@ namespace EinfachDeutsch.ViewModels
 {
     public class QuizType_FillEntryViewModel : BaseQuizViewModel<FillEntryQuiz>
     {
+
     }
 }
