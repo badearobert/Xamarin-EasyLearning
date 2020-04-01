@@ -21,11 +21,7 @@ namespace EinfachDeutsch
             NavigationPage.SetHasNavigationBar(this, false);
             NavigationPage.SetHasBackButton(this, false);
             InitializeComponent();
-            foreach (View content in QuizContent.Children)
-            {
-                ((content as ContentView)?.BindingContext as BaseQuiz)?.OnPause();
-            }
-            QuizContent.Children.Clear();
+            Clear();
 
             View view = QuizTypeService.Instance.CreateFrom(quiz);
             if (view != null)
@@ -34,6 +30,19 @@ namespace EinfachDeutsch
                 ((view as ContentView).BindingContext as BaseQuiz)?.OnResume();
                 QuizContent.Children.Add(view);
             }
+        }
+        protected override void OnDisappearing()
+        {
+            base.OnDisappearing();
+            Clear();
+        }
+        public void Clear()
+        {
+            foreach (View content in QuizContent.Children)
+            {
+                ((content as ContentView)?.BindingContext as BaseQuiz)?.OnPause();
+            }
+            QuizContent.Children.Clear();
         }
     }
 }
