@@ -2,10 +2,6 @@
 using EinfachDeutsch.ViewModels;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -15,8 +11,10 @@ namespace EinfachDeutsch.Views
     public partial class QuizType_FillEntryView : ContentView
     {
         private QuizType_FillEntryViewModel viewModel = new QuizType_FillEntryViewModel();
-        private bool isViewUpToDate = false;
         private bool isChanging = false;
+
+        List<Span> selections = new List<Span>();
+
         public QuizType_FillEntryView()
         {
             InitializeComponent();
@@ -50,16 +48,15 @@ namespace EinfachDeutsch.Views
         }
         private void SetQuestion()
         {
-            //Question = "Test for fill entry, noun is {} and article is {}",
-            //CorrectResult = entry.Word + "," + entry.Article,
-
             string[] parts = viewModel.CurrentQuestion.Question.Split(new string[] { "{}" }, StringSplitOptions.None);
 
             var formattedQuestion = new FormattedString();
             foreach (var part in parts)
             {
                 formattedQuestion.Spans.Add(new Span { Text = part, ForegroundColor = Color.White });
-                formattedQuestion.Spans.Add(new Span { Text = "___", ForegroundColor = Color.Red });
+                var span = new Span { Text = "___", ForegroundColor = Color.Red };
+                selections.Add(span);
+                formattedQuestion.Spans.Add(span);
             }
 
             CurrentQuestionLabel.Text = "";
@@ -73,23 +70,17 @@ namespace EinfachDeutsch.Views
 
             foreach (var choice in choices)
             {
-                entries.Add(new Button()
-                {
-                    Text = choice,
-                    BackgroundColor = Color.Yellow,
-                    TextColor = Color.Black,
-                });
+                var btn = new Button() { Text = choice, BackgroundColor = Color.Yellow, TextColor = Color.Black };
+                btn.Clicked += OnChoiceClicked;
+                entries.Add(btn);
             }
 
             for (int i = 0; i < 4; ++i)
             {
-                entries.Add(new Button()
-                {
-                    Text = "Placeholder " + i,
-                    BackgroundColor = Color.Yellow,
-                    TextColor = Color.Black,
-                });
-            }
+                var btn = new Button() { Text = "Placeholder " + i, BackgroundColor = Color.Yellow, TextColor = Color.Black };
+                btn.Clicked += OnChoiceClicked;
+                entries.Add(btn);
+        }
             var grid = new Grid();
             for (int i = 0; i < entries.Count; ++i) 
             {
@@ -97,6 +88,11 @@ namespace EinfachDeutsch.Views
             }
             AllChoices.Children.Clear();
             AllChoices.Children.Add(grid);
+        }
+
+        private void OnChoiceClicked(object sender, EventArgs e)
+        {
+            var obj = sender as Button;
         }
     }
 }
