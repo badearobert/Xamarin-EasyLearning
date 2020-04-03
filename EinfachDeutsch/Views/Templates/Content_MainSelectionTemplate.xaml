@@ -5,7 +5,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:pancakeview="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
              mc:Ignorable="d"
-             x:Class="EinfachDeutsch.Views.Templates.Content_QuizTypesTemplate">
+             x:Class="EinfachDeutsch.Views.Templates.Content_MainSelectionTemplate">
 
     <ContentView.Resources>
         <ResourceDictionary>
@@ -23,19 +23,22 @@
                 <Setter Property="HorizontalOptions" Value="Center" />
                 <Setter Property="TextColor" Value="{DynamicResource DynamicBackgroundColor}"/>
             </Style>
-
-
+            <Style x:Key="ButtonStyle" TargetType="Button">
+                <Setter Property="VerticalOptions" Value="Center" />
+                <Setter Property="BackgroundColor" Value="White"/>
+                <Setter Property="HorizontalOptions" Value="CenterAndExpand" />
+                <Setter Property="TextColor" Value="{DynamicResource Pink}"/>
+            </Style>
         </ResourceDictionary>
     </ContentView.Resources>
-    
-    <ContentView.Content>
 
-        <pancakeview:PancakeView CornerRadius="10" Margin="0" Padding="0">
+    <ContentView.Content>
+        <pancakeview:PancakeView CornerRadius="20" Margin="10" Padding="0">
             <StackLayout Orientation="Vertical" BackgroundColor="{Binding BackgroundColor}">
                 <Label Text="{Binding Name}" Style="{StaticResource TitleStyle}"/>
                 <Label Text="{Binding Description}" Style="{StaticResource DescriptionStyle}"/>
+                <Button Text="Take me there" Style="{StaticResource ButtonStyle}"/>
             </StackLayout>
-
         </pancakeview:PancakeView>
     </ContentView.Content>
 </ContentView>

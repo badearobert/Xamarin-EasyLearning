@@ -30,9 +30,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Update="LearningSelectionPage.xaml.cs">
-      <DependentUpon>LearningSelectionPage.xaml</DependentUpon>
-    </Compile>
     <Compile Update="QuizSelectionPage.xaml.cs">
       <DependentUpon>QuizSelectionPage.xaml</DependentUpon>
     </Compile>
@@ -42,6 +39,9 @@
     <Compile Update="Views\QuizType\QuizType_TrueFalseView.xaml.cs">
       <DependentUpon>QuizType_TrueFalseView.xaml</DependentUpon>
     </Compile>
+    <Compile Update="Views\Templates\Content_MainSelectionTemplate.xaml.cs">
+      <DependentUpon>Content_MainSelectionTemplate.xaml</DependentUpon>
+    </Compile>
     <Compile Update="Views\Templates\Content_SelectionQuiz_ResultsTemplate.xaml.cs">
       <DependentUpon>Content_SelectionQuiz_ResultsTemplate.xaml</DependentUpon>
     </Compile>
@@ -49,9 +49,6 @@
 
   <ItemGroup>
     <EmbeddedResource Update="LearningPage.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="LearningSelectionPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="MainSelectionPage.xaml">
@@ -111,13 +108,10 @@
     <EmbeddedResource Update="Views\Templates\Content_FillEntryQuiz_ResultsTemplate.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\Templates\Content_LearningTypesTemplate.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
     <EmbeddedResource Update="Views\Templates\Content_SelectionQuiz_ResultsTemplate.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\Templates\Content_QuizTypesTemplate.xaml">
+    <EmbeddedResource Update="Views\Templates\Content_MainSelectionTemplate.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\Templates\Content_TranslateWordsQuiz_ResultsTemplate.xaml">
