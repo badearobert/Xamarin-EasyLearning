@@ -13,7 +13,7 @@
 
     <ContentPage.Resources>
         <Style x:Key="TitleStyle" TargetType="Label">
-            <Setter Property="VerticalOptions" Value="Start" />
+            <Setter Property="VerticalOptions" Value="Center" />
             <Setter Property="HorizontalOptions" Value="Center" />
             <Setter Property="FontSize" Value="20" />
             <Setter Property="FontAttributes" Value="Bold" />
@@ -54,7 +54,6 @@
                                   PeekAreaInsets="0, 0, 200, 0"
                                   CurrentItem="{Binding QuizCurrentItem, Mode=TwoWay}"
                                   CurrentItemChanged="QuizCarousel_CurrentItemChanged"
-                                  HeightRequest="300"
                                   FlowDirection="RightToLeft">
                         <CarouselView.ItemsLayout>
                             <LinearItemsLayout Orientation="Horizontal"
@@ -64,7 +63,7 @@
                         </CarouselView.ItemsLayout>
                         <CarouselView.ItemTemplate>
                             <DataTemplate>
-                                <pancakeview:PancakeView CornerRadius="20" Margin="10" Padding="0">
+                                <pancakeview:PancakeView CornerRadius="20" Margin="0" Padding="0">
                                     <StackLayout Orientation="Vertical" BackgroundColor="{Binding BackgroundColor}">
                                         <Label Text="{Binding Name}" Style="{StaticResource TitleStyle}"/>
                                         <Label Text="{Binding Description}" Style="{StaticResource DescriptionStyle}"/>
@@ -85,7 +84,6 @@
                                   PeekAreaInsets="0, 0, 200, 0"
                                   CurrentItem="{Binding LearningCurrentItem, Mode=TwoWay}"
                                   CurrentItemChanged="QuizCarousel_CurrentItemChanged"
-                                  HeightRequest="300"
                                   FlowDirection="RightToLeft">
                         <CarouselView.ItemsLayout>
                             <LinearItemsLayout Orientation="Horizontal"
@@ -95,7 +93,7 @@
                         </CarouselView.ItemsLayout>
                         <CarouselView.ItemTemplate>
                             <DataTemplate>
-                                <pancakeview:PancakeView CornerRadius="20" Margin="10" Padding="0">
+                                <pancakeview:PancakeView CornerRadius="20" Margin="0" Padding="0">
                                     <StackLayout Orientation="Vertical" BackgroundColor="{Binding BackgroundColor}">
                                         <Label Text="{Binding Name}" Style="{StaticResource TitleStyle}"/>
                                         <Label Text="{Binding Description}" Style="{StaticResource DescriptionStyle}"/>
