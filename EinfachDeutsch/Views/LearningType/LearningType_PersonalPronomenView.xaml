@@ -1,0 +1,96 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="EinfachDeutsch.Views.LearningType.LearningType_PersonalPronomenView">
+    <ContentView.Resources>
+        <ResourceDictionary>
+            <Style x:Key="MainTitleStyle" TargetType="Label">
+                <Setter Property="VerticalOptions" Value="Center" />
+                <Setter Property="HorizontalOptions" Value="Center" />
+                <Setter Property="VerticalTextAlignment" Value="Center" />
+                <Setter Property="HorizontalTextAlignment" Value="Center" />
+                <Setter Property="FontSize" Value="20" />
+                <Setter Property="Margin" Value="20" />
+                <Setter Property="TextColor" Value="Yellow"/>
+            </Style>
+            <Style x:Key="ColumnStyle" TargetType="Label" BasedOn="{StaticResource MainTitleStyle}">
+                <Setter Property="FontSize" Value="16"/>
+                <Setter Property="Margin" Value="0"/>
+                <Setter Property="TextColor" Value="Red"/>
+            </Style>
+            <Style x:Key="TextStyle" TargetType="Label" BasedOn="{StaticResource MainTitleStyle}">
+                <Setter Property="FontSize" Value="14" />
+                <Setter Property="Margin" Value="0" />
+                <Setter Property="TextColor" Value="White"/>
+            </Style>
+        </ResourceDictionary>
+    </ContentView.Resources>
+
+
+    <ContentView.Content>
+        
+        <Grid ColumnSpacing="0" RowSpacing="5">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Label Text="Das personal Pronomen" 
+                       Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3"
+                       Style="{StaticResource MainTitleStyle}"/>
+
+            <Label Grid.Row="1" Grid.Column="0" Text="N" Style="{StaticResource ColumnStyle}"/>
+            <Label Grid.Row="1" Grid.Column="1" Text="Akk" Style="{StaticResource ColumnStyle}"/>
+            <Label Grid.Row="1" Grid.Column="2" Text="D" Style="{StaticResource ColumnStyle}"/>
+
+            <Label Grid.Row="2" Grid.Column="0" Text="ich" Style="{StaticResource TextStyle}"/>
+            <Label Grid.Row="2" Grid.Column="1" Text="mich" Style="{StaticResource TextStyle}"/>
+            <Label Grid.Row="2" Grid.Column="2" Text="mir" Style="{StaticResource TextStyle}"/>
+
+
+            <Label Grid.Row="3" Grid.Column="0" Text="du" Style="{StaticResource TextStyle}"/>
+            <Label Grid.Row="3" Grid.Column="1" Text="dich" Style="{StaticResource TextStyle}"/>
+            <Label Grid.Row="3" Grid.Column="2" Text="dir" Style="{StaticResource TextStyle}"/>
+
+            <Label Grid.Row="4" Grid.Column="0" Text="M - er" Style="{StaticResource TextStyle}"/>
+            <Label Grid.Row="4" Grid.Column="1" Text="ihn" Style="{StaticResource TextStyle}"/>
+            <Label Grid.Row="4" Grid.Column="2" Text="ihm" Style="{StaticResource TextStyle}"/>
+
+            <Label Grid.Row="5" Grid.Column="0" Text="F - sie" Style="{StaticResource TextStyle}"/>
+            <Label Grid.Row="5" Grid.Column="1" Text="sie" Style="{StaticResource TextStyle}"/>
+            <Label Grid.Row="5" Grid.Column="2" Text="ihr" Style="{StaticResource TextStyle}"/>
+
+            <Label Grid.Row="6" Grid.Column="0" Text="N - es" Style="{StaticResource TextStyle}"/>
+            <Label Grid.Row="6" Grid.Column="1" Text="es" Style="{StaticResource TextStyle}"/>
+            <Label Grid.Row="6" Grid.Column="2" Text="ihm" Style="{StaticResource TextStyle}"/>
+
+            <Label Grid.Row="7" Grid.Column="0" Text="wir" Style="{StaticResource TextStyle}"/>
+            <Label Grid.Row="7" Grid.Column="1" Text="uns" Style="{StaticResource TextStyle}"/>
+            <Label Grid.Row="7" Grid.Column="2" Text="uns" Style="{StaticResource TextStyle}"/>
+
+            <Label Grid.Row="8" Grid.Column="0" Text="ihr" Style="{StaticResource TextStyle}"/>
+            <Label Grid.Row="8" Grid.Column="1" Text="euch" Style="{StaticResource TextStyle}"/>
+            <Label Grid.Row="8" Grid.Column="2" Text="euch" Style="{StaticResource TextStyle}"/>
+
+            <Label Grid.Row="9" Grid.Column="0" Text="(pl) sie" Style="{StaticResource TextStyle}"/>
+            <Label Grid.Row="9" Grid.Column="1" Text="sie" Style="{StaticResource TextStyle}"/>
+            <Label Grid.Row="9" Grid.Column="2" Text="ihnen" Style="{StaticResource TextStyle}"/>
+        </Grid>
+    </ContentView.Content>
+</ContentView>

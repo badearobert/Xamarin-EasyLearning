@@ -34,8 +34,8 @@ namespace EinfachDeutsch.Services
                 new LearningType() { Id = 8, BackgroundColor = "#00FF00", Name = "Conjunctions (When)", Description = "TBD" },
                 new LearningType() { Id = 9, BackgroundColor = "#00FF00", Name = "Prepositions", Description = "TBD" },
                 new LearningType() { Id = 10, BackgroundColor = "#00FF00", Name = "Tense reference", Description = "TBD" },
-                
-
+                new LearningType() { Id = 11, BackgroundColor = "#00FF00", Name = "Personal Pronomen", Description = "TBD" },
+                new LearningType() { Id = 12, BackgroundColor = "#00FF00", Name = "Adjektiv Deklination", Description = "TBD" },
             };
         }
 
@@ -53,6 +53,8 @@ namespace EinfachDeutsch.Services
                 case 8:return new LearningType_ConjunctionsView();
                 case 9:return new LearningType_PrepositionsView();
                 case 10: return new LearningType_TenseView();
+                case 11:return new LearningType_PersonalPronomenView();
+                case 12:return new LearningType_AdjektivDeklinationView();
                 default: return new Label() { Text = "TBD" };
             }
         }
