@@ -36,6 +36,9 @@
     <Compile Update="QuizSelectionPage.xaml.cs">
       <DependentUpon>QuizSelectionPage.xaml</DependentUpon>
     </Compile>
+    <Compile Update="Views\LearningType\LearningType_ConjunctionsView.xaml.cs">
+      <DependentUpon>LearningType_ConjunctionsView.xaml</DependentUpon>
+    </Compile>
     <Compile Update="Views\LearningType\LearningType_FullContentView.xaml.cs">
       <DependentUpon>LearningType_FullContentView.xaml</DependentUpon>
     </Compile>
@@ -67,6 +70,9 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\Custom\TimerView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\LearningType\LearningType_ConjunctionsView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\LearningType\LearningType_BasicsView.xaml">

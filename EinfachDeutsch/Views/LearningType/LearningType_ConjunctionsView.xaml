@@ -1,0 +1,247 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="EinfachDeutsch.Views.LearningType.LearningType_ConjunctionsView">
+
+
+    <ContentView.Resources>
+        <ResourceDictionary>
+
+            <Style x:Key="MainTitleStyle" TargetType="Label">
+                <Setter Property="VerticalOptions" Value="Center" />
+                <Setter Property="HorizontalOptions" Value="Center" />
+                <Setter Property="VerticalTextAlignment" Value="Center" />
+                <Setter Property="HorizontalTextAlignment" Value="Center" />
+                <Setter Property="FontSize" Value="20" />
+                <Setter Property="Margin" Value="20" />
+                <Setter Property="TextColor" Value="White"/>
+            </Style>
+            <Style x:Key="ColumnStyle" TargetType="Label" BasedOn="{StaticResource MainTitleStyle}">
+                <Setter Property="FontSize" Value="14" />
+                <Setter Property="Margin" Value="0" />
+            </Style>
+            <Style x:Key="TextStyle" TargetType="Label">
+                <Setter Property="TextColor" Value="White"/>
+            </Style>
+            <Style x:Key="TranslationStyle" TargetType="Label">
+                <Setter Property="TextColor" Value="Gray"/>
+            </Style>
+            <Style x:Key="ExampleTypeStyle" TargetType="Label">
+                <Setter Property="TextColor" Value="Red"/>
+            </Style>
+        </ResourceDictionary>
+    </ContentView.Resources>
+    
+    
+    <ContentView.Content>
+        <ScrollView>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                <Label Text="Rules" Grid.Row="0" Style="{StaticResource MainTitleStyle}"/>
+
+                <Grid Grid.Row="1">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Label Grid.Row="0" Grid.Column="0" Text="WANN" Style="{StaticResource ColumnStyle}"/>
+                    <Label Grid.Row="0" Grid.Column="1" Text="WENN" Style="{StaticResource ColumnStyle}"/>
+                    <Label Grid.Row="0" Grid.Column="2" Text="ALS" Style="{StaticResource ColumnStyle}"/>
+
+                    <Label Grid.Row="1" Grid.Column="0">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span Text="Wann" Style="{StaticResource ExampleTypeStyle}"/>
+                                <Span Text=" is used in questions." Style="{StaticResource TextStyle}"/>
+                                <Span Text="&#13; &#10;"/>
+                                <Span Text="&#13; &#10;"/>
+                                <Span Text="Wann" Style="{StaticResource ExampleTypeStyle}"/>
+                                <Span Text=" is used in indirect questions." Style="{StaticResource TextStyle}"/>
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+
+                    <Label Grid.Row="1" Grid.Column="1">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span Text="Wenn" Style="{StaticResource ExampleTypeStyle}"/>
+                                <Span Text=" is used to speak about present events." Style="{StaticResource TextStyle}"/>
+                                <Span Text="&#13; &#10;"/>
+                                <Span Text="&#13; &#10;"/>
+                                <Span Text="Wenn" Style="{StaticResource ExampleTypeStyle}"/>
+                                <Span Text=" is used to speak about future events." Style="{StaticResource TextStyle}"/>
+                                <Span Text="&#13; &#10;"/>
+                                <Span Text="&#13; &#10;"/>
+                                <Span Text="Wenn" Style="{StaticResource ExampleTypeStyle}"/>
+                                <Span Text=" is used to speak about a repeated event in the past." Style="{StaticResource TextStyle}"/>
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+
+                    <Label Grid.Row="1" Grid.Column="2">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span Text="Als" Style="{StaticResource ExampleTypeStyle}"/>
+                                <Span Text=" is used to speak about a single event in the past." Style="{StaticResource TextStyle}"/>
+                                <Span Text="&#13; &#10;"/>
+                                <Span Text="&#13; &#10;"/>
+                                <Span Text="Als" Style="{StaticResource ExampleTypeStyle}"/>
+                                <Span Text=" is used to speak about a period of time in the past which can be regarded as one event." Style="{StaticResource TextStyle}"/>
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+                </Grid>
+
+
+                <Label Text="Examples" Grid.Row="2" Style="{StaticResource MainTitleStyle}"/>
+
+                <Grid Grid.Row="3">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Label Grid.Row="0" Grid.Column="0" Text="WANN" Style="{StaticResource ColumnStyle}"/>
+                    <Label Grid.Row="0" Grid.Column="1" Text="WENN" Style="{StaticResource ColumnStyle}"/>
+                    <Label Grid.Row="0" Grid.Column="2" Text="ALS" Style="{StaticResource ColumnStyle}"/>
+
+
+
+                    <Label Grid.Row="1" Grid.Column="0">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span Text="Question:" Style="{StaticResource ExampleTypeStyle}"/>
+                                <Span Text="&#13; &#10;"/>
+                                <Span Text="Wann bist du heute Morgen aufgestanden?" Style="{StaticResource TextStyle}"/>
+                                <Span Text="&#13; &#10;"/>
+                                <Span Text="When did you get up this morning?" Style="{StaticResource TranslationStyle}"/>
+                                <Span Text="&#13; &#10;&#13; &#10;"/>
+
+                                <Span Text="Wann beginnt der Unterricht?" Style="{StaticResource TextStyle}"/>
+                                <Span Text="&#13; &#10;"/>
+                                <Span Text="When will the class start?" TextColor="Gray"/>
+                                <Span Text="&#13; &#10;&#13; &#10;"/>
+
+                                <Span Text="Wann möchtet ihr uns besuchen?"  Style="{StaticResource TextStyle}"/>
+                                <Span Text="&#13; &#10;"/>
+                                <Span Text="When would you like to visit us?" Style="{StaticResource TranslationStyle}"/>
+                                <Span Text="&#13; &#10;&#13; &#10;"/>
+
+                                <Span Text="Indirect question:" Style="{StaticResource ExampleTypeStyle}"/>
+                                <Span Text="&#13; &#10;"/>
+                                <Span Text="Sag mir, wann du heute Morgen aufgestanden bist."  Style="{StaticResource TextStyle}"/>
+                                <Span Text="&#13; &#10;"/>
+                                <Span Text="Tell me when (at what time) you got up this morning." Style="{StaticResource TranslationStyle}"/>
+                                <Span Text="&#13; &#10;&#13; &#10;"/>
+
+                                <Span Text="Es ist nicht klan, wann sie ins Ausland geht."  Style="{StaticResource TextStyle}"/>
+                                <Span Text="&#13; &#10;"/>
+                                <Span Text="It's not clear when she will go abroad." Style="{StaticResource TranslationStyle}"/>
+                                <Span Text="&#13; &#10;&#13; &#10;"/>
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+
+                    <Label Grid.Row="1" Grid.Column="1">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span Text="Present event:" Style="{StaticResource ExampleTypeStyle}"/>
+                                <Span Text="&#13; &#10;"/>
+                                <Span Text="Wenn ich zur Schule fahre, nehme ich den Bus."  Style="{StaticResource TextStyle}"/>
+                                <Span Text="&#13; &#10;"/>
+                                <Span Text="When i go to school, i take the bus." Style="{StaticResource TranslationStyle}"/>
+                                <Span Text="&#13; &#10;&#13; &#10;"/>
+
+                                <Span Text="Future event:" Style="{StaticResource ExampleTypeStyle}"/>
+                                <Span Text="&#13; &#10;"/>
+                                <Span Text="Wenn ich groß bin, werde ich Arzt."  Style="{StaticResource TextStyle}"/>
+                                <Span Text="&#13; &#10;"/>
+                                <Span Text="When I'm mature, i'll become doctor." Style="{StaticResource TranslationStyle}"/>
+                                <Span Text="&#13; &#10;&#13; &#10;"/>
+
+                                <Span Text="Wenn wir genug Geld gespart haben, fahren wir in Urlaub."  Style="{StaticResource TextStyle}"/>
+                                <Span Text="&#13; &#10;"/>
+                                <Span Text="When we have saved enough money, we will go on vacation." Style="{StaticResource TranslationStyle}"/>
+                                <Span Text="&#13; &#10;&#13; &#10;"/>
+
+                                <Span Text="Repeated event in the past:" Style="{StaticResource ExampleTypeStyle}"/>
+                                <Span Text="&#13; &#10;"/>
+                                <Span Text="Wenn ich zur Schule fuhr, nahm ich den Bus." Style="{StaticResource TextStyle}"/>
+                                <Span Text="&#13; &#10;"/>
+                                <Span Text="When(ever) i went to school I took the bus." Style="{StaticResource TranslationStyle}"/>
+                                <Span Text="&#13; &#10;&#13; &#10;"/>
+
+                                <Span Text="Immer wenn ich meine Oma besuchte, haben wir zusammen Kekse gebacken."  Style="{StaticResource TextStyle}"/>
+                                <Span Text="&#13; &#10;"/>
+                                <Span Text="When(ever) I visited my grandma, wee always baked cookies together." Style="{StaticResource TranslationStyle}"/>
+                                <Span Text="&#13; &#10;&#13; &#10;"/>
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+
+                    <Label Grid.Row="1" Grid.Column="2">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span Text="Single event:" Style="{StaticResource ExampleTypeStyle}"/>
+                                <Span Text="&#13; &#10;"/>
+                                <Span Text="Ich habe meinen Führerschein bekommen, als ich 18 Jahre alt war."  Style="{StaticResource TextStyle}"/>
+                                <Span Text="&#13; &#10;"/>
+                                <Span Text="When I was 18, I got my driver's license." Style="{StaticResource TranslationStyle}"/>
+                                <Span Text="&#13; &#10;&#13; &#10;"/>
+
+                                <Span Text="Als ich meine Oma besuchte, haben wir Kekse gebacken."  Style="{StaticResource TextStyle}"/>
+                                <Span Text="&#13; &#10;"/>
+                                <Span Text="When I visited my grandma, we baked cookies together." Style="{StaticResource TranslationStyle}"/>
+                                <Span Text="&#13; &#10;&#13; &#10;"/>
+
+                                <Span Text="Als er Hunger hatte, ist er in den Imbiss an der Ecke gegangen."  Style="{StaticResource TextStyle}"/>
+                                <Span Text="&#13; &#10;"/>
+                                <Span Text="When he was hungry, he went to the fast food place on the corner." Style="{StaticResource TranslationStyle}"/>
+                                <Span Text="&#13; &#10;&#13; &#10;"/>
+
+                                <Span Text="Als er mich gestern anrief, ..."  Style="{StaticResource TextStyle}"/>
+                                <Span Text="&#13; &#10;"/>
+                                <Span Text="When he called me yesterday..." Style="{StaticResource TranslationStyle}"/>
+                                <Span Text="&#13; &#10;&#13; &#10;"/>
+
+
+                                <Span Text="Period of time:" Style="{StaticResource ExampleTypeStyle}"/>
+                                <Span Text="&#13; &#10;"/>
+                                <Span Text="Als ich ein Kind war, ..."  Style="{StaticResource TextStyle}"/>
+                                <Span Text="&#13; &#10;"/>
+                                <Span Text="When I was a child ..." Style="{StaticResource TranslationStyle}"/>
+                                <Span Text="&#13; &#10;&#13; &#10;"/>
+
+                                <Span Text="Als ich auf den Philippinen war, ..."  Style="{StaticResource TextStyle}"/>
+                                <Span Text="&#13; &#10;"/>
+                                <Span Text="When I was in the Philippines..." Style="{StaticResource TranslationStyle}"/>
+                                <Span Text="&#13; &#10;&#13; &#10;"/>
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+
+                </Grid>
+            </Grid>
+        </ScrollView>
+    </ContentView.Content>
+</ContentView>
