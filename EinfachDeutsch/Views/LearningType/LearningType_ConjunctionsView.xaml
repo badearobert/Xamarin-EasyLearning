@@ -9,7 +9,6 @@
 
     <ContentView.Resources>
         <ResourceDictionary>
-
             <Style x:Key="MainTitleStyle" TargetType="Label">
                 <Setter Property="VerticalOptions" Value="Center" />
                 <Setter Property="HorizontalOptions" Value="Center" />
@@ -17,11 +16,12 @@
                 <Setter Property="HorizontalTextAlignment" Value="Center" />
                 <Setter Property="FontSize" Value="20" />
                 <Setter Property="Margin" Value="20" />
-                <Setter Property="TextColor" Value="White"/>
+                <Setter Property="TextColor" Value="Blue"/>
             </Style>
             <Style x:Key="ColumnStyle" TargetType="Label" BasedOn="{StaticResource MainTitleStyle}">
                 <Setter Property="FontSize" Value="14" />
                 <Setter Property="Margin" Value="0" />
+                <Setter Property="TextColor" Value="Yellow"/>
             </Style>
             <Style x:Key="TextStyle" TargetType="Label">
                 <Setter Property="TextColor" Value="White"/>

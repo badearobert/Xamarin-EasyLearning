@@ -1,0 +1,139 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="EinfachDeutsch.Views.LearningType.LearningType_TenseView">
+    <ContentView.Resources>
+        <ResourceDictionary>
+            <Style x:Key="TitleStyle" TargetType="Label">
+                <Setter Property="HorizontalOptions" Value="Center"/>
+                <Setter Property="VerticalOptions" Value="Center"/>
+                <Setter Property="TextColor" Value="Red"/>
+                <Setter Property="FontSize" Value="14"/>
+            </Style>
+            <Style x:Key="LabelStyle" TargetType="Label">
+                <Setter Property="FontSize" Value="14"/>
+                <Setter Property="Padding" Value="5"/>
+                <Setter Property="LineBreakMode" Value="WordWrap"/>
+            </Style>
+            <Style x:Key="InfinitiveStyle" TargetType="Label" BasedOn="{StaticResource LabelStyle}">
+                <Setter Property="TextColor" Value="Black"/>
+                <Setter Property="BackgroundColor" Value="SkyBlue"/>
+            </Style>
+            <Style x:Key="PresentStyle" TargetType="Label" BasedOn="{StaticResource LabelStyle}">
+                <Setter Property="TextColor" Value="Black"/>
+                <Setter Property="BackgroundColor" Value="Green"/>
+            </Style>
+            <Style x:Key="PastStyle" TargetType="Label" BasedOn="{StaticResource LabelStyle}">
+                <Setter Property="TextColor" Value="Black"/>
+                <Setter Property="BackgroundColor" Value="Yellow"/>
+            </Style>
+            <Style x:Key="FutureStyle" TargetType="Label" BasedOn="{StaticResource LabelStyle}">
+                <Setter Property="TextColor" Value="Black"/>
+                <Setter Property="BackgroundColor" Value="Orange"/>
+            </Style>
+
+        </ResourceDictionary>
+    </ContentView.Resources>
+
+
+    <ContentView.Content>
+        <ScrollView>
+            <Grid ColumnSpacing="1" RowSpacing="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <Label Grid.Row="0" Grid.Column="0" Text="Infinitive" Style="{StaticResource TitleStyle}"/>
+                <Label Grid.Row="0" Grid.Column="1" Text="Gegenwart" Style="{StaticResource TitleStyle}"/>
+                <Label Grid.Row="0" Grid.Column="2" Text="Vergengenheit" Style="{StaticResource TitleStyle}"/>
+                <Label Grid.Row="0" Grid.Column="3" Text="Zukunft" Style="{StaticResource TitleStyle}"/>
+
+                <Label Grid.Row="1" Grid.Column="0" Text="haben" Style="{StaticResource InfinitiveStyle}"/>
+                <Label Grid.Row="1" Grid.Column="1" Text="ich habe" Style="{StaticResource PresentStyle}"/>
+                <Label Grid.Row="1" Grid.Column="2" Text="ich habe... gehabt" Style="{StaticResource PastStyle}"/>
+                <Label Grid.Row="1" Grid.Column="3" Text="ich werde... haben" Style="{StaticResource FutureStyle}"/>
+
+
+                <Label Grid.Row="2" Grid.Column="0" Text="spielen" Style="{StaticResource InfinitiveStyle}"/>
+                <Label Grid.Row="2" Grid.Column="1" Text="ich spiele" Style="{StaticResource PresentStyle}"/>
+                <Label Grid.Row="2" Grid.Column="2" Text="ich habe... gespielt" Style="{StaticResource PastStyle}"/>
+                <Label Grid.Row="2" Grid.Column="3" Text="ich werde... spielen" Style="{StaticResource FutureStyle}"/>
+
+
+
+                <Label Grid.Row="3" Grid.Column="0" Text="essen" Style="{StaticResource InfinitiveStyle}"/>
+                <Label Grid.Row="3" Grid.Column="1" Text="ich esse" Style="{StaticResource PresentStyle}"/>
+                <Label Grid.Row="3" Grid.Column="2" Text="ich habe... gegessen" Style="{StaticResource PastStyle}"/>
+                <Label Grid.Row="3" Grid.Column="3" Text="ich werde... essen" Style="{StaticResource FutureStyle}"/>
+
+
+                <Label Grid.Row="4" Grid.Column="0" Text="besuchen" Style="{StaticResource InfinitiveStyle}"/>
+                <Label Grid.Row="4" Grid.Column="1" Text="ich besuche" Style="{StaticResource PresentStyle}"/>
+                <Label Grid.Row="4" Grid.Column="2" Text="ich habe... besucht" Style="{StaticResource PastStyle}"/>
+                <Label Grid.Row="4" Grid.Column="3" Text="ich werde... besuchen" Style="{StaticResource FutureStyle}"/>
+
+
+                <Label Grid.Row="5" Grid.Column="0" Text="tanzen" Style="{StaticResource InfinitiveStyle}"/>
+                <Label Grid.Row="5" Grid.Column="1" Text="ich tanze" Style="{StaticResource PresentStyle}"/>
+                <Label Grid.Row="5" Grid.Column="2" Text="ich habe... getanzt" Style="{StaticResource PastStyle}"/>
+                <Label Grid.Row="5" Grid.Column="3" Text="ich werde... tanzen" Style="{StaticResource FutureStyle}"/>
+
+
+                <Label Grid.Row="6" Grid.Column="0" Text="kaufen" Style="{StaticResource InfinitiveStyle}"/>
+                <Label Grid.Row="6" Grid.Column="1" Text="ich kaufe" Style="{StaticResource PresentStyle}"/>
+                <Label Grid.Row="6" Grid.Column="2" Text="ich habe... gekauft" Style="{StaticResource PastStyle}"/>
+                <Label Grid.Row="6" Grid.Column="3" Text="ich werde... kaufen" Style="{StaticResource FutureStyle}"/>
+
+
+                <Label Grid.Row="7" Grid.Column="0" Text="antworten" Style="{StaticResource InfinitiveStyle}"/>
+                <Label Grid.Row="7" Grid.Column="1" Text="ich antworte" Style="{StaticResource PresentStyle}"/>
+                <Label Grid.Row="7" Grid.Column="2" Text="ich habe... geantwortet" Style="{StaticResource PastStyle}"/>
+                <Label Grid.Row="7" Grid.Column="3" Text="ich werde... antworten" Style="{StaticResource FutureStyle}"/>
+
+                <Label Grid.Row="8" Grid.Column="0" Text="trinken" Style="{StaticResource InfinitiveStyle}"/>
+                <Label Grid.Row="8" Grid.Column="1" Text="ich trinke" Style="{StaticResource PresentStyle}"/>
+                <Label Grid.Row="8" Grid.Column="2" Text="ich habe... getrunken" Style="{StaticResource PastStyle}"/>
+                <Label Grid.Row="8" Grid.Column="3" Text="ich werde... trinken" Style="{StaticResource FutureStyle}"/>
+
+
+                <Label Grid.Row="9" Grid.Column="0" Text="lesen" Style="{StaticResource InfinitiveStyle}"/>
+                <Label Grid.Row="9" Grid.Column="1" Text="ich lese" Style="{StaticResource PresentStyle}"/>
+                <Label Grid.Row="9" Grid.Column="2" Text="ich habe... gelesen" Style="{StaticResource PastStyle}"/>
+                <Label Grid.Row="9" Grid.Column="3" Text="ich werde... lesen" Style="{StaticResource FutureStyle}"/>
+
+                <Label Grid.Row="10" Grid.Column="0" Text="machen" Style="{StaticResource InfinitiveStyle}"/>
+                <Label Grid.Row="10" Grid.Column="1" Text="ich mache" Style="{StaticResource PresentStyle}"/>
+                <Label Grid.Row="10" Grid.Column="2" Text="ich habe... gemacht" Style="{StaticResource PastStyle}"/>
+                <Label Grid.Row="10" Grid.Column="3" Text="ich werde... machen" Style="{StaticResource FutureStyle}"/>
+
+
+                <Label Grid.Row="11" Grid.Column="0" Text="sprechen" Style="{StaticResource InfinitiveStyle}"/>
+                <Label Grid.Row="11" Grid.Column="1" Text="ich spreche" Style="{StaticResource PresentStyle}"/>
+                <Label Grid.Row="11" Grid.Column="2" Text="ich habe... gesprochen" Style="{StaticResource PastStyle}"/>
+                <Label Grid.Row="11" Grid.Column="3" Text="ich werde... sprechen" Style="{StaticResource FutureStyle}"/>
+
+                <Label Grid.Row="12" Grid.Column="0" Text="sehen" Style="{StaticResource InfinitiveStyle}"/>
+                <Label Grid.Row="12" Grid.Column="1" Text="ich sehe" Style="{StaticResource PresentStyle}"/>
+                <Label Grid.Row="12" Grid.Column="2" Text="ich habe... gesehen" Style="{StaticResource PastStyle}"/>
+                <Label Grid.Row="12" Grid.Column="3" Text="ich werde... sehen" Style="{StaticResource FutureStyle}"/>
+
+                <Label Grid.Row="13" Grid.Column="0" Text="geben" Style="{StaticResource InfinitiveStyle}"/>
+                <Label Grid.Row="13" Grid.Column="1" Text="ich gebe" Style="{StaticResource PresentStyle}"/>
+                <Label Grid.Row="13" Grid.Column="2" Text="ich habe... gegeben" Style="{StaticResource PastStyle}"/>
+                <Label Grid.Row="13" Grid.Column="3" Text="ich werde... geben" Style="{StaticResource FutureStyle}"/>
+
+                <Label Grid.Row="14" Grid.Column="0" Text="finden" Style="{StaticResource InfinitiveStyle}"/>
+                <Label Grid.Row="14" Grid.Column="1" Text="ich finde" Style="{StaticResource PresentStyle}"/>
+                <Label Grid.Row="14" Grid.Column="2" Text="ich habe... gefunden" Style="{StaticResource PastStyle}"/>
+                <Label Grid.Row="14" Grid.Column="3" Text="ich werde... finden" Style="{StaticResource FutureStyle}"/>
+
+            </Grid>
+        </ScrollView>
+    </ContentView.Content>
+</ContentView>

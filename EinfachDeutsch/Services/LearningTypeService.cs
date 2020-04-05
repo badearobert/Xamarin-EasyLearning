@@ -32,8 +32,10 @@ namespace EinfachDeutsch.Services
                 new LearningType() { Id = 6, BackgroundColor = "#00FFFF", Name = "Media player", Description = "TBD" },
                 new LearningType() { Id = 7, BackgroundColor = "#00FF00", Name = "Full Content", Description = "TBD" },
                 new LearningType() { Id = 8, BackgroundColor = "#00FF00", Name = "Conjunctions (When)", Description = "TBD" },
-
+                new LearningType() { Id = 9, BackgroundColor = "#00FF00", Name = "Prepositions", Description = "TBD" },
+                new LearningType() { Id = 10, BackgroundColor = "#00FF00", Name = "Tense reference", Description = "TBD" },
                 
+
             };
         }
 
@@ -49,7 +51,8 @@ namespace EinfachDeutsch.Services
                 case 6:return new LearningType_MediaPlayerView();
                 case 7:return new LearningType_FullContentView();
                 case 8:return new LearningType_ConjunctionsView();
-                    
+                case 9:return new LearningType_PrepositionsView();
+                case 10: return new LearningType_TenseView();
                 default: return new Label() { Text = "TBD" };
             }
         }

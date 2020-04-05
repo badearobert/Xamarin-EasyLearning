@@ -1,0 +1,138 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="EinfachDeutsch.Views.LearningType.LearningType_PrepositionsView">
+    <ContentView.Resources>
+        <ResourceDictionary>
+            <Style x:Key="TitleStyle" TargetType="Label">
+                <Setter Property="HorizontalOptions" Value="Center"/>
+                <Setter Property="VerticalOptions" Value="Center"/>
+                <Setter Property="TextColor" Value="Yellow"/>
+                <Setter Property="FontSize" Value="18"/>
+            </Style>
+            
+            <Style x:Key="LeftSideStyle" TargetType="Label">
+                <Setter Property="TextColor" Value="Red"/>
+                <Setter Property="Margin" Value="15,0"/>
+            </Style>
+            <Style x:Key="RightSideStyle" TargetType="Label">
+                <Setter Property="TextColor" Value="White"/>
+                <Setter Property="Margin" Value="15,0"/>
+            </Style>
+        </ResourceDictionary>
+    </ContentView.Resources>
+
+
+    <ContentView.Content>
+        <ScrollView>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="1"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                <Grid Grid.Row="0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="2*"/>
+                        <ColumnDefinition Width="6*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2"
+                    Text="Dativ" Style="{StaticResource TitleStyle}"/>
+
+                    <Label Grid.Row="1" Grid.Column="0" Text="aus" Style="{StaticResource LeftSideStyle}"/>
+                    <Label Grid.Row="1" Grid.Column="1" Text="out (of), from (country, town or place)" Style="{StaticResource RightSideStyle}"/>
+
+                    <Label Grid.Row="2" Grid.Column="0" Text="mit" Style="{StaticResource LeftSideStyle}"/>
+                    <Label Grid.Row="2" Grid.Column="1" Text="with, by means of (transportation)" Style="{StaticResource RightSideStyle}"/>
+
+                    <Label Grid.Row="3" Grid.Column="0" Text="von" Style="{StaticResource LeftSideStyle}"/>
+                    <Label Grid.Row="3" Grid.Column="1" Text="from (person, open space, or direction), by" Style="{StaticResource RightSideStyle}"/>
+
+                    <Label Grid.Row="4" Grid.Column="0" Text="seit" Style="{StaticResource LeftSideStyle}"/>
+                    <Label Grid.Row="4" Grid.Column="1" Text="since, for" Style="{StaticResource RightSideStyle}"/>
+
+                    <Label Grid.Row="5" Grid.Column="0" Text="bei" Style="{StaticResource LeftSideStyle}"/>
+                    <Label Grid.Row="5" Grid.Column="1" Text="near, at, at home of or place of business" Style="{StaticResource RightSideStyle}"/>
+
+                    <Label Grid.Row="6" Grid.Column="0" Text="nach" Style="{StaticResource LeftSideStyle}"/>
+                    <Label Grid.Row="6" Grid.Column="1" Text="after, to (cities and countries)" Style="{StaticResource RightSideStyle}"/>
+
+                    <Label Grid.Row="7" Grid.Column="0" Text="zu" Style="{StaticResource LeftSideStyle}"/>
+                    <Label Grid.Row="7" Grid.Column="1" Text="to (mostly people and speecifically named buildings)" Style="{StaticResource RightSideStyle}"/>
+
+                    <Label Grid.Row="8" Grid.Column="0" Text="außer" Style="{StaticResource LeftSideStyle}"/>
+                    <Label Grid.Row="8" Grid.Column="1" Text="except for, besides" Style="{StaticResource RightSideStyle}"/>
+
+                    <Label Grid.Row="9" Grid.Column="0" Text="gegenüber" Style="{StaticResource LeftSideStyle}"/>
+                    <Label Grid.Row="9" Grid.Column="1" Text="across from" Style="{StaticResource RightSideStyle}"/>
+                </Grid>
+                  
+                <BoxView Grid.Row="1" BackgroundColor="Black" HeightRequest="1"/>
+                <Grid Grid.Row="2">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="1"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+
+                    <!-- Akk -->
+                    <Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2"
+                    Text="Akkusativ" Style="{StaticResource TitleStyle}"/>
+
+
+                    <Label Grid.Row="1" Grid.Column="0" Text="durch" Style="{StaticResource LeftSideStyle}"/>
+                    <Label Grid.Row="1" Grid.Column="1" Text="through" Style="{StaticResource RightSideStyle}"/>
+
+                    <Label Grid.Row="2" Grid.Column="0" Text="gegen" Style="{StaticResource LeftSideStyle}"/>
+                    <Label Grid.Row="2" Grid.Column="1" Text="against" Style="{StaticResource RightSideStyle}"/>
+
+                    <Label Grid.Row="3" Grid.Column="0" Text="um" Style="{StaticResource LeftSideStyle}"/>
+                    <Label Grid.Row="3" Grid.Column="1" Text="around, at" Style="{StaticResource RightSideStyle}"/>
+
+                    <Label Grid.Row="4" Grid.Column="0" Text="für" Style="{StaticResource LeftSideStyle}"/>
+                    <Label Grid.Row="4" Grid.Column="1" Text="for" Style="{StaticResource RightSideStyle}"/>
+
+                    <Label Grid.Row="5" Grid.Column="0" Text="ohne" Style="{StaticResource LeftSideStyle}"/>
+                    <Label Grid.Row="5" Grid.Column="1" Text="without" Style="{StaticResource RightSideStyle}"/>
+
+                    <Label Grid.Row="6" Grid.Column="0" Text="bis" Style="{StaticResource LeftSideStyle}"/>
+                    <Label Grid.Row="6" Grid.Column="1" Text="until" Style="{StaticResource RightSideStyle}"/>
+
+                    <BoxView Grid.Column="2" Grid.Row="0" Grid.RowSpan="7"
+                             BackgroundColor="Black" WidthRequest="1"/>
+                    <!-- Dativ -->
+                    <Label Grid.Row="0" Grid.Column="3" Grid.ColumnSpan="2"
+                    Text="Dativ" Style="{StaticResource TitleStyle}"/>
+
+                    <Label Grid.Row="1" Grid.Column="3" Text="während" Style="{StaticResource LeftSideStyle}"/>
+                    <Label Grid.Row="1" Grid.Column="4" Text="during" Style="{StaticResource RightSideStyle}"/>
+
+                    <Label Grid.Row="2" Grid.Column="3" Text="trotz" Style="{StaticResource LeftSideStyle}"/>
+                    <Label Grid.Row="2" Grid.Column="4" Text="in spite of" Style="{StaticResource RightSideStyle}"/>
+
+                    <Label Grid.Row="3" Grid.Column="3" Text="(an)statt" Style="{StaticResource LeftSideStyle}"/>
+                    <Label Grid.Row="3" Grid.Column="4" Text="instead of" Style="{StaticResource RightSideStyle}"/>
+
+                    <Label Grid.Row="4" Grid.Column="3" Text="wegen" Style="{StaticResource LeftSideStyle}"/>
+                    <Label Grid.Row="4" Grid.Column="4" Text="because of" Style="{StaticResource RightSideStyle}"/>
+
+                    <Label Grid.Row="5" Grid.Column="3" Text="außerhalb" Style="{StaticResource LeftSideStyle}"/>
+                    <Label Grid.Row="5" Grid.Column="4" Text="outside of" Style="{StaticResource RightSideStyle}"/>
+
+                    <Label Grid.Row="6" Grid.Column="3" Text="innerhalb" Style="{StaticResource LeftSideStyle}"/>
+                    <Label Grid.Row="6" Grid.Column="4" Text="inside of" Style="{StaticResource RightSideStyle}"/>
+
+
+                </Grid>
+            </Grid>
+        </ScrollView>
+    </ContentView.Content>
+</ContentView>
