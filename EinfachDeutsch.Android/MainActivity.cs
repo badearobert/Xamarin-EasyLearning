@@ -7,6 +7,8 @@ using Android.Views;
 using Android.Widget;
 using Android.OS;
 using System.IO;
+using Shiny;
+using Android.Content;
 
 namespace EinfachDeutsch.Droid
 {
@@ -23,6 +25,8 @@ namespace EinfachDeutsch.Droid
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
 
+
+            // full screen
             int uiOptions = (int)Window.DecorView.SystemUiVisibility;
 
             uiOptions |= (int)SystemUiFlags.LowProfile;
@@ -39,11 +43,19 @@ namespace EinfachDeutsch.Droid
             var dbpath = Path.Combine(System.Environment.GetFolderPath(System.Environment.SpecialFolder.LocalApplicationData), "EinfachDeutsch.db3");
             LoadApplication(new App(dbpath));
         }
-        public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Android.Content.PM.Permission[] grantResults)
-        {
-            Xamarin.Essentials.Platform.OnRequestPermissionsResult(requestCode, permissions, grantResults);
 
+
+        protected override void OnNewIntent(Intent intent)
+        {
+            base.OnNewIntent(intent);
+            this.ShinyOnNewIntent(intent);
+        }
+
+        public override void OnRequestPermissionsResult(int requestCode, string[] permissions, Permission[] grantResults)
+        {
+            AndroidShinyHost.OnRequestPermissionsResult(requestCode, permissions, grantResults);
             base.OnRequestPermissionsResult(requestCode, permissions, grantResults);
         }
+
     }
 }
