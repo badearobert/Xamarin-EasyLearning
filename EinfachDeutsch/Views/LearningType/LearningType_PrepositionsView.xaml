@@ -110,7 +110,7 @@
                              BackgroundColor="Black" WidthRequest="1"/>
                     <!-- Dativ -->
                     <Label Grid.Row="0" Grid.Column="3" Grid.ColumnSpan="2"
-                    Text="Dativ" Style="{StaticResource TitleStyle}"/>
+                    Text="Genetiv" Style="{StaticResource TitleStyle}"/>
 
                     <Label Grid.Row="1" Grid.Column="3" Text="während" Style="{StaticResource LeftSideStyle}"/>
                     <Label Grid.Row="1" Grid.Column="4" Text="during" Style="{StaticResource RightSideStyle}"/>
