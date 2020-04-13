@@ -1,6 +1,7 @@
 ﻿using EinfachDeutsch.Models;
 using EinfachDeutsch.Services;
 using Newtonsoft.Json;
+using Plugin.LocalNotifications;
 using Plugin.SharedTransitions;
 using System;
 using System.Collections.Generic;
@@ -32,6 +33,8 @@ namespace EinfachDeutsch
         {
             await Task.Run(() => DatabaseEntries.Instance.ResetDatabaseEntries());
             MainPage = new SharedTransitionNavigationPage(new MainSelectionPage());
+
+            CrossLocalNotifications.Current.Show("EinfachDeutsch", "Word of the day - TBD", 1, DateTime.Now.AddHours(2));
         }
     }
 }

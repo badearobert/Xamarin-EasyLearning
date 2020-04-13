@@ -15,7 +15,7 @@ namespace EinfachDeutsch.Droid
 {
 	
 	
-	[System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Android.Build.Tasks", "1.0.0.0")]
+	[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Android.Build.Tasks", "1.0.0.0")]
 	public partial class Resource
 	{
 		
@@ -26,6 +26,7 @@ namespace EinfachDeutsch.Droid
 		
 		public static void UpdateIdValues()
 		{
+			global::Plugin.LocalNotifications.Resource.Drawable.plugin_lc_smallicon = global::EinfachDeutsch.Droid.Resource.Drawable.plugin_lc_smallicon;
 			global::Plugin.SharedTransitions.Resource.Animation.abc_fade_in = global::EinfachDeutsch.Droid.Resource.Animation.abc_fade_in;
 			global::Plugin.SharedTransitions.Resource.Animation.abc_fade_out = global::EinfachDeutsch.Droid.Resource.Animation.abc_fade_out;
 			global::Plugin.SharedTransitions.Resource.Animation.abc_grow_fade_in_from_bottom = global::EinfachDeutsch.Droid.Resource.Animation.abc_grow_fade_in_from_bottom;
@@ -12944,13 +12945,16 @@ namespace EinfachDeutsch.Droid
 			public const int notify_panel_notification_icon_bg = 2131165299;
 			
 			// aapt resource value: 0x7F070074
-			public const int splash_screen = 2131165300;
+			public const int plugin_lc_smallicon = 2131165300;
 			
 			// aapt resource value: 0x7F070075
-			public const int tooltip_frame_dark = 2131165301;
+			public const int splash_screen = 2131165301;
 			
 			// aapt resource value: 0x7F070076
-			public const int tooltip_frame_light = 2131165302;
+			public const int tooltip_frame_dark = 2131165302;
+			
+			// aapt resource value: 0x7F070077
+			public const int tooltip_frame_light = 2131165303;
 			
 			static Drawable()
 			{

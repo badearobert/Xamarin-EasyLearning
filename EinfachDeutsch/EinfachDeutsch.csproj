@@ -19,6 +19,7 @@
     <PackageReference Include="SkiaSharp" Version="1.68.2-preview.45" />
     <PackageReference Include="SkiaSharp.Views.Forms" Version="1.68.2-preview.45" />
     <PackageReference Include="sqlite-net-pcl" Version="1.6.292" />
+    <PackageReference Include="Xam.Plugins.Notifier" Version="3.0.1" />
     <PackageReference Include="Xamarin.Forms" Version="4.6.0.494-pre2" />
     <PackageReference Include="Xamarin.Essentials" Version="1.5.1" />
     <PackageReference Include="Xamarin.Forms.PancakeView" Version="1.3.7" />
