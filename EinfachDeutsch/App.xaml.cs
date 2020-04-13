@@ -33,7 +33,7 @@ namespace EinfachDeutsch
         {
             await Task.Run(() => DatabaseEntries.Instance.ResetDatabaseEntries());
             MainPage = new SharedTransitionNavigationPage(new MainSelectionPage());
-
+            CrossLocalNotifications.Current.Show("EinfachDeutsch", "Word of the day will be shown in 2 hours");
             CrossLocalNotifications.Current.Show("EinfachDeutsch", "Word of the day - TBD", 1, DateTime.Now.AddHours(2));
         }
     }
