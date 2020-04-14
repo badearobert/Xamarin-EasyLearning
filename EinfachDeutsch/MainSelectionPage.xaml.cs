@@ -1,10 +1,8 @@
 ﻿using EinfachDeutsch.Themes;
+using EinfachDeutsch.ViewModels.Learning;
+using Plugin.LocalNotifications;
 using Plugin.SharedTransitions;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -23,16 +21,28 @@ namespace EinfachDeutsch
             ThemeHelper.ChangeTheme("dark");
             SharedTransitionNavigationPage.SetBackgroundAnimation(this, BackgroundAnimation.Fade);
             SharedTransitionNavigationPage.SetTransitionDuration(this, 500);
+
+            LoadWordOfTheDay();
         }
 
         private void OnLearningButtonPressed(object sender, EventArgs e)
         {
-            App.Current.MainPage.Navigation.PushModalAsync(new SharedTransitionNavigationPage(new LearningSelectionPage()));
+            Application.Current.MainPage.Navigation.PushModalAsync(new SharedTransitionNavigationPage(new LearningSelectionPage()));
         }
 
         private void OnQuizButtonPressed(object sender, EventArgs e)
         {
-            App.Current.MainPage.Navigation.PushModalAsync(new SharedTransitionNavigationPage(new QuizSelectionPage()));
+            Application.Current.MainPage.Navigation.PushModalAsync(new SharedTransitionNavigationPage(new QuizSelectionPage()));
+        }
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            ThemeHelper.ChangeTheme("dark");
+        }
+        private void LoadWordOfTheDay()
+        {
+            var vm = new LearningType_WordOfTheDayViewModel();
+            CrossLocalNotifications.Current.Show("EinfachDeutsch", "Word of the day is " + vm.CurrentEntry.FullEntry, 1, DateTime.Now.AddHours(2));
         }
     }
 }

@@ -26,7 +26,6 @@ namespace EinfachDeutsch.ViewModels.Learning
                 App.Configuration.SetLastStoredDate(Today);
                 GenerateNewWordOfTheDay();
             }
-            
         }
 
         private void SetWordOfTheDay(int value)
@@ -40,7 +39,6 @@ namespace EinfachDeutsch.ViewModels.Learning
             Random rnd = new Random();
             SetWordOfTheDay(rnd.Next(0, entries.Count));
         }
-
 
         private QuizDatabaseEntry _currentEntry = null;
         public QuizDatabaseEntry CurrentEntry
