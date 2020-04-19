@@ -18,12 +18,6 @@ namespace EinfachDeutsch
         {
             InitializeComponent();
             LearningContent.Children.Clear();
-
-            View view = LearningTypeService.Instance.CreateFrom(type.Id);
-            if (view != null)
-            {
-                LearningContent.Children.Add(view);
-            }
-        }
+            LearningContent.Children.Add(type.View);
     }
 }

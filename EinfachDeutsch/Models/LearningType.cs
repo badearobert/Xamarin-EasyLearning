@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using Xamarin.Forms;
 
 namespace EinfachDeutsch.Models
 {
@@ -10,5 +11,6 @@ namespace EinfachDeutsch.Models
         public string BackgroundColor { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
+        public View View { get; set; }
     }
 }

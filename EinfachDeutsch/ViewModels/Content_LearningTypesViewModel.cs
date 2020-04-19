@@ -38,7 +38,7 @@ namespace EinfachDeutsch.ViewModels
 
         private void LoadData()
         {
-            LearningTypes = new ObservableCollection<LearningType>(LearningTypeService.Instance.GetLearningTypes());
+            LearningTypes = new ObservableCollection<LearningType>(LearningTypeService.Instance.Entries);
         }
     }
 }
