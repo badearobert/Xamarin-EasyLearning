@@ -23,12 +23,11 @@ namespace EinfachDeutsch
             InitializeComponent();
             Clear();
 
-            View view = QuizTypeService.Instance.CreateFrom(quiz);
-            if (view != null)
+            if (quiz.View != null)
             {
-                ((view as ContentView).BindingContext as BaseQuiz)?.ResetScore();
-                ((view as ContentView).BindingContext as BaseQuiz)?.OnResume();
-                QuizContent.Children.Add(view);
+                ((quiz.View as ContentView).BindingContext as BaseQuiz)?.ResetScore();
+                ((quiz.View as ContentView).BindingContext as BaseQuiz)?.OnResume();
+                QuizContent.Children.Add(quiz.View);
             }
         }
         protected override void OnDisappearing()

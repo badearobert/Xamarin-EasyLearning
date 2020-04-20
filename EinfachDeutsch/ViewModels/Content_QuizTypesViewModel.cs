@@ -39,7 +39,7 @@ namespace EinfachDeutsch.ViewModels
 
         private void LoadData()
         {
-            QuizTypes = new ObservableCollection<QuizType>(QuizTypeService.Instance.GetQuizTypes());
+            QuizTypes = new ObservableCollection<QuizType>(QuizTypeService.Instance.Entries);
         }
     }
 }

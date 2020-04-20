@@ -8,5 +8,6 @@ namespace EinfachDeutsch.Models
         public string BackgroundColor { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
+        public View View { get; set; }
     }
 }

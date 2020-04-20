@@ -19,5 +19,6 @@ namespace EinfachDeutsch
             InitializeComponent();
             LearningContent.Children.Clear();
             LearningContent.Children.Add(type.View);
+        }
     }
 }
