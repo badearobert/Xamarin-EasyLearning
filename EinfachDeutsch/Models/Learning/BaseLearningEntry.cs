@@ -30,6 +30,4 @@ namespace EinfachDeutsch.Models
         public string Url { get; set; } = "";
         public string Description { get; set; } = "";
     }
-
-
 }

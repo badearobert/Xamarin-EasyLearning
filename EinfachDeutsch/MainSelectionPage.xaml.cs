@@ -24,16 +24,6 @@ namespace EinfachDeutsch
 
             LoadWordOfTheDay();
         }
-
-        private void OnLearningButtonPressed(object sender, EventArgs e)
-        {
-            Application.Current.MainPage.Navigation.PushModalAsync(new SharedTransitionNavigationPage(new LearningSelectionPage()));
-        }
-
-        private void OnQuizButtonPressed(object sender, EventArgs e)
-        {
-            Application.Current.MainPage.Navigation.PushModalAsync(new SharedTransitionNavigationPage(new QuizSelectionPage()));
-        }
         protected override void OnAppearing()
         {
             base.OnAppearing();
@@ -43,6 +33,18 @@ namespace EinfachDeutsch
         {
             var vm = new LearningType_WordOfTheDayViewModel();
             CrossLocalNotifications.Current.Show("EinfachDeutsch", "Word of the day is " + vm.CurrentEntry.FullEntry, 1, DateTime.Now.AddHours(2));
+        }
+        private void OnLearningButtonPressed(object sender, EventArgs e)
+        {
+            Application.Current.MainPage.Navigation.PushModalAsync(new SharedTransitionNavigationPage(new LearningSelectionPage()));
+        }
+        private void OnQuizButtonPressed(object sender, EventArgs e)
+        {
+            Application.Current.MainPage.Navigation.PushModalAsync(new SharedTransitionNavigationPage(new QuizSelectionPage()));
+        }
+        private void OnChallengeButtonPressed(object sender, EventArgs e)
+        {
+            Application.Current.MainPage.Navigation.PushModalAsync(new SharedTransitionNavigationPage(new ChallengeSelectionPage()));
         }
     }
 }

@@ -28,7 +28,6 @@
 
   <ItemGroup>
     <Folder Include="Fonts\" />
-    <Folder Include="Views\Challenges\" />
   </ItemGroup>
 
   <ItemGroup>
@@ -37,6 +36,9 @@
     </Compile>
     <Compile Update="QuizSelectionPage.xaml.cs">
       <DependentUpon>QuizSelectionPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\Challenges\Challenge_BasicView.xaml.cs">
+      <DependentUpon>Challenge_BasicView.xaml</DependentUpon>
     </Compile>
     <Compile Update="Views\LearningType\LearningType_ConjunctionsView.xaml.cs">
       <DependentUpon>LearningType_ConjunctionsView.xaml</DependentUpon>
@@ -56,6 +58,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <EmbeddedResource Update="ChallengeSelectionPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
     <EmbeddedResource Update="LearningPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
@@ -66,6 +71,9 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="QuizPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\Challenges\Challenge_BasicView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\Custom\AnswerResultView.xaml">

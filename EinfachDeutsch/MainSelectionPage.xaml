@@ -41,6 +41,7 @@
                     <TapGestureRecognizer Tapped="OnQuizButtonPressed"/>
                 </pancakeview:PancakeView.GestureRecognizers>
             </pancakeview:PancakeView>
+            
             <pancakeview:PancakeView CornerRadius="10" Margin="10" Padding="0">
                 <StackLayout Orientation="Vertical" BackgroundColor="Green">
                     <Label Text="Learning" Style="{StaticResource TitleStyle}"/>
@@ -48,6 +49,16 @@
                 </StackLayout>
                 <pancakeview:PancakeView.GestureRecognizers>
                     <TapGestureRecognizer Tapped="OnLearningButtonPressed"/>
+                </pancakeview:PancakeView.GestureRecognizers>
+            </pancakeview:PancakeView>
+            
+            <pancakeview:PancakeView CornerRadius="10" Margin="10" Padding="0">
+                <StackLayout Orientation="Vertical" BackgroundColor="Green">
+                    <Label Text="Challenges" Style="{StaticResource TitleStyle}"/>
+                    <Label Text="Do some challenges" Style="{StaticResource DescriptionStyle}"/>
+                </StackLayout>
+                <pancakeview:PancakeView.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="OnChallengeButtonPressed"/>
                 </pancakeview:PancakeView.GestureRecognizers>
             </pancakeview:PancakeView>
         </StackLayout>

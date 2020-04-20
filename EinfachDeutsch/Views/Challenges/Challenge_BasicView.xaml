@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:pancakeview="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+             mc:Ignorable="d"
+             x:Class="EinfachDeutsch.Views.Challenges.Challenge_BasicView"
+             NavigationPage.HasNavigationBar="False"
+             NavigationPage.HasBackButton="False"
+             >
+    
+    <ContentView.Resources>
+        <ResourceDictionary>
+            <Style x:Key="CenteredStyle" TargetType="Label">
+                <Setter Property="VerticalOptions" Value="Center" />
+                <Setter Property="VerticalTextAlignment" Value="Center" />
+                <Setter Property="HorizontalOptions" Value="Center" />
+                <Setter Property="HorizontalTextAlignment" Value="Center" />
+            </Style>
+            <Style x:Key="TitleStyle" TargetType="Label" BasedOn="{StaticResource CenteredStyle}">
+                <Setter Property="FontAttributes" Value="Bold" />
+                <Setter Property="FontSize" Value="20" />
+                <Setter Property="TextColor" Value="{DynamicResource DynamicTitleColor}"/>
+            </Style>
+            <Style x:Key="DescriptionStyle" TargetType="Label" BasedOn="{StaticResource CenteredStyle}">
+                <Setter Property="Margin" Value="25,10" />
+                <Setter Property="TextColor" Value="Red"/>
+            </Style>
+        </ResourceDictionary>
+    </ContentView.Resources>
+
+    <ContentView.Content>
+        <Grid Margin="20">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <Label Grid.Row="0" Text="{Binding CurrentEntry.Name}" Style="{StaticResource TitleStyle}"/>
+            <Label Grid.Row="1" Text="{Binding CurrentEntry.Description}" Style="{StaticResource DescriptionStyle}"/>
+            <pancakeview:PancakeView Grid.Row="2" 
+                                     CornerRadius="20" 
+                                     BackgroundColor="Gray"
+                                     HeightRequest="30"
+                                     >
+                <Label Text="Load Next"
+                       TextColor="{DynamicResource DynamicTitleColor}" FontSize="20"
+                       HorizontalOptions="Center" VerticalOptions="Center" 
+                       />
+                <pancakeview:PancakeView.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding LoadButtonPressed}"/>
+                </pancakeview:PancakeView.GestureRecognizers>
+
+            </pancakeview:PancakeView>
+        </Grid>
+
+    </ContentView.Content>
+</ContentView>
